@@ -1,0 +1,15 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/asciifun/fonts">
+        <file alias="amongus.txt">fonts/amongus.txt</file>
+        <file alias="banner.txt">fonts/banner.txt</file>
+        <file alias="block.txt">fonts/block.txt</file>
+        <file alias="boomer.txt">fonts/boomer.txt</file>
+        <file alias="carlos.txt">fonts/carlos.txt</file>
+        <file alias="drpepper.txt">fonts/drpepper.txt</file>
+        <file alias="sevenstar.txt">fonts/sevenstar.txt</file>
+        <file alias="small.txt">fonts/small.txt</file>
+        <file alias="starwar.txt">fonts/starwar.txt</file>
+        <file alias="straight.txt">fonts/straight.txt</file>
+    </qresource>
+</RCC>

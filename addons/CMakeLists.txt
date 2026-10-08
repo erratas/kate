@@ -39,3 +39,4 @@ ecm_optional_add_subdirectory(bookmarks)
 ecm_optional_add_subdirectory(kategpgplugin) # Adds transparent editing of GPG encrypted files.
 ecm_optional_add_subdirectory(deployment) # Upload local project files and browse a remote SFTP host.
 ecm_optional_add_subdirectory(gitdecorations)
+ecm_optional_add_subdirectory(asciifun) # ASCII charts, banners, tables, images and an easter egg.
