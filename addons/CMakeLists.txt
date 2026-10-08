@@ -38,3 +38,4 @@ ecm_optional_add_subdirectory(openlink)
 ecm_optional_add_subdirectory(rbql)
 ecm_optional_add_subdirectory(bookmarks)
 ecm_optional_add_subdirectory(kategpgplugin) # Adds transparent editing of GPG encrypted files.
+ecm_optional_add_subdirectory(asciifun) # ASCII charts, banners, tables, images and an easter egg.
