@@ -47,7 +47,7 @@ msgstr "Просмотр компиляции"
 #: ce_plugin.cpp:38
 #, kde-format
 msgid "&Open Current File in Compiler Explorer"
-msgstr "&Открыть текущий файл в навигаторе компилятора"
+msgstr "&Открыть текущий файл в окне просмотра компиляции"
 
 #: ce_plugin.cpp:54
 #, kde-format
@@ -96,7 +96,7 @@ msgstr "Параметры"
 #: ce_widget.cpp:329
 #, kde-format
 msgid "Demangle Identifiers"
-msgstr "Дешифровать идентификаторы"
+msgstr "Восстанавливать имена (demangle)"
 
 #: ce_widget.cpp:330
 #, kde-format
@@ -155,4 +155,4 @@ msgstr "CompilerExplorer"
 #, kde-format
 msgid "'%1' compiler flags were found. Output may not be useful."
 msgstr ""
-"Найдены флаги компилятора «%1». Выведенные данные могут быть неактуальными."
+"Найдены флаги компилятора «%1». Выведенные данные могут быть бесполезными."

@@ -44,9 +44,6 @@ public:
 private:
     void paintSection(QPainter *painter, const QRect &rect, int logicalIndex) const override
     {
-        const int w = 16 + 8;
-        const int h = 16 + 8;
-
         QStyleOptionHeader optHeader;
         initStyleOption(&optHeader);
         initStyleOptionForIndex(&optHeader, logicalIndex);
@@ -58,15 +55,16 @@ private:
         if (logicalIndex == 0) {
             QStyleOptionToolButton option;
             option.toolButtonStyle = Qt::ToolButtonIconOnly;
-            option.rect = QRect(0, 0, w, h);
-            option.rect = QStyle::alignedRect(layoutDirection(), Qt::AlignVCenter, option.rect.size(), rect);
-            option.rect.moveLeft(rect.left());
             option.state = QStyle::State_Enabled;
             option.state.setFlag(QStyle::State_Sunken, m_clicked);
             option.state.setFlag(QStyle::State_AutoRaise);
             option.state.setFlag(QStyle::State_MouseOver, m_hovered);
             option.icon = QIcon::fromTheme(QStringLiteral("application-menu"));
             option.iconSize = QSize(16, 16);
+            option.subControls = QStyle::SC_ToolButton;
+            option.activeSubControls = m_clicked ? QStyle::SC_ToolButton : QStyle::SC_None;
+            QSize size = style()->sizeFromContents(QStyle::CT_ToolButton, &option, option.iconSize, this);
+            option.rect = QStyle::alignedRect(layoutDirection(), Qt::AlignLeft | Qt::AlignVCenter, size, rect);
             painter->save();
             this->style()->drawComplexControl(QStyle::CC_ToolButton, &option, painter, nullptr);
             painter->restore();
@@ -150,13 +148,11 @@ class LSPClientViewTrackerImpl : public LSPClientViewTracker
     int m_oldCursorLine = -1;
 
 public:
-    LSPClientViewTrackerImpl(LSPClientPlugin *plugin, KTextEditor::MainWindow *mainWin, int change_ms, int motion_ms)
-        : m_plugin(plugin)
-        , m_mainWindow(mainWin)
+    LSPClientViewTrackerImpl(KTextEditor::MainWindow *mainWin, int change_ms, int motion_ms)
+        : m_mainWindow(mainWin)
         , m_change(change_ms)
         , m_motion(motion_ms)
     {
-        Q_UNUSED(m_plugin);
         // get updated
         m_changeTimer.setSingleShot(true);
         auto ch = [this]() {
@@ -211,9 +207,9 @@ public:
     }
 };
 
-LSPClientViewTracker *LSPClientViewTracker::new_(LSPClientPlugin *plugin, KTextEditor::MainWindow *mainWin, int change_ms, int motion_ms)
+LSPClientViewTracker *LSPClientViewTracker::new_(KTextEditor::MainWindow *mainWin, int change_ms, int motion_ms)
 {
-    return new LSPClientViewTrackerImpl(plugin, mainWin, change_ms, motion_ms);
+    return new LSPClientViewTrackerImpl(mainWin, change_ms, motion_ms);
 }
 
 class LSPClientSymbolViewFilterProxyModel : public QSortFilterProxyModel
@@ -401,7 +397,7 @@ public:
         connect(m_plugin, &LSPClientPlugin::update, this, &self_type::configUpdated);
 
         // get updated
-        m_viewTracker.reset(LSPClientViewTracker::new_(plugin, mainWin, 500, 100));
+        m_viewTracker.reset(LSPClientViewTracker::new_(mainWin, 500, 100));
         connect(m_viewTracker.get(), &LSPClientViewTracker::newState, this, &self_type::onViewState);
         connect(m_serverManager.get(), &LSPClientServerManager::serverChanged, this, [this]() {
             refresh(false, false);

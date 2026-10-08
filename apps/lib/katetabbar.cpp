@@ -41,6 +41,9 @@ KateTabBar::KateTabBar(QWidget *parent)
     // we want drag and drop
     setAcceptDrops(true);
 
+    // allow users to change the tab during a drag
+    setChangeCurrentOnDrag(true);
+
     // allow users to re-arrange the tabs
     setMovable(true);
 
@@ -83,7 +86,7 @@ void KateTabBar::readConfig()
                 removeTab(documentIdx(doc));
             }
         } else if (m_docToLruCounterAndHasTab.size() > (size_t)docList.size()) {
-            // populate N recently user documents
+            // populate N recently used documents
             std::vector<LruCounterToDoc> mruDocs;
             for (const auto &i : m_docToLruCounterAndHasTab) {
                 DocOrWidget doc = i.first;

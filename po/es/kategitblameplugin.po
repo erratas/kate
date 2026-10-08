@@ -1,15 +1,15 @@
 # Spanish translations for kategitblameplugin.po package.
-# Copyright (C) 2021-2025 This file is copyright:
+# Copyright (C) 2021-2026 This file is copyright:
 # This file is distributed under the same license as the kate package.
 # Automatically generated, 2021.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2025 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2021-2022, 2025-2026 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kategitblameplugin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:47+0000\n"
-"PO-Revision-Date: 2025-05-11 21:55+0100\n"
+"POT-Creation-Date: 2026-10-07 00:52+0000\n"
+"PO-Revision-Date: 2026-09-26 16:29+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #: kategitblameplugin.cpp:88
 #, kde-format
@@ -36,7 +36,7 @@ msgctxt "git-blame information \"author: date: commit title \""
 msgid " %1: %2: %3 "
 msgstr " %1: %2: %3 "
 
-#: kategitblameplugin.cpp:187
+#: kategitblameplugin.cpp:187 kategitblameplugin.cpp:340
 #, kde-format
 msgid "Git Blame"
 msgstr "Git Blame"
@@ -51,12 +51,13 @@ msgstr "Mostrar detalles de Git Blame"
 msgid "Toggle Git Blame Details"
 msgstr "Conmutar los detalles de Git Blame"
 
-#: kategitblameplugin.cpp:340
+#: kategitblameplugin.cpp:352
 #, kde-format
-msgid "Git"
-msgstr "Git"
+msgctxt "@info %1 is a git error"
+msgid "Git Blame plugin error: %1"
+msgstr "Error del complemento Git Blame: %1"
 
-#: kategitblameplugin.cpp:403
+#: kategitblameplugin.cpp:410
 #, kde-format
 msgid "Git blame, show commit failed."
 msgstr "Git blame, no se puede mostrar el envío."

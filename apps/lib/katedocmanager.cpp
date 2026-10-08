@@ -21,6 +21,7 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KSharedConfig>
+#include <QScopedValueRollback>
 
 #include <QProgressDialog>
 
@@ -180,6 +181,13 @@ bool KateDocManager::closeDocuments(std::span<KTextEditor::Document *const> docu
         return true;
     }
 
+    // We are already closing documents
+    if (m_closingDocuments) {
+        return false;
+    }
+
+    const QScopedValueRollback deletingDocs(m_closingDocuments, true);
+
     m_recentlyClosedUrls.clear();
     for (const auto document : documents) {
         int i = m_docList.indexOf(document);
@@ -249,8 +257,10 @@ bool KateDocManager::closeAllDocuments(bool closeUrl)
 {
     /**
      * just close all documents
+     * pass a copy as m_docList will be modified
      */
-    return closeDocuments(m_docList, closeUrl);
+    auto copy = m_docList;
+    return closeDocuments(copy, closeUrl);
 }
 
 bool KateDocManager::closeOtherDocuments(KTextEditor::Document *doc)

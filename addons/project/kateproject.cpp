@@ -303,13 +303,11 @@ bool KateProject::reload(bool force)
 
 void KateProject::renameFile(const QString &newName, const QString &oldName)
 {
-    auto it = m_file2Item->find(oldName);
-    if (it == m_file2Item->end()) {
+    if (auto *item = m_file2Item->take(oldName)) {
+        m_file2Item->insert(newName, item);
+    } else {
         qWarning("renameFile() File not found, new: %ls old: %ls", qUtf16Printable(newName), qUtf16Printable(oldName));
-        return;
     }
-    (*m_file2Item)[newName] = it.value();
-    m_file2Item->erase(it);
 }
 
 void KateProject::removeFile(const QString &file)
@@ -387,7 +385,8 @@ QVariantMap KateProject::readProjectFile() const
 
         // if there are local settings (.kateproject.local), override values
         {
-            const auto localSettings = readJSONFile(projectLocalFileName(QStringLiteral("local")));
+            // don't use projectLocalFileName(), m_baseDir changes on reload for projects with "directory"
+            const auto localSettings = readJSONFile(projectLocalConfigFileName());
             if (!localSettings.isNull() && localSettings.isObject()) {
                 object = json::merge(object, localSettings.object());
             }
@@ -537,6 +536,14 @@ QString KateProject::projectLocalFileName(const QString &suffix) const
      * compute full file name
      */
     return QDir(m_baseDir).filePath(QStringLiteral(".kateproject.") + suffix);
+}
+
+QString KateProject::projectLocalConfigFileName() const
+{
+    if (m_fileName.isEmpty()) {
+        return {};
+    }
+    return QFileInfo(m_fileName).dir().filePath(QStringLiteral(".kateproject.local"));
 }
 
 QTextDocument *KateProject::notesDocument()

@@ -720,7 +720,8 @@ current context (<userinput>#stay</userinput>), or to pop back to a
 previous context used in the string (<userinput>#pop</userinput>).
 An empty or absent context is equivalent to <userinput>#stay</userinput>.</para>
 <para>To go back more steps, the #pop keyword can be repeated:
-<userinput>#pop#pop#pop</userinput></para>
+<userinput>#pop#pop#pop</userinput> or followed by a number in parentheses:
+<userinput>#pop(3)</userinput>.</para>
 </listitem>
 <listitem>
 <para>An <emphasis>order</emphasis> followed by an exclamation mark
@@ -728,9 +729,9 @@ An empty or absent context is equivalent to <userinput>#stay</userinput>.</para>
 will make the engine first follow the order and then switch to the
 other context, &eg; <userinput>#pop#pop!OtherContext</userinput>.</para>
 <para>You can stack multiple contexts by repeating mark
-(<emphasis>!</emphasis>) and an <emphasis>identifier</emphasis>`, e.g.
+(<emphasis>!</emphasis>) and an <emphasis>identifier</emphasis>, e.g.
 <userinput>ContextA!ContextB!ContextC</userinput>. The last context in
-the list is active immediately; the others will be accessed using `#pop`.</para>
+the list is active immediately; the others will be accessed using #pop.</para>
 </listitem>
 <listitem>
 <para>An <emphasis>identifier</emphasis>, which is a context name,
@@ -1912,35 +1913,35 @@ For more information, see <xref linkend="kate-part-bookmarks"/>.</para>
 
 <varlistentry>
 <term><userinput>MarkBreakpointActive</userinput> (<guilabel>Active Breakpoint</guilabel>)</term>
-<listitem><para>This color is used by the GDB plugin to indicate an active
+<listitem><para>This color is used by the &kate; Debugger plugin to indicate an active
 breakpoint. Notice that this color has an opacity to the background.
-For more information, see <ulink url="help:/kate/kate-application-plugin-gdb.html">the
-GDB Plugin documentation</ulink>.</para></listitem>
+For more information, see <ulink url="help:/kate/kate-application-plugin-debugger.html">the
+&kate; Debugger plugin documentation</ulink>.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><userinput>MarkBreakpointReached</userinput> (<guilabel>Reached Breakpoint</guilabel>)</term>
-<listitem><para>This color is used by the GDB plugin to indicate a breakpoint
+<listitem><para>This color is used by the &kate; Debugger plugin to indicate a breakpoint
 you have reached while debugging. Notice that this color has an opacity
 to the background.
-For more information, see <ulink url="help:/kate/kate-application-plugin-gdb.html">the
-GDB Plugin documentation</ulink>.</para></listitem>
+For more information, see <ulink url="help:/kate/kate-application-plugin-debugger.html">the
+&kate; Debugger plugin documentation</ulink>.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><userinput>MarkBreakpointDisabled</userinput> (<guilabel>Disabled Breakpoint</guilabel>)</term>
-<listitem><para>This color is used by the GDB plugin to indicate an inactive
+<listitem><para>This color is used by the &kate; Debugger plugin to indicate an inactive
 breakpoint. Notice that this color has an opacity to the background.
-For more information, see <ulink url="help:/kate/kate-application-plugin-gdb.html">the
-GDB Plugin documentation</ulink>.</para></listitem>
+For more information, see <ulink url="help:/kate/kate-application-plugin-debugger.html">the
+&kate; Debugger plugin documentation</ulink>.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><userinput>MarkExecution</userinput> (<guilabel>Execution</guilabel>)</term>
-<listitem><para>This color is used by the GDB plugin the line presently being
+<listitem><para>This color is used by the &kate; Debugger plugin the line presently being
 executed. Notice that this color has an opacity to the background.
-For more information, see <ulink url="help:/kate/kate-application-plugin-gdb.html">the
-GDB Plugin documentation</ulink>.</para></listitem>
+For more information, see <ulink url="help:/kate/kate-application-plugin-debugger.html">the
+&kate; Debugger plugin documentation</ulink>.</para></listitem>
 </varlistentry>
 
 <varlistentry>

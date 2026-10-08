@@ -158,6 +158,12 @@ void FormatterRunner::run(KTextEditor::Document *doc)
         deleteLater();
     });
 
+    // Do NOT look at the top level of the document's project for configuration files
+    // in order to support tools that search for configurations starting from the file's
+    // directory and working their way up the hierarchy. We rely on the tool doing the
+    // right thing (i.e. searching up for the configuration file), possibly by using a
+    // command line option; for example look at perltidy's "-pro=.../.perltidyrc" option.
+    // IOW: Do NOT set the workingDir to the repo base path.
     if (!workingDir().isEmpty()) {
         m_procHandle->setWorkingDirectory(workingDir());
     } else {
@@ -273,7 +279,7 @@ static Formatter makeFormatter(KTextEditor::Document *doc, const QJsonObject &co
     } else if (is("zig")) {
         return newStdinFmt("zig", {});
     } else if (is("cmake")) {
-        return newStdinFmt("cmake-format", {S("-")});
+        return newStdinFmt("gersemi", {});
     } else if (is("python")) {
         const auto configValue = config.value(QLatin1String("formatterForPython")).toString();
         Formatters f = formatterForName(configValue, Formatters::Ruff);
@@ -317,6 +323,8 @@ static Formatter makeFormatter(KTextEditor::Document *doc, const QJsonObject &co
         return newStdinFmt("erlfmt", {});
     } else if (is("godot")) {
         return newStdinFmt("gdformat", {});
+    } else if (is("perl")) {
+        return newStdinFmt("perltidy", {});
     }
     return {};
 #undef S

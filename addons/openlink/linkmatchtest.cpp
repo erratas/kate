@@ -30,6 +30,7 @@ private Q_SLOTS:
         QTest::addColumn<std::vector<OpenLinkRange>>("expected");
 
         using R = std::vector<OpenLinkRange>;
+
         QTest::addRow("1") << "Line has https://google.com"
                            << R{OpenLinkRange{.start = 9, .end = 27, .link = QStringLiteral("https://google.com"), .type = HttpLink}};
         QTest::addRow("2") << "Line has https://google.com and https://google.com"
@@ -106,6 +107,23 @@ private Q_SLOTS:
         QTest::addRow("22") << QStringLiteral("<https://cullmann.dev> xxx <https://hello.dev>")
                             << R{OpenLinkRange{.start = 1, .end = 21, .link = QStringLiteral("https://cullmann.dev"), .type = HttpLink},
                                  OpenLinkRange{.start = 28, .end = 45, .link = QStringLiteral("https://hello.dev"), .type = HttpLink}};
+
+        // something like: (/home/user/projects/file/Extensions/xyz/File.cpp:713,
+        QTest::addRow("23") << QLatin1String("(%1:713,").arg(filePath)
+                            << R{OpenLinkRange{.start = 1, .end = 1 + fileLen + 4, .link = filePath, .startPos = {713, 0}, .type = FileLink}};
+
+        QTest::addRow("24") << QStringLiteral("(for [#3695](https://github.com/pbek/QOwnNotes/issues/3695))")
+                            << R{OpenLinkRange{.start = 13,
+                                               .end = 58,
+                                               .link = QStringLiteral("https://github.com/pbek/QOwnNotes/issues/3695"),
+                                               .type = HttpLink}};
+
+        // balanced parens in the url are kept
+        QTest::addRow("25") << QStringLiteral("see https://en.wikipedia.org/wiki/Link_(film)")
+                            << R{OpenLinkRange{.start = 4,
+                                               .end = 45,
+                                               .link = QStringLiteral("https://en.wikipedia.org/wiki/Link_(film)"),
+                                               .type = HttpLink}};
     }
 
     void test()

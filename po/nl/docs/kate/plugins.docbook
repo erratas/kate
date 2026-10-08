@@ -109,8 +109,8 @@
 </listitem>
 <listitem>
 <para
-><link linkend="kate-application-plugin-gdb"
->&gdb;</link
+><link linkend="kate-application-plugin-debugger"
+>&kate; Debugger-plug-in</link
 > - levert een eenvoudige &gdb;-frontend</para>
 </listitem>
 <listitem>
@@ -2613,7 +2613,7 @@ folder if possible.</para
 
 </sect1>
 
-<sect1 id="kate-application-plugin-gdb">
+<sect1 id="kate-application-plugin-debugger">
 <!--https://kate-editor.org/2011/06/23/kate-plugin-updates-part-2/-->
 <sect1info>
 <authorgroup>
@@ -2628,17 +2628,17 @@ folder if possible.</para
 </authorgroup>
 </sect1info>
 <title
->&gdb;-plug-in</title>
+>&kate; Debugger-plug-in</title>
 
 <sect2 id="gdb-intro">
 <title
 >Inleiding</title>
 
 <para
->De &gdb;-plug-in van &kate; levert een eenvoudige frontend voor elke debugger die het <ulink url="https://microsoft.github.io/debug-adapter-protocol/"
+>De &kate;-debugger-plugin biedt een eenvoudige interface voor elke debugger die het <ulink url="https://microsoft.github.io/debug-adapter-protocol/"
 >Debugger Adapter Protocol</ulink
-> ondersteunt. Speciaal, die de GNU Project Debugger omvat, aka GDB, als <ulink url="https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html"
->hier aangegeven</ulink
+> ondersteunt. Dit omvat met name de GNU Project Debugger (ook wel GDB genoemd), zoals <ulink url="https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html"
+>hier beschreven</ulink
 >. </para>
 
 <important>
@@ -2649,7 +2649,7 @@ folder if possible.</para
 </important>
 
 <para
->U kunt de &gdb;-plug-in inschakelen in <link linkend="config-dialog-plugins"
+>U kunt de &kate;-debugger-plug-in inschakelen in <link linkend="config-dialog-plugins"
 >de sectie met plug-ins in de instellingen van &kate;</link
 >.</para>
 
@@ -2913,7 +2913,7 @@ folder if possible.</para
 ><guisubmenu
 >Getoonde werkbalken</guisubmenu
 ><guimenuitem
->&gdb;-plug-in</guimenuitem
+>Debug-plug-in</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -3117,7 +3117,7 @@ folder if possible.</para
 ><para
 >Het hulpmiddel voor het weergeven van de <guilabel
 >Aanroepstapel</guilabel
-> met de &gdb;-plug-in. </para
+> met de &kate;-debug-plug-in. </para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -3141,7 +3141,7 @@ folder if possible.</para
 ><para
 >Het hulpmiddel voor het weergeven van <guilabel
 >Lokale variabelen</guilabel
-> met de &gdb;-plug-in. </para
+> met de &kate;-debug-plug-in. </para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -3568,6 +3568,44 @@ kate /pad/naar/map/
 > is een lijst met regex patronen die gebruikt kunnen worden om mappen en bestanden uit te sluiten van de projectboom. In dit voorbeeld zullen alle bestanden en mappen in een map <filename
 >build</filename
 > in de hoofdmap uitgesloten worden. </para>
+
+<para
+>Voor een project kunnen ook Git-hostingmappings worden geconfigureerd. Een projectmapping overschrijft een globale mapping met dezelfde host en poort, terwijl mappings voor andere hosts als fallback beschikbaar blijven: </para>
+
+<screen
+>{
+  "name": "Kate",
+  "bestanden": [
+    {
+      "git": 1
+    }
+  ],
+  "git": {
+    "hostMappings": [
+      {
+        "host": "git.example.com:2222",
+        "leverancier": "Forgejo",
+        "webBaseUrl": "https://code.example.com"
+      }
+    ]
+  }
+}
+</screen>
+
+<para
+>De waarde van <code
+>"leverancier"</code
+> moet <code
+>"Forgejo"</code
+>, <code
+>"GitHub"</code
+> of <code
+>"GitLab"</code
+> zijn. De <code
+>"host"</code
+> kan de SSH-poort bevatten die door de externe Git-opslagruimte wordt gebruikt, en <code
+>"webBaseUrl"</code
+> is het HTTP- of HTTPS-adres dat wordt gebruikt om koppelingen naar de opslagruimte te openen. </para>
 
 <para id="projects-build-support"
 >Als u ondersteuning voor bouwen wilt toevoegen, dan kunt u een <filename
@@ -7411,7 +7449,7 @@ VALUES ("<replaceable
 <listitem
 ><para
 >CMake - <command
->cmake-format</command
+>gersemi</command
 ></para
 ></listitem>
 <listitem
@@ -7466,6 +7504,12 @@ VALUES ("<replaceable
 ><para
 >Godot-script - <command
 >gdformat</command
+></para
+></listitem>
+<listitem
+><para
+>Perl - <command
+>perltidy</command
 ></para
 ></listitem>
 
@@ -7540,7 +7584,7 @@ VALUES ("<replaceable
 >{
     "formatOnSave": true,
     "formatterForJson": "jq",
-    "cmake-format": {
+    "gersemi": {
         "formatOnSave": false
     },
     "autopep8": {
@@ -7561,7 +7605,7 @@ VALUES ("<replaceable
 ></listitem>
 <listitem
 ><para
->schakelt "formatteren bij opslaan" uit voor cmake-format en autopep8</para
+>schakelt "formatteren bij opslaan" uit voor gersemi en autopep8</para
 ></listitem>
 </itemizedlist>
 </para>

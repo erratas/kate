@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-11 00:47+0000\n"
-"PO-Revision-Date: 2026-07-15 19:43+0400\n"
+"POT-Creation-Date: 2026-10-08 00:49+0000\n"
+"PO-Revision-Date: 2026-09-14 19:00+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -53,16 +53,16 @@ msgstr "كيت - محرّر نصوص متقدّم"
 msgid "(c) 2000-2024 The Kate Authors"
 msgstr "© 2000-2024 مؤلّفو «كيت»"
 
-#: kate/main.cpp:170 lib/autotests/kate_view_mgmt_test2.cpp:220
-#: lib/autotests/kate_view_mgmt_test2.cpp:522
-#: lib/autotests/kate_view_mgmt_test2.cpp:558
+#: kate/main.cpp:170 lib/autotests/kate_view_mgmt_test2.cpp:280
+#: lib/autotests/kate_view_mgmt_test2.cpp:582
+#: lib/autotests/kate_view_mgmt_test2.cpp:618
 #, kde-format
 msgid "Start Kate with a given session."
 msgstr "ابدأ «كيت» بجلسة مُعطاة."
 
-#: kate/main.cpp:171 lib/autotests/kate_view_mgmt_test2.cpp:221
-#: lib/autotests/kate_view_mgmt_test2.cpp:523
-#: lib/autotests/kate_view_mgmt_test2.cpp:559
+#: kate/main.cpp:171 lib/autotests/kate_view_mgmt_test2.cpp:281
+#: lib/autotests/kate_view_mgmt_test2.cpp:583
+#: lib/autotests/kate_view_mgmt_test2.cpp:619
 #, kde-format
 msgid "session"
 msgstr "الجلسة"
@@ -227,7 +227,7 @@ msgstr "خبّئ %1"
 #: lib/data/kateui.rc:6
 #, kde-format
 msgid "&File"
-msgstr "&ملفّ"
+msgstr "&ملف"
 
 #. i18n: ectx: Menu (file_file_actions)
 #: lib/data/kateui.rc:31
@@ -239,7 +239,7 @@ msgstr "إجراءات ال&ملف"
 #: lib/data/kateui.rc:45
 #, kde-format
 msgid "&Edit"
-msgstr "ت&حرير"
+msgstr "&حرّر"
 
 #. i18n: ectx: Menu (selection)
 #: lib/data/kateui.rc:56
@@ -257,13 +257,13 @@ msgstr "ا&ذهب"
 #: lib/data/kateui.rc:75
 #, kde-format
 msgid "&View"
-msgstr "من&ظور"
+msgstr "&عرض"
 
 #. i18n: ectx: Menu (view-split)
 #: lib/data/kateui.rc:77 lib/kateviewspace.cpp:152
 #, kde-format
 msgid "Split View"
-msgstr "اقسم المنظور"
+msgstr "اقسم العرض"
 
 #. i18n: ectx: Menu (tools)
 #: lib/data/kateui.rc:113 lib/diagnostics/ui.rc:6
@@ -309,7 +309,7 @@ msgstr "شريط القائمة المضغوطة"
 msgid "&Status Bar Items"
 msgstr "عناصر شريط ال&حالة"
 
-#: lib/diagnostics/diagnostic_suppression.h:37
+#: lib/diagnostics/diagnostic_suppression.h:38
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -489,7 +489,7 @@ msgstr[0] "سطر مُعد"
 msgstr[1] "سطر مُعد"
 msgstr[2] "سطران مُعدان"
 msgstr[3] "سطور مُعدة"
-msgstr[4] "سطراً مُعداً"
+msgstr[4] "سطرًا مُعدًا"
 msgstr[5] "سطر مُعد"
 
 #: lib/diff/diffeditor.cpp:286
@@ -505,7 +505,7 @@ msgstr[0] "سطر مُهمل"
 msgstr[1] "سطر مُهمل"
 msgstr[2] "سطران مُهملان"
 msgstr[3] "سطور مُهملة"
-msgstr[4] "سطراً مُهملاً"
+msgstr[4] "سطرًا مُهملًا"
 msgstr[5] "سطر مُهمل"
 
 #: lib/diff/diffeditor.cpp:298
@@ -521,7 +521,7 @@ msgstr[0] "سطر غير مُعد"
 msgstr[1] "سطر غير مُعد"
 msgstr[2] "سطران غير مُعدان"
 msgstr[3] "سطور غير مُعدة"
-msgstr[4] "سطراً غير مُعد"
+msgstr[4] "سطرًا غير مُعد"
 msgstr[5] "سطر غير مُعد"
 
 #: lib/diff/diffeditor.cpp:310
@@ -529,17 +529,17 @@ msgstr[5] "سطر غير مُعد"
 msgid "Unstage Hunk"
 msgstr "كتلة غير مُعدة"
 
-#: lib/diff/diffwidget.cpp:51
+#: lib/diff/diffwidget.cpp:52
 #, kde-format
 msgid "Diff - %1"
 msgstr "فرق - %1"
 
-#: lib/diff/diffwidget.cpp:54
+#: lib/diff/diffwidget.cpp:55
 #, kde-format
 msgid "Diff - %1..%2"
 msgstr "فرق - %1..%2"
 
-#: lib/diff/diffwidget.cpp:60
+#: lib/diff/diffwidget.cpp:61
 #, kde-format
 msgid ""
 "<b>git</b> not found. Git is needed to diff the documents. If git is already "
@@ -550,65 +550,65 @@ msgstr ""
 "مثبت؛ فتأكد  من مسار PATH المتغيرات في بيئتك. انظر https://git-scm.com/"
 "downloads"
 
-#: lib/diff/diffwidget.cpp:63 lib/diff/diffwidget.cpp:1244
+#: lib/diff/diffwidget.cpp:64 lib/diff/diffwidget.cpp:1278
 #: lib/kateconfigdialog.cpp:368
 #, kde-format
 msgid "Diff"
 msgstr "الفرق"
 
-#: lib/diff/diffwidget.cpp:122
+#: lib/diff/diffwidget.cpp:123
 #, kde-format
 msgid "Diff %1 .. %2"
 msgstr "الفرق %1 .. %2"
 
-#: lib/diff/diffwidget.cpp:152
+#: lib/diff/diffwidget.cpp:153
 #, kde-format
 msgid "Show/Hide Commit Info"
 msgstr "اعرض/ اخفِ معلومات الإيداع"
 
-#: lib/diff/diffwidget.cpp:157
+#: lib/diff/diffwidget.cpp:158
 #, kde-format
 msgid "Jump to Next File"
 msgstr "اقفز إلى الملف التالي"
 
-#: lib/diff/diffwidget.cpp:161
+#: lib/diff/diffwidget.cpp:162
 #, kde-format
 msgid "Jump to Previous File"
 msgstr "اقفز إلى الملف السابق"
 
-#: lib/diff/diffwidget.cpp:165
+#: lib/diff/diffwidget.cpp:166
 #, kde-format
 msgid "Jump to Next Hunk"
 msgstr "اقفز إلى الكتلة التالية"
 
-#: lib/diff/diffwidget.cpp:169
+#: lib/diff/diffwidget.cpp:170
 #, kde-format
 msgid "Jump to Previous Hunk"
 msgstr "اقفز إلى الكتلة السابقة"
 
-#: lib/diff/diffwidget.cpp:173
+#: lib/diff/diffwidget.cpp:174
 #, kde-format
 msgctxt "Tooltip for a button, clicking the button reloads the diff"
 msgid "Reload Diff"
 msgstr "أعد التحميل الفرق"
 
-#: lib/diff/diffwidget.cpp:177
+#: lib/diff/diffwidget.cpp:178
 #, kde-format
 msgctxt "Tooltip for a button"
 msgid "Show diff with full context, not just the changed lines"
 msgstr "أظهر الفرق بسياق كامل، ليس مجرد السطور المغيرة"
 
-#: lib/diff/diffwidget.cpp:852 lib/diff/diffwidget.cpp:1056
+#: lib/diff/diffwidget.cpp:886 lib/diff/diffwidget.cpp:1090
 #, kde-format
 msgid "New file %1"
 msgstr "ملفّ جديد %1"
 
-#: lib/diff/diffwidget.cpp:854 lib/diff/diffwidget.cpp:1058
+#: lib/diff/diffwidget.cpp:888 lib/diff/diffwidget.cpp:1092
 #, kde-format
 msgid "Deleted file %1"
 msgstr "ملف محذوف %1"
 
-#: lib/diff/diffwidget.cpp:1227 lib/diff/diffwidget.cpp:1228
+#: lib/diff/diffwidget.cpp:1261 lib/diff/diffwidget.cpp:1262
 #, kde-format
 msgid "No differences found"
 msgstr "لم يعثر على فروقات"
@@ -716,7 +716,7 @@ msgid ""
 "vulnerabilities. Instead use this editor normally and you will be prompted "
 "for elevated privileges when saving documents if needed."
 msgstr ""
-"يمكن أن يسبب تشغيل المحرر مع sudo الأخطاء ويعرضك على ثغرات الأمن. بدلاً من "
+"يمكن أن يسبب تشغيل المحرر مع sudo الأخطاء ويعرضك على ثغرات الأمن. بدلًا من "
 "ذلك، استخدم المحرر بشكل طبيعي وسيتطلب امتيازات أرفع عند حفظ المستندات إذا "
 "لزم الأمر."
 
@@ -726,332 +726,332 @@ msgid ""
 "vulnerabilities. Instead use this editor normally and you will be prompted "
 "for elevated privileges when saving documents if needed."
 msgstr ""
-"يمكن أن يسبب تشغيل المحرر مع kdesu الأخطاء ويعرضك على ثغرات الأمن. بدلاً من "
+"يمكن أن يسبب تشغيل المحرر مع kdesu الأخطاء ويعرضك على ثغرات الأمن. بدلًا من "
 "ذلك، استخدم المحرر بشكل طبيعي وسيتطلب امتيازات أرفع عند حفظ المستندات إذا "
 "لزم الأمر."
 
-#: lib/kateapp.cpp:381
+#: lib/kateapp.cpp:385
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "كريستوف كولمان"
 
-#: lib/kateapp.cpp:381
+#: lib/kateapp.cpp:385
 #, kde-format
 msgid "Maintainer"
 msgstr "الصائن"
 
-#: lib/kateapp.cpp:382
+#: lib/kateapp.cpp:386
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "دومينيك هاومان"
 
-#: lib/kateapp.cpp:382 lib/kateapp.cpp:385 lib/kateapp.cpp:386
-#: lib/kateapp.cpp:387 lib/kateapp.cpp:388 lib/kateapp.cpp:394
+#: lib/kateapp.cpp:386 lib/kateapp.cpp:389 lib/kateapp.cpp:390
+#: lib/kateapp.cpp:391 lib/kateapp.cpp:392 lib/kateapp.cpp:398
 #, kde-format
 msgid "Core Developer"
 msgstr "مطوّر اللبّ"
 
-#: lib/kateapp.cpp:383
+#: lib/kateapp.cpp:387
 #, kde-format
 msgid "Sven Brauch"
 msgstr "سفين بروش"
 
-#: lib/kateapp.cpp:383 lib/kateapp.cpp:384 lib/kateapp.cpp:389
+#: lib/kateapp.cpp:387 lib/kateapp.cpp:388 lib/kateapp.cpp:393
 #, kde-format
 msgid "Developer"
 msgstr "مطوّر"
 
-#: lib/kateapp.cpp:384
+#: lib/kateapp.cpp:388
 #, kde-format
 msgid "Kåre Särs"
-msgstr "Kåre Särs"
+msgstr "كاري سارس"
 
-#: lib/kateapp.cpp:385
+#: lib/kateapp.cpp:389
 #, kde-format
 msgid "Waqar Ahmed"
 msgstr "وقار أحمد"
 
-#: lib/kateapp.cpp:386
+#: lib/kateapp.cpp:390
 #, kde-format
 msgid "Anders Lund"
 msgstr "أندرس لوند"
 
-#: lib/kateapp.cpp:387
+#: lib/kateapp.cpp:391
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "جوزيف وينينجر"
 
-#: lib/kateapp.cpp:388
+#: lib/kateapp.cpp:392
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "هاميش رودا"
 
-#: lib/kateapp.cpp:389
+#: lib/kateapp.cpp:393
 #, kde-format
 msgid "Alexander Neundorf"
 msgstr "ألكساندر نيوندورف"
 
-#: lib/kateapp.cpp:390
+#: lib/kateapp.cpp:394
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "والدو باستيان"
 
-#: lib/kateapp.cpp:390
+#: lib/kateapp.cpp:394
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "نظام الصِّوانات الرائع"
 
-#: lib/kateapp.cpp:391
+#: lib/kateapp.cpp:395
 #, kde-format
 msgid "Charles Samuels"
 msgstr "تشارلز صامويلز"
 
-#: lib/kateapp.cpp:391
+#: lib/kateapp.cpp:395
 #, kde-format
 msgid "The Editing Commands"
 msgstr "أوامر التّحرير"
 
-#: lib/kateapp.cpp:392
+#: lib/kateapp.cpp:396
 #, kde-format
 msgid "Matt Newell"
 msgstr "مات نيويل"
 
-#: lib/kateapp.cpp:392
+#: lib/kateapp.cpp:396
 #, kde-format
 msgid "Testing, ..."
 msgstr "الاختبار، ..."
 
-#: lib/kateapp.cpp:393
+#: lib/kateapp.cpp:397
 #, kde-format
 msgid "Michael Bartl"
 msgstr "مايكل بارتل"
 
-#: lib/kateapp.cpp:393
+#: lib/kateapp.cpp:397
 #, kde-format
 msgid "Former Core Developer"
 msgstr "مطوّر اللبّ السّابق"
 
-#: lib/kateapp.cpp:394
+#: lib/kateapp.cpp:398
 #, kde-format
 msgid "Michael McCallum"
 msgstr "مايكل ماكالوم"
 
-#: lib/kateapp.cpp:395
+#: lib/kateapp.cpp:399
 #, kde-format
 msgid "Jochen Wilhemly"
-msgstr "Jochen Wilhemly"
+msgstr "يوخين فيلهيلمي"
 
-#: lib/kateapp.cpp:395
+#: lib/kateapp.cpp:399
 #, kde-format
 msgid "KWrite Author"
 msgstr "مؤلّف «كاتبك»"
 
-#: lib/kateapp.cpp:396
+#: lib/kateapp.cpp:400
 #, kde-format
 msgid "Michael Koch"
 msgstr "ميخائيل كوش"
 
-#: lib/kateapp.cpp:396
+#: lib/kateapp.cpp:400
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "نقل «كاتبك» إلى «أجزائك»"
 
-#: lib/kateapp.cpp:397
+#: lib/kateapp.cpp:401
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "كريستيان جيباور"
 
-#: lib/kateapp.cpp:398
+#: lib/kateapp.cpp:402
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "سيمون هاوسمان"
 
-#: lib/kateapp.cpp:399
+#: lib/kateapp.cpp:403
 #, kde-format
 msgid "Glen Parker"
 msgstr "غلين باركر"
 
-#: lib/kateapp.cpp:399
+#: lib/kateapp.cpp:403
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "تأريخ التّراجع في «كاتبك»، التّكامل مع «هجائك»"
 
-#: lib/kateapp.cpp:400
+#: lib/kateapp.cpp:404
 #, kde-format
 msgid "Scott Manson"
 msgstr "سكوت مانسون"
 
-#: lib/kateapp.cpp:400
+#: lib/kateapp.cpp:404
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "دعم إبراز صياغة XML في «كاتبك»"
 
-#: lib/kateapp.cpp:401
+#: lib/kateapp.cpp:405
 #, kde-format
 msgid "John Firebaugh"
 msgstr "جون فايربو"
 
-#: lib/kateapp.cpp:401
+#: lib/kateapp.cpp:405
 #, kde-format
 msgid "Patches and more"
 msgstr "الرّقع وغيرها"
 
-#: lib/kateapp.cpp:402
+#: lib/kateapp.cpp:406
 #, kde-format
 msgid "Pablo Martín"
 msgstr "بابلو مارتين"
 
-#: lib/kateapp.cpp:403
+#: lib/kateapp.cpp:407
 #, kde-format
 msgid "Python Plugin Developer"
 msgstr "مطوّر إضافة بيثون"
 
-#: lib/kateapp.cpp:406
+#: lib/kateapp.cpp:410
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "جيرالد سيناركلينز دي جرانسي"
 
-#: lib/kateapp.cpp:406
+#: lib/kateapp.cpp:410
 #, kde-format
 msgid "QA and Scripting"
 msgstr "ضمان الجودة والسّكربتة"
 
-#: lib/kateapp.cpp:409
+#: lib/kateapp.cpp:413
 #, kde-format
 msgid "Tyson Tan"
-msgstr "Tyson Tan"
+msgstr "تايسون تان"
 
-#: lib/kateapp.cpp:410
+#: lib/kateapp.cpp:414
 #, kde-format
 msgid "Designer of Kate's mascot 'Kate the Cyber Woodpecker'"
 msgstr "مصمم تميمة كيت \"Kate the Cyber Woodpecker\""
 
-#: lib/kateapp.cpp:413
+#: lib/kateapp.cpp:417
 #, kde-format
 msgid "Matteo Merli"
 msgstr "ماتيو ميرلي"
 
-#: lib/kateapp.cpp:413
+#: lib/kateapp.cpp:417
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "إبراز ملفّات المواصفات ل‍RPM، وبيرل، وملفّات الفرق وغيرها"
 
-#: lib/kateapp.cpp:414
+#: lib/kateapp.cpp:418
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "روكي سكاليتا"
 
-#: lib/kateapp.cpp:414
+#: lib/kateapp.cpp:418
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "إبراز VHDL"
 
-#: lib/kateapp.cpp:415
+#: lib/kateapp.cpp:419
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "يوري ليبيديف"
 
-#: lib/kateapp.cpp:415
+#: lib/kateapp.cpp:419
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "إبراز SQL"
 
-#: lib/kateapp.cpp:416
+#: lib/kateapp.cpp:420
 #, kde-format
 msgid "Chris Ross"
 msgstr "كريس روس"
 
-#: lib/kateapp.cpp:416
+#: lib/kateapp.cpp:420
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "إبراز Ferite"
 
-#: lib/kateapp.cpp:417
+#: lib/kateapp.cpp:421
 #, kde-format
 msgid "Nick Roux"
 msgstr "نيك رو"
 
-#: lib/kateapp.cpp:417
+#: lib/kateapp.cpp:421
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "إبراز ILERPG"
 
-#: lib/kateapp.cpp:418
+#: lib/kateapp.cpp:422
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "كارستن نيهاوس"
 
-#: lib/kateapp.cpp:418
+#: lib/kateapp.cpp:422
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "إبراز لاتخ"
 
-#: lib/kateapp.cpp:419
+#: lib/kateapp.cpp:423
 #, kde-format
 msgid "Per Wigren"
 msgstr "بير ويغرين"
 
-#: lib/kateapp.cpp:419
+#: lib/kateapp.cpp:423
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "إبراز Makefile وبيثون"
 
-#: lib/kateapp.cpp:420
+#: lib/kateapp.cpp:424
 #, kde-format
 msgid "Jan Fritz"
 msgstr "جان فريتز"
 
-#: lib/kateapp.cpp:420
+#: lib/kateapp.cpp:424
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "إبراز بيثون"
 
-#: lib/kateapp.cpp:421
+#: lib/kateapp.cpp:425
 #, kde-format
 msgid "Daniel Naber"
 msgstr "دانييل نابر"
 
-#: lib/kateapp.cpp:422
+#: lib/kateapp.cpp:426
 #, kde-format
 msgid "Roland Pabel"
 msgstr "رولاند بابل"
 
-#: lib/kateapp.cpp:422
+#: lib/kateapp.cpp:426
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "إبراز المخططات"
 
-#: lib/kateapp.cpp:423
+#: lib/kateapp.cpp:427
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "كريستي دوميتريسكو"
 
-#: lib/kateapp.cpp:423
+#: lib/kateapp.cpp:427
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "قائمة أنواع البيانات والكلمات المفتاحيّة ل‍PHP"
 
-#: lib/kateapp.cpp:424
+#: lib/kateapp.cpp:428
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "كارستن فايفر"
 
-#: lib/kateapp.cpp:424
+#: lib/kateapp.cpp:428
 #, kde-format
 msgid "Very nice help"
 msgstr "مساعدة لطيفة جدًّا"
 
-#: lib/kateapp.cpp:425
+#: lib/kateapp.cpp:429
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "كلّ مَن ساهم ونسيت ذكره"
 
-#: lib/kateapp.cpp:593
+#: lib/kateapp.cpp:597
 #, kde-format
 msgid "Folders can only be opened when the projects plugin is enabled"
 msgstr "لا يمكن فتح المجلدات إلا عند تمكين ملحق المشاريع"
 
-#: lib/kateapp.cpp:686
+#: lib/kateapp.cpp:690
 #, kde-format
 msgid ""
 "The file '%1' could not be opened: it is not a normal file, it is a folder."
@@ -1217,7 +1217,7 @@ msgstr ""
 #: lib/kateconfigdialog.cpp:259
 #, kde-format
 msgid "&Auto hide tabs"
-msgstr "أ&خفِ الألسنة آليّاً"
+msgstr "أ&خفِ الألسنة آليًّا"
 
 #: lib/kateconfigdialog.cpp:261
 #, kde-format
@@ -1475,57 +1475,57 @@ msgstr "الاسم"
 msgid "Description"
 msgstr "الوصف"
 
-#: lib/katedocmanager.cpp:352
+#: lib/katedocmanager.cpp:362
 #, kde-format
 msgid "Starting Up"
 msgstr "يبدأ"
 
-#: lib/katedocmanager.cpp:353
+#: lib/katedocmanager.cpp:363
 #, kde-format
 msgid "Reopening files from the last session..."
 msgstr "يعيد فتح الملفّات من الجلسة الأخيرة..."
 
-#: lib/katedocmanager.cpp:528
+#: lib/katedocmanager.cpp:538
 #, kde-format
 msgid "Cannot pin untitled documents."
 msgstr "لا يمكن تثبيت المستندات غير المسماة."
 
-#: lib/katedocmanager.cpp:533
+#: lib/katedocmanager.cpp:543
 #, kde-format
 msgid "Cannot pin non local documents."
 msgstr "لا يمكن تثبيت المستندات غير المحلية."
 
-#: lib/katefileactions.cpp:80
+#: lib/katefileactions.cpp:81
 #, kde-format
 msgid "Rename file"
 msgstr "أعد تسمية الملفّ"
 
-#: lib/katefileactions.cpp:80
+#: lib/katefileactions.cpp:81
 #, kde-format
 msgid "New file name"
 msgstr "اسم الملفّ الجديد"
 
-#: lib/katefileactions.cpp:116
+#: lib/katefileactions.cpp:121
 #, kde-format
 msgid "File \"%1\" could not be moved to \"%2\""
 msgstr "تعذّر نقل الملفّ \"%1\" إلى \"%2\""
 
-#: lib/katefileactions.cpp:137
+#: lib/katefileactions.cpp:142
 #, kde-format
 msgid "Do you really want to delete file \"%1\"?"
 msgstr "أمتأكّد من حذف الملفّ \"%1\"؟"
 
-#: lib/katefileactions.cpp:138
+#: lib/katefileactions.cpp:143
 #, kde-format
 msgid "Delete file"
 msgstr "احذف ملف"
 
-#: lib/katefileactions.cpp:161
+#: lib/katefileactions.cpp:166
 #, kde-format
 msgid "File \"%1\" could not be deleted."
 msgstr "تعذّر حذف الملفّ \"%1\""
 
-#: lib/katefileactions.cpp:220
+#: lib/katefileactions.cpp:225
 #, kde-format
 msgid "&Other Application..."
 msgstr "برا&مج أخرى..."
@@ -1533,7 +1533,7 @@ msgstr "برا&مج أخرى..."
 #: lib/katemainwindow.cpp:306
 #, kde-format
 msgid "Use this command to show or hide the view's statusbar"
-msgstr "استخدم هذا الأمر لإظهار أو إخفاء شريط حالة المنظور"
+msgstr "استخدم هذا الأمر لإظهار أو إخفاء شريط حالة العرض"
 
 #: lib/katemainwindow.cpp:312
 #, kde-format
@@ -1643,8 +1643,7 @@ msgstr "أ&عد تحميل الكلّ"
 msgid "Reload all open documents."
 msgstr "أعد تحميل كلّ المستندات."
 
-#: lib/katemainwindow.cpp:468 lib/katemainwindow.cpp:478
-#: lib/katemainwindow.cpp:487
+#: lib/katemainwindow.cpp:468
 #, kde-format
 msgid "Copies the file path of the current file to clipboard."
 msgstr "ينسخ مسار الملف الحالي إلى الحافظة"
@@ -1654,10 +1653,22 @@ msgstr "ينسخ مسار الملف الحالي إلى الحافظة"
 msgid "Copy Filename"
 msgstr "انسخ اسم الملفّ"
 
+#: lib/katemainwindow.cpp:478
+#, fuzzy, kde-format
+#| msgid "Copies the file path of the current file to clipboard."
+msgid "Copies the file name of the current file to clipboard."
+msgstr "ينسخ مسار الملف الحالي إلى الحافظة"
+
 #: lib/katemainwindow.cpp:482 lib/welcomeview/welcomeview.cpp:268
 #, kde-format
 msgid "&Open Containing Folder"
 msgstr "ا&فتح المجلّد الحاوي"
+
+#: lib/katemainwindow.cpp:487
+#, fuzzy, kde-format
+#| msgid "Open new tabs to the right of the current tab"
+msgid "Opens containing folder of the current file."
+msgstr "افتح اللسان الجديد على يمين اللسان الحالي"
 
 #: lib/katemainwindow.cpp:491
 #, kde-format
@@ -1892,7 +1903,7 @@ msgstr "هل أغلق كلّ المستندات؟"
 #: lib/katemainwindow.cpp:751
 #, kde-format
 msgid "Close All"
-msgstr "أ&غلق الكلّ"
+msgstr "أ&غلق الكل"
 
 #: lib/katemainwindow.cpp:765
 #, kde-format
@@ -2232,51 +2243,51 @@ msgctxt "@info"
 msgid "Log"
 msgstr "سجل"
 
-#: lib/katesavemodifieddialog.cpp:81
+#: lib/katesavemodifieddialog.cpp:80
 #, kde-format
 msgid "Save As (%1)"
 msgstr "احفظ ك‍ (%1)"
 
-#: lib/katesavemodifieddialog.cpp:133
+#: lib/katesavemodifieddialog.cpp:132
 #, kde-format
 msgid "Save Documents"
 msgstr "احفظ المستندات"
 
-#: lib/katesavemodifieddialog.cpp:133
+#: lib/katesavemodifieddialog.cpp:132
 #, kde-format
 msgid "Close Document"
 msgstr "أغلق المستند"
 
-#: lib/katesavemodifieddialog.cpp:157
+#: lib/katesavemodifieddialog.cpp:156
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified. Do you want to save your changes or "
 "discard them?"
 msgstr "عُدّل المستند '%1' ولم يُحفظ. أتريد حفظ التّعديلات أو رفضها؟"
 
-#: lib/katesavemodifieddialog.cpp:161
+#: lib/katesavemodifieddialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>The following documents have been modified. Do you want to save them "
 "before closing?</qt>"
 msgstr "<qt>تعدّلت المستندات الآتية. أتريد حفظها قبل الإغلاق؟</qt>"
 
-#: lib/katesavemodifieddialog.cpp:170
+#: lib/katesavemodifieddialog.cpp:169
 #, kde-format
 msgid "Documents"
 msgstr "المستندات"
 
-#: lib/katesavemodifieddialog.cpp:170
+#: lib/katesavemodifieddialog.cpp:169
 #, kde-format
 msgid "Location"
 msgstr "المكان"
 
-#: lib/katesavemodifieddialog.cpp:180
+#: lib/katesavemodifieddialog.cpp:179
 #, kde-format
 msgid "Se&lect All"
 msgstr "&حدّد الكلّ"
 
-#: lib/katesavemodifieddialog.cpp:258
+#: lib/katesavemodifieddialog.cpp:257
 #, kde-format
 msgid ""
 "Data you requested to be saved could not be written. Please choose how you "
@@ -2309,7 +2320,7 @@ msgstr "اقسم &عموديًا"
 #: lib/kateviewmanager.cpp:154
 #, kde-format
 msgid "Split the currently active view vertically into two views."
-msgstr "اقسم عموديًّا المنظور النشط حاليًّا إلى إثنين."
+msgstr "اقسم عموديًّا العرض النشط حاليًّا إلى إثنين."
 
 #: lib/kateviewmanager.cpp:158
 #, kde-format
@@ -2319,7 +2330,7 @@ msgstr "اقسم أف&قيًّا"
 #: lib/kateviewmanager.cpp:162
 #, kde-format
 msgid "Split the currently active view horizontally into two views."
-msgstr "اقسم أفقيًّا المنظور النشط حاليًّا إلى إثنين."
+msgstr "اقسم أفقيًّا العرض النشط حاليًّا إلى إثنين."
 
 #: lib/kateviewmanager.cpp:166
 #, kde-format
@@ -2332,7 +2343,7 @@ msgid ""
 "Split the currently active view vertically into two views and move the "
 "currently active document to right view."
 msgstr ""
-"اقسم عمودياً المنظور النشط حالياً إلى إثنين، وانقل المستند الحالي النشط إلى "
+"اقسم عموديًا العرض النشط حاليًا إلى إثنين، وانقل المستند الحالي النشط إلى "
 "القسم اليمين."
 
 #: lib/kateviewmanager.cpp:175
@@ -2346,18 +2357,18 @@ msgid ""
 "Split the currently active view horizontally into two views and move the "
 "currently active document to view below."
 msgstr ""
-"اقسم أفقياً المنظور النشط حالياً إلى إثنين، وانقل المستند الحالي النشط إلى "
-"القسم الأسفل."
+"اقسم أفقيًا العرض النشط حاليًا إلى إثنين، وانقل المستند الحالي النشط إلى القسم "
+"الأسفل."
 
 #: lib/kateviewmanager.cpp:184
 #, kde-format
 msgid "Cl&ose Current View"
-msgstr "أ&غلق المنظور الحاليّ"
+msgstr "أ&غلق العرض الحاليّ"
 
 #: lib/kateviewmanager.cpp:188
 #, kde-format
 msgid "Close the currently active split view"
-msgstr "أغلق المنظور المقسوم النّشط الحاليّ"
+msgstr "أغلق العرض المقسوم النّشط الحاليّ"
 
 #: lib/kateviewmanager.cpp:192
 #, kde-format
@@ -2387,67 +2398,67 @@ msgstr "بدّل الاتّجاه"
 #: lib/kateviewmanager.cpp:209
 #, kde-format
 msgid "Toggles the orientation of the current split view"
-msgstr "يبدّل اتّجاه المنظور المقسوم الحاليّ"
+msgstr "يبدّل اتّجاه العرض المقسوم الحاليّ"
 
 #: lib/kateviewmanager.cpp:212
 #, kde-format
 msgid "Next Split View"
-msgstr "المنظور المقسوم التّالي"
+msgstr "العرض المقسوم التّالي"
 
 #: lib/kateviewmanager.cpp:217
 #, kde-format
 msgid "Make the next split view the active one."
-msgstr "اجعل المنظور المقسوم التّالي هو النّشط."
+msgstr "اجعل العرض المقسوم التّالي هو النّشط."
 
 #: lib/kateviewmanager.cpp:220
 #, kde-format
 msgid "Previous Split View"
-msgstr "المنظور المقسوم السّابق"
+msgstr "العرض المقسوم السّابق"
 
 #: lib/kateviewmanager.cpp:225
 #, kde-format
 msgid "Make the previous split view the active one."
-msgstr "اجعل المنظور المقسوم السّابق هو النّشط."
+msgstr "اجعل العرض المقسوم السّابق هو النّشط."
 
 #: lib/kateviewmanager.cpp:228
 #, kde-format
 msgid "Left Split View"
-msgstr "المنظور المقسوم اليسار"
+msgstr "العرض المقسوم اليسار"
 
 #: lib/kateviewmanager.cpp:233
 #, kde-format
 msgid "Make the split view intuitively on the left the active one."
-msgstr "اجعل المنظور المقسوم الذي في اليسار حدساً هو النّشط."
+msgstr "اجعل العرض المقسوم الذي في اليسار حدسًا هو النّشط."
 
 #: lib/kateviewmanager.cpp:236
 #, kde-format
 msgid "Right Split View"
-msgstr "المنظور المقسوم اليمين"
+msgstr "العرض المقسوم اليمين"
 
 #: lib/kateviewmanager.cpp:241
 #, kde-format
 msgid "Make the split view intuitively on the right the active one."
-msgstr "اجعل المنظور المقسوم الذي في اليمين حدساً هو النّشط."
+msgstr "اجعل العرض المقسوم الذي في اليمين حدسًا هو النّشط."
 
 #: lib/kateviewmanager.cpp:244
 #, kde-format
 msgid "Upward Split View"
-msgstr "المنظور المقسوم الأعلى"
+msgstr "العرض المقسوم الأعلى"
 
 #: lib/kateviewmanager.cpp:249
 #, kde-format
 msgid "Make the split view intuitively upward the active one."
-msgstr "اجعل المنظور المقسوم الذي في الأعلى حدساً هو النّشط."
+msgstr "اجعل العرض المقسوم الذي في الأعلى حدسًا هو النّشط."
 
 #: lib/kateviewmanager.cpp:252
 #, kde-format
 msgid "Downward Split View"
-msgstr "المنظور المقسوم الأسفل"
+msgstr "العرض المقسوم الأسفل"
 
 #: lib/kateviewmanager.cpp:257
 #, kde-format
 msgid "Make the split view intuitively downward the active one."
-msgstr "اجعل المنظور المقسوم الذي في الأسفل حدساً هو النّشط."
+msgstr "اجعل العرض المقسوم الذي في الأسفل حدسًا هو النّشط."
 
 #: lib/kateviewmanager.cpp:260
 #, kde-format
@@ -2457,7 +2468,7 @@ msgstr "حرّك القاسِم يمينًا"
 #: lib/kateviewmanager.cpp:263
 #, kde-format
 msgid "Move the splitter of the current view to the right"
-msgstr "حرّك قاسم المنظور الحاليّ إلى اليمين"
+msgstr "حرّك قاسم العرض الحاليّ إلى اليمين"
 
 #: lib/kateviewmanager.cpp:266
 #, kde-format
@@ -2467,7 +2478,7 @@ msgstr "حرّك القاسِم يسارًا"
 #: lib/kateviewmanager.cpp:269
 #, kde-format
 msgid "Move the splitter of the current view to the left"
-msgstr "حرّك قاسم المنظور الحاليّ إلى اليسار"
+msgstr "حرّك قاسم العرض الحاليّ إلى اليسار"
 
 #: lib/kateviewmanager.cpp:272
 #, kde-format
@@ -2477,7 +2488,7 @@ msgstr "حرّك القاسِم لأعلى"
 #: lib/kateviewmanager.cpp:275
 #, kde-format
 msgid "Move the splitter of the current view up"
-msgstr "حرّك قاسم المنظور الحاليّ إلى أعلى"
+msgstr "حرّك قاسم العرض الحاليّ إلى أعلى"
 
 #: lib/kateviewmanager.cpp:278
 #, kde-format
@@ -2487,7 +2498,7 @@ msgstr "حرّك القاسِم لأسفل"
 #: lib/kateviewmanager.cpp:281
 #, kde-format
 msgid "Move the splitter of the current view down"
-msgstr "حرّك قاسم المنظور الحاليّ إلى أسفل"
+msgstr "حرّك قاسم العرض الحاليّ إلى أسفل"
 
 #: lib/kateviewmanager.cpp:284
 #, kde-format
@@ -2567,7 +2578,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Open Folder"
-msgstr "افتح مجلّداً"
+msgstr "افتح مجلّدًا"
 
 #: lib/kateviewmanager.cpp:622
 #, kde-format
@@ -2610,7 +2621,7 @@ msgstr "انقر هنا للتّبديل إلى منظور الفتح السّر
 #: lib/kateviewspace.cpp:153
 #, kde-format
 msgid "Control view space splitting"
-msgstr "تحكّم بتقسيم منطقة المنظور"
+msgstr "تحكّم بتقسيم منطقة العرض"
 
 #: lib/kateviewspace.cpp:270
 #, kde-format
@@ -2637,47 +2648,47 @@ msgstr[5] ""
 "هناك %1 مستند آخر مفتوح حاليًّا. لترى كلّ المستندات المفتوحة، بدّل إلى منظور "
 "الفتح السّريع بالنّقر هنا."
 
-#: lib/kateviewspace.cpp:1135
+#: lib/kateviewspace.cpp:1158
 #, kde-format
 msgid "&Close Tab"
 msgstr "أ&غلق اللسان"
 
-#: lib/kateviewspace.cpp:1142
+#: lib/kateviewspace.cpp:1165
 #, kde-format
 msgid "Close &Other Tabs"
 msgstr "أغلق الألسنة الأ&خرى"
 
-#: lib/kateviewspace.cpp:1156
+#: lib/kateviewspace.cpp:1179
 #, kde-format
 msgid "Close All &Tabs"
 msgstr "أغلق &كلّ الألسنة"
 
-#: lib/kateviewspace.cpp:1189
+#: lib/kateviewspace.cpp:1212
 #, kde-format
 msgid "D&etach Document"
 msgstr "ا&فصل المستند"
 
-#: lib/kateviewspace.cpp:1194
+#: lib/kateviewspace.cpp:1217
 #, kde-format
 msgid "Opens the document in a new window and closes it in the current window"
 msgstr "تفتح المستند في نافذة جديدة وتغلقها من النافذة الحالية"
 
-#: lib/kateviewspace.cpp:1235
+#: lib/kateviewspace.cpp:1258
 #, kde-format
 msgid "Compare with Active Document"
 msgstr "قارن مع المستند النشط"
 
-#: lib/kateviewspace.cpp:1241
+#: lib/kateviewspace.cpp:1264
 #, kde-format
 msgid "Compare with Active Document Using"
 msgstr "قارن مع استعمال المستند النشط"
 
-#: lib/kateviewspace.cpp:1249
+#: lib/kateviewspace.cpp:1272
 #, kde-format
 msgid "Unpin Document"
 msgstr "المستندات غير المثبتة"
 
-#: lib/kateviewspace.cpp:1251
+#: lib/kateviewspace.cpp:1274
 #, kde-format
 msgid "Pin Document"
 msgstr "ثبّت المستند"
@@ -2720,39 +2731,44 @@ msgid ""
 msgstr ""
 "'showtoolview $toolview_name'. إخفاء لوحة عرض الأدوات. الألواح المتوفرة: %1"
 
-#: lib/quickopen/katequickopenlineedit.cpp:47
+#: lib/quickopen/katequickopenlineedit.cpp:50
 #, kde-format
 msgctxt ""
 "The text is shown as a placeholder in an input line edit, keep it short"
 msgid "Search files in all projects (right click to configure)"
 msgstr "ابحث عن الملفات في جميع المشاريع (انقر بزر الفأر الأيمن للضبط)"
 
-#: lib/quickopen/katequickopenlineedit.cpp:50
+#: lib/quickopen/katequickopenlineedit.cpp:53
 #, kde-format
 msgctxt ""
 "The text is shown as a placeholder in an input line edit, keep it short"
 msgid "Search files in current project (right click to configure)"
 msgstr "ابحث عن الملفات في المشروع الحالي (انقر بزر الفأرة الأيمن للضبط)"
 
-#: lib/quickopen/katequickopenlineedit.cpp:72
+#: lib/quickopen/katequickopenlineedit.cpp:75
 #, kde-format
 msgid "All Projects"
-msgstr "كلّ المشاريع"
+msgstr "كل المشاريع"
 
-#: lib/quickopen/katequickopenlineedit.cpp:85
+#: lib/quickopen/katequickopenlineedit.cpp:88
 #, kde-format
 msgid "Current Project"
 msgstr "المشروع الحاليّ"
 
-#: lib/quickopen/katequickopenlineedit.cpp:101
+#: lib/quickopen/katequickopenlineedit.cpp:104
 #, kde-format
 msgid "Fuzzy Filtering"
 msgstr "ترشيح ضبابي"
 
-#: lib/quickopen/katequickopenlineedit.cpp:112
+#: lib/quickopen/katequickopenlineedit.cpp:115
 #, kde-format
 msgid "Wildcard Filtering"
 msgstr "ترشيح حرف البدل"
+
+#: lib/quickopen/katequickopenlineedit.cpp:128
+#, kde-format
+msgid "Match Folder Names"
+msgstr "طابق أسماء المجلدات"
 
 #: lib/quickopen/katequickopenmodel.cpp:174
 #, kde-format
@@ -3116,7 +3132,7 @@ msgstr "ملفّ جديد"
 #: lib/welcomeview/welcomeview.ui:186
 #, kde-format
 msgid "Open Folder..."
-msgstr "افتح مجلّداً..."
+msgstr "افتح مجلّدًا..."
 
 #. i18n: ectx: property (text), widget (QLabel, labelRecentItems)
 #: lib/welcomeview/welcomeview.ui:193
@@ -3346,11 +3362,6 @@ msgstr "أظهر شاشة الترحيب للنوافذ الجديدة"
 
 #~ msgid "Quick Open Search"
 #~ msgstr "ابحث للفتح السّريع"
-
-#, fuzzy
-#~| msgid "&View Mode:"
-#~ msgid "&Match Mode:"
-#~ msgstr "وضع ال&عرض:"
 
 #, fuzzy
 #~| msgid "Filename"

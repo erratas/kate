@@ -18,6 +18,7 @@
 #include <KTextEditor/SessionConfigInterface>
 
 #include "kateprojectcompletion.h"
+#include "git/gitforgeurl.h"
 #include "project_commands.h"
 
 class KateProject;
@@ -93,6 +94,10 @@ public:
      */
     QList<QObject *> projectsObjects() const;
 
+    /** Reload the project with the given base directory after an external
+     *  project-local configuration change. */
+    Q_INVOKABLE void reloadProjectForBaseDir(const QString &baseDir);
+
     /**
      * Has the given project open documents?
      * @param project project to check open document for
@@ -150,6 +155,9 @@ public:
     void setDoubleClickAction(ClickAction cb);
     ClickAction doubleClickAcion();
 
+    void setGitHostMappings(const QList<GitForge::HostMapping> &mappings);
+    const QList<GitForge::HostMapping> &gitHostMappings() const;
+
     void setRestoreProjectsForSession(bool enabled);
     bool restoreProjectsForSession() const;
 
@@ -166,6 +174,14 @@ public:
     QFileSystemWatcher &fileWatcher()
     {
         return m_fileWatcher;
+    }
+
+    /**
+     * threadpool for various aysnc work
+     */
+    QThreadPool &threadPool()
+    {
+        return m_threadPool;
     }
 
     /**
@@ -299,6 +315,7 @@ private:
     // git features
     ClickAction m_singleClickAction = ClickAction::ShowDiff;
     ClickAction m_doubleClickAction = ClickAction::StageUnstage;
+    QList<GitForge::HostMapping> m_gitHostMappings;
 
     /**
      * thread pool for our workers

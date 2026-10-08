@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-11 00:47+0000\n"
+"POT-Creation-Date: 2026-10-08 00:49+0000\n"
 "PO-Revision-Date: 2026-04-29 15:52+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
@@ -55,16 +55,16 @@ msgstr "Kate - öflugur textaritill"
 msgid "(c) 2000-2024 The Kate Authors"
 msgstr "(c) 2000-2024 höfundar Kate"
 
-#: kate/main.cpp:170 lib/autotests/kate_view_mgmt_test2.cpp:220
-#: lib/autotests/kate_view_mgmt_test2.cpp:522
-#: lib/autotests/kate_view_mgmt_test2.cpp:558
+#: kate/main.cpp:170 lib/autotests/kate_view_mgmt_test2.cpp:280
+#: lib/autotests/kate_view_mgmt_test2.cpp:582
+#: lib/autotests/kate_view_mgmt_test2.cpp:618
 #, kde-format
 msgid "Start Kate with a given session."
 msgstr "Ræsa Kate með tiltekinni setu"
 
-#: kate/main.cpp:171 lib/autotests/kate_view_mgmt_test2.cpp:221
-#: lib/autotests/kate_view_mgmt_test2.cpp:523
-#: lib/autotests/kate_view_mgmt_test2.cpp:559
+#: kate/main.cpp:171 lib/autotests/kate_view_mgmt_test2.cpp:281
+#: lib/autotests/kate_view_mgmt_test2.cpp:583
+#: lib/autotests/kate_view_mgmt_test2.cpp:619
 #, kde-format
 msgid "session"
 msgstr "seta"
@@ -311,7 +311,7 @@ msgstr "Tækjastika í hamborgaravalmynd"
 msgid "&Status Bar Items"
 msgstr "Atriði á &stöðustiku"
 
-#: lib/diagnostics/diagnostic_suppression.h:37
+#: lib/diagnostics/diagnostic_suppression.h:38
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -520,17 +520,17 @@ msgstr[1] "Fjarlægja línur af sviði"
 msgid "Unstage Hunk"
 msgstr "Fjarlægja hluta af sviði"
 
-#: lib/diff/diffwidget.cpp:51
+#: lib/diff/diffwidget.cpp:52
 #, kde-format
 msgid "Diff - %1"
 msgstr "Mismunur %1"
 
-#: lib/diff/diffwidget.cpp:54
+#: lib/diff/diffwidget.cpp:55
 #, kde-format
 msgid "Diff - %1..%2"
 msgstr "Mismunur %1..%2"
 
-#: lib/diff/diffwidget.cpp:60
+#: lib/diff/diffwidget.cpp:61
 #, kde-format
 msgid ""
 "<b>git</b> not found. Git is needed to diff the documents. If git is already "
@@ -541,65 +541,65 @@ msgstr ""
 "Ef git er nú þegar uppsett skaltu ganga úr skugga um að það sé í PATH-breytu "
 "hjá þér. Sjá https://git-scm.com/downloads"
 
-#: lib/diff/diffwidget.cpp:63 lib/diff/diffwidget.cpp:1244
+#: lib/diff/diffwidget.cpp:64 lib/diff/diffwidget.cpp:1278
 #: lib/kateconfigdialog.cpp:368
 #, kde-format
 msgid "Diff"
 msgstr "Mismunur"
 
-#: lib/diff/diffwidget.cpp:122
+#: lib/diff/diffwidget.cpp:123
 #, kde-format
 msgid "Diff %1 .. %2"
 msgstr "Mismunur %1 .. %2"
 
-#: lib/diff/diffwidget.cpp:152
+#: lib/diff/diffwidget.cpp:153
 #, kde-format
 msgid "Show/Hide Commit Info"
 msgstr "Sýna/fela innsetningarupplýsingar"
 
-#: lib/diff/diffwidget.cpp:157
+#: lib/diff/diffwidget.cpp:158
 #, kde-format
 msgid "Jump to Next File"
 msgstr "Hoppa í næstu skrá"
 
-#: lib/diff/diffwidget.cpp:161
+#: lib/diff/diffwidget.cpp:162
 #, kde-format
 msgid "Jump to Previous File"
 msgstr "Hoppa í fyrri skrá"
 
-#: lib/diff/diffwidget.cpp:165
+#: lib/diff/diffwidget.cpp:166
 #, kde-format
 msgid "Jump to Next Hunk"
 msgstr "Hoppa í næsta hluta"
 
-#: lib/diff/diffwidget.cpp:169
+#: lib/diff/diffwidget.cpp:170
 #, kde-format
 msgid "Jump to Previous Hunk"
 msgstr "Hoppa í fyrri hluta"
 
-#: lib/diff/diffwidget.cpp:173
+#: lib/diff/diffwidget.cpp:174
 #, kde-format
 msgctxt "Tooltip for a button, clicking the button reloads the diff"
 msgid "Reload Diff"
 msgstr "Endurhlaða mismun"
 
-#: lib/diff/diffwidget.cpp:177
+#: lib/diff/diffwidget.cpp:178
 #, kde-format
 msgctxt "Tooltip for a button"
 msgid "Show diff with full context, not just the changed lines"
 msgstr "Sýna mismun með öllu samhenginu, ekki bara breyttum línum"
 
-#: lib/diff/diffwidget.cpp:852 lib/diff/diffwidget.cpp:1056
+#: lib/diff/diffwidget.cpp:886 lib/diff/diffwidget.cpp:1090
 #, kde-format
 msgid "New file %1"
 msgstr "Ný skrá %1"
 
-#: lib/diff/diffwidget.cpp:854 lib/diff/diffwidget.cpp:1058
+#: lib/diff/diffwidget.cpp:888 lib/diff/diffwidget.cpp:1092
 #, kde-format
 msgid "Deleted file %1"
 msgstr "Eyða skrá %1"
 
-#: lib/diff/diffwidget.cpp:1227 lib/diff/diffwidget.cpp:1228
+#: lib/diff/diffwidget.cpp:1261 lib/diff/diffwidget.cpp:1262
 #, kde-format
 msgid "No differences found"
 msgstr "Enginn mismunur fannst"
@@ -710,328 +710,328 @@ msgstr ""
 "þig fyrir öryggishættum. Í stað þess skaltu nota ritilinn eins og venjulega "
 "og þú færð tilkynningu þegar aukinnna heimilda er þörf til að vista skjöl."
 
-#: lib/kateapp.cpp:381
+#: lib/kateapp.cpp:385
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullmann"
 
-#: lib/kateapp.cpp:381
+#: lib/kateapp.cpp:385
 #, kde-format
 msgid "Maintainer"
 msgstr "Umsjónaraðili"
 
-#: lib/kateapp.cpp:382
+#: lib/kateapp.cpp:386
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: lib/kateapp.cpp:382 lib/kateapp.cpp:385 lib/kateapp.cpp:386
-#: lib/kateapp.cpp:387 lib/kateapp.cpp:388 lib/kateapp.cpp:394
+#: lib/kateapp.cpp:386 lib/kateapp.cpp:389 lib/kateapp.cpp:390
+#: lib/kateapp.cpp:391 lib/kateapp.cpp:392 lib/kateapp.cpp:398
 #, kde-format
 msgid "Core Developer"
 msgstr "Aðalhönnuður"
 
-#: lib/kateapp.cpp:383
+#: lib/kateapp.cpp:387
 #, kde-format
 msgid "Sven Brauch"
 msgstr "Sven Brauch"
 
-#: lib/kateapp.cpp:383 lib/kateapp.cpp:384 lib/kateapp.cpp:389
+#: lib/kateapp.cpp:387 lib/kateapp.cpp:388 lib/kateapp.cpp:393
 #, kde-format
 msgid "Developer"
 msgstr "Forritari"
 
-#: lib/kateapp.cpp:384
+#: lib/kateapp.cpp:388
 #, kde-format
 msgid "Kåre Särs"
 msgstr "Kåre Särs"
 
-#: lib/kateapp.cpp:385
+#: lib/kateapp.cpp:389
 #, kde-format
 msgid "Waqar Ahmed"
 msgstr "Waqar Ahmed"
 
-#: lib/kateapp.cpp:386
+#: lib/kateapp.cpp:390
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: lib/kateapp.cpp:387
+#: lib/kateapp.cpp:391
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: lib/kateapp.cpp:388
+#: lib/kateapp.cpp:392
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: lib/kateapp.cpp:389
+#: lib/kateapp.cpp:393
 #, kde-format
 msgid "Alexander Neundorf"
 msgstr "Alexander Neundorf"
 
-#: lib/kateapp.cpp:390
+#: lib/kateapp.cpp:394
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: lib/kateapp.cpp:390
+#: lib/kateapp.cpp:394
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "Flotta biðminniskerfið"
 
-#: lib/kateapp.cpp:391
+#: lib/kateapp.cpp:395
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: lib/kateapp.cpp:391
+#: lib/kateapp.cpp:395
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Ritunarskipanirnar"
 
-#: lib/kateapp.cpp:392
+#: lib/kateapp.cpp:396
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: lib/kateapp.cpp:392
+#: lib/kateapp.cpp:396
 #, kde-format
 msgid "Testing, ..."
 msgstr "Prófanir,..."
 
-#: lib/kateapp.cpp:393
+#: lib/kateapp.cpp:397
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: lib/kateapp.cpp:393
+#: lib/kateapp.cpp:397
 #, kde-format
 msgid "Former Core Developer"
 msgstr "Fyrrverandi aðalhönnuður"
 
-#: lib/kateapp.cpp:394
+#: lib/kateapp.cpp:398
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: lib/kateapp.cpp:395
+#: lib/kateapp.cpp:399
 #, kde-format
 msgid "Jochen Wilhemly"
 msgstr "Jochen Wilhemly"
 
-#: lib/kateapp.cpp:395
+#: lib/kateapp.cpp:399
 #, kde-format
 msgid "KWrite Author"
 msgstr "Höfundur KWrite"
 
-#: lib/kateapp.cpp:396
+#: lib/kateapp.cpp:400
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: lib/kateapp.cpp:396
+#: lib/kateapp.cpp:400
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "Flutti KWrite í KParts"
 
-#: lib/kateapp.cpp:397
+#: lib/kateapp.cpp:401
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: lib/kateapp.cpp:398
+#: lib/kateapp.cpp:402
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: lib/kateapp.cpp:399
+#: lib/kateapp.cpp:403
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: lib/kateapp.cpp:399
+#: lib/kateapp.cpp:403
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "Afturköllun í KWrite og tenging við KSpell"
 
-#: lib/kateapp.cpp:400
+#: lib/kateapp.cpp:404
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: lib/kateapp.cpp:400
+#: lib/kateapp.cpp:404
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "Stuðningur við XML textalitun í KWrite"
 
-#: lib/kateapp.cpp:401
+#: lib/kateapp.cpp:405
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: lib/kateapp.cpp:401
+#: lib/kateapp.cpp:405
 #, kde-format
 msgid "Patches and more"
 msgstr "Bætur og fleira"
 
-#: lib/kateapp.cpp:402
+#: lib/kateapp.cpp:406
 #, kde-format
 msgid "Pablo Martín"
 msgstr "Pablo Martín"
 
-#: lib/kateapp.cpp:403
+#: lib/kateapp.cpp:407
 #, kde-format
 msgid "Python Plugin Developer"
 msgstr "Þróun Python-viðbóta"
 
-#: lib/kateapp.cpp:406
+#: lib/kateapp.cpp:410
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: lib/kateapp.cpp:406
+#: lib/kateapp.cpp:410
 #, kde-format
 msgid "QA and Scripting"
 msgstr "Gæðaeftirlit og skriftun"
 
-#: lib/kateapp.cpp:409
+#: lib/kateapp.cpp:413
 #, kde-format
 msgid "Tyson Tan"
 msgstr "Tyson Tan"
 
-#: lib/kateapp.cpp:410
+#: lib/kateapp.cpp:414
 #, kde-format
 msgid "Designer of Kate's mascot 'Kate the Cyber Woodpecker'"
 msgstr "Hannaði lukkudýr Kate, 'Sæberspætuna Kate'"
 
-#: lib/kateapp.cpp:413
+#: lib/kateapp.cpp:417
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: lib/kateapp.cpp:413
+#: lib/kateapp.cpp:417
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "Textalitun á RPM Spec-skrám, Perl, Diff og fleiru"
 
-#: lib/kateapp.cpp:414
+#: lib/kateapp.cpp:418
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: lib/kateapp.cpp:414
+#: lib/kateapp.cpp:418
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "Textalitun fyrir VHDL-skrár"
 
-#: lib/kateapp.cpp:415
+#: lib/kateapp.cpp:419
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: lib/kateapp.cpp:415
+#: lib/kateapp.cpp:419
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "Textalitun fyrir SQL-skrár"
 
-#: lib/kateapp.cpp:416
+#: lib/kateapp.cpp:420
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: lib/kateapp.cpp:416
+#: lib/kateapp.cpp:420
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Textalitun fyrir Ferite-skrár"
 
-#: lib/kateapp.cpp:417
+#: lib/kateapp.cpp:421
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: lib/kateapp.cpp:417
+#: lib/kateapp.cpp:421
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "Textalitun fyrir ILERPG-skrár"
 
-#: lib/kateapp.cpp:418
+#: lib/kateapp.cpp:422
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: lib/kateapp.cpp:418
+#: lib/kateapp.cpp:422
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "Textalitun fyrir LaTeX-skrár"
 
-#: lib/kateapp.cpp:419
+#: lib/kateapp.cpp:423
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: lib/kateapp.cpp:419
+#: lib/kateapp.cpp:423
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Textalitun fyrir Makefiles, Python"
 
-#: lib/kateapp.cpp:420
+#: lib/kateapp.cpp:424
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: lib/kateapp.cpp:420
+#: lib/kateapp.cpp:424
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Textalitun fyrir Python"
 
-#: lib/kateapp.cpp:421
+#: lib/kateapp.cpp:425
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: lib/kateapp.cpp:422
+#: lib/kateapp.cpp:426
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: lib/kateapp.cpp:422
+#: lib/kateapp.cpp:426
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Textalitun fyrir Scheme"
 
-#: lib/kateapp.cpp:423
+#: lib/kateapp.cpp:427
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: lib/kateapp.cpp:423
+#: lib/kateapp.cpp:427
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "Listi lykilorða og gagnataga fyrir PHP"
 
-#: lib/kateapp.cpp:424
+#: lib/kateapp.cpp:428
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: lib/kateapp.cpp:424
+#: lib/kateapp.cpp:428
 #, kde-format
 msgid "Very nice help"
 msgstr "Afar góð hjálp"
 
-#: lib/kateapp.cpp:425
+#: lib/kateapp.cpp:429
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "Allir þeir sem hafa lagt verkinu lið og við höfum gleymt að minnast á"
 
-#: lib/kateapp.cpp:593
+#: lib/kateapp.cpp:597
 #, kde-format
 msgid "Folders can only be opened when the projects plugin is enabled"
 msgstr "Það er bara hægt að opna möppur þegar verkefnaviðbótin er virk"
 
-#: lib/kateapp.cpp:686
+#: lib/kateapp.cpp:690
 #, kde-format
 msgid ""
 "The file '%1' could not be opened: it is not a normal file, it is a folder."
@@ -1463,57 +1463,57 @@ msgstr "Heiti"
 msgid "Description"
 msgstr "Lýsing"
 
-#: lib/katedocmanager.cpp:352
+#: lib/katedocmanager.cpp:362
 #, kde-format
 msgid "Starting Up"
 msgstr "Ræsist"
 
-#: lib/katedocmanager.cpp:353
+#: lib/katedocmanager.cpp:363
 #, kde-format
 msgid "Reopening files from the last session..."
 msgstr "Endurheimti skrár frá síðustu setu..."
 
-#: lib/katedocmanager.cpp:528
+#: lib/katedocmanager.cpp:538
 #, kde-format
 msgid "Cannot pin untitled documents."
 msgstr "Ekki er hægt að festa ónefnd skjöl."
 
-#: lib/katedocmanager.cpp:533
+#: lib/katedocmanager.cpp:543
 #, kde-format
 msgid "Cannot pin non local documents."
 msgstr "Ekki er hægt að festa fjartengd skjöl."
 
-#: lib/katefileactions.cpp:80
+#: lib/katefileactions.cpp:81
 #, kde-format
 msgid "Rename file"
 msgstr "Endurnefna skrá"
 
-#: lib/katefileactions.cpp:80
+#: lib/katefileactions.cpp:81
 #, kde-format
 msgid "New file name"
 msgstr "Nýtt skráarheiti"
 
-#: lib/katefileactions.cpp:116
+#: lib/katefileactions.cpp:121
 #, kde-format
 msgid "File \"%1\" could not be moved to \"%2\""
 msgstr "Ekki var hægt að færa skrána \"%1\" í \"%2\""
 
-#: lib/katefileactions.cpp:137
+#: lib/katefileactions.cpp:142
 #, kde-format
 msgid "Do you really want to delete file \"%1\"?"
 msgstr "Viltu í alvöru eyða skránni \"%1\"?"
 
-#: lib/katefileactions.cpp:138
+#: lib/katefileactions.cpp:143
 #, kde-format
 msgid "Delete file"
 msgstr "Eyða skrá"
 
-#: lib/katefileactions.cpp:161
+#: lib/katefileactions.cpp:166
 #, kde-format
 msgid "File \"%1\" could not be deleted."
 msgstr "Ekki var hægt að eyða skránni \"%1\"."
 
-#: lib/katefileactions.cpp:220
+#: lib/katefileactions.cpp:225
 #, kde-format
 msgid "&Other Application..."
 msgstr "&Annað forrit..."
@@ -1633,8 +1633,7 @@ msgstr "Endurh&laða allt"
 msgid "Reload all open documents."
 msgstr "Endurhlaða öll opin skjöl."
 
-#: lib/katemainwindow.cpp:468 lib/katemainwindow.cpp:478
-#: lib/katemainwindow.cpp:487
+#: lib/katemainwindow.cpp:468
 #, kde-format
 msgid "Copies the file path of the current file to clipboard."
 msgstr "Afritar skráarslóð núverandi skjals á klippispjaldið."
@@ -1644,10 +1643,22 @@ msgstr "Afritar skráarslóð núverandi skjals á klippispjaldið."
 msgid "Copy Filename"
 msgstr "Afrita skráarheiti"
 
+#: lib/katemainwindow.cpp:478
+#, fuzzy, kde-format
+#| msgid "Copies the file path of the current file to clipboard."
+msgid "Copies the file name of the current file to clipboard."
+msgstr "Afritar skráarslóð núverandi skjals á klippispjaldið."
+
 #: lib/katemainwindow.cpp:482 lib/welcomeview/welcomeview.cpp:268
 #, kde-format
 msgid "&Open Containing Folder"
 msgstr "&Opna möppu sem skráin er í"
+
+#: lib/katemainwindow.cpp:487
+#, fuzzy, kde-format
+#| msgid "Open new tabs to the right of the current tab"
+msgid "Opens containing folder of the current file."
+msgstr "Opna nýjan flipa hægra megin við núverandi flipa"
 
 #: lib/katemainwindow.cpp:491
 #, kde-format
@@ -2233,22 +2244,22 @@ msgctxt "@info"
 msgid "Log"
 msgstr "Annáll"
 
-#: lib/katesavemodifieddialog.cpp:81
+#: lib/katesavemodifieddialog.cpp:80
 #, kde-format
 msgid "Save As (%1)"
 msgstr "Vista sem (%1)"
 
-#: lib/katesavemodifieddialog.cpp:133
+#: lib/katesavemodifieddialog.cpp:132
 #, kde-format
 msgid "Save Documents"
 msgstr "Vista skjöl"
 
-#: lib/katesavemodifieddialog.cpp:133
+#: lib/katesavemodifieddialog.cpp:132
 #, kde-format
 msgid "Close Document"
 msgstr "Loka skjali"
 
-#: lib/katesavemodifieddialog.cpp:157
+#: lib/katesavemodifieddialog.cpp:156
 #, kde-format
 msgid ""
 "The document \"%1\" has been modified. Do you want to save your changes or "
@@ -2256,7 +2267,7 @@ msgid ""
 msgstr ""
 "Skjalinu \"%1\" hefur verið breytt. Viltu vista breytingarnar eða henda þeim?"
 
-#: lib/katesavemodifieddialog.cpp:161
+#: lib/katesavemodifieddialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>The following documents have been modified. Do you want to save them "
@@ -2265,22 +2276,22 @@ msgstr ""
 "<qt>Eftirfarandi skjölum hefur verið breytt. Viltu vista þau áður en þú "
 "lokar?</qt>"
 
-#: lib/katesavemodifieddialog.cpp:170
+#: lib/katesavemodifieddialog.cpp:169
 #, kde-format
 msgid "Documents"
 msgstr "Skjöl"
 
-#: lib/katesavemodifieddialog.cpp:170
+#: lib/katesavemodifieddialog.cpp:169
 #, kde-format
 msgid "Location"
 msgstr "Staðsetning"
 
-#: lib/katesavemodifieddialog.cpp:180
+#: lib/katesavemodifieddialog.cpp:179
 #, kde-format
 msgid "Se&lect All"
 msgstr "Ve&lja allt"
 
-#: lib/katesavemodifieddialog.cpp:258
+#: lib/katesavemodifieddialog.cpp:257
 #, kde-format
 msgid ""
 "Data you requested to be saved could not be written. Please choose how you "
@@ -2634,47 +2645,47 @@ msgstr[1] ""
 "Það eru %1 skjöl í viðbót opin núna. Til að sjá öll opin skjöl skaltu skipta "
 "í flýtiopnunargluggann með því að smella hér."
 
-#: lib/kateviewspace.cpp:1135
+#: lib/kateviewspace.cpp:1158
 #, kde-format
 msgid "&Close Tab"
 msgstr "&Loka flipa"
 
-#: lib/kateviewspace.cpp:1142
+#: lib/kateviewspace.cpp:1165
 #, kde-format
 msgid "Close &Other Tabs"
 msgstr "L&oka öðrum flipum"
 
-#: lib/kateviewspace.cpp:1156
+#: lib/kateviewspace.cpp:1179
 #, kde-format
 msgid "Close All &Tabs"
 msgstr "Lo&ka öllum flipum"
 
-#: lib/kateviewspace.cpp:1189
+#: lib/kateviewspace.cpp:1212
 #, kde-format
 msgid "D&etach Document"
 msgstr "L&osa skjal"
 
-#: lib/kateviewspace.cpp:1194
+#: lib/kateviewspace.cpp:1217
 #, kde-format
 msgid "Opens the document in a new window and closes it in the current window"
 msgstr "Opnar skjalið í nýjum glugga og lokar því í þessum glugga"
 
-#: lib/kateviewspace.cpp:1235
+#: lib/kateviewspace.cpp:1258
 #, kde-format
 msgid "Compare with Active Document"
 msgstr "Bera saman við skjal sem er opið"
 
-#: lib/kateviewspace.cpp:1241
+#: lib/kateviewspace.cpp:1264
 #, kde-format
 msgid "Compare with Active Document Using"
 msgstr "Bera saman við skjal sem er opið með því að nota"
 
-#: lib/kateviewspace.cpp:1249
+#: lib/kateviewspace.cpp:1272
 #, kde-format
 msgid "Unpin Document"
 msgstr "Losa skjal"
 
-#: lib/kateviewspace.cpp:1251
+#: lib/kateviewspace.cpp:1274
 #, kde-format
 msgid "Pin Document"
 msgstr "Festa skjal"
@@ -2719,14 +2730,14 @@ msgstr ""
 "'showtoolview $toolview_name'. Fela spjald með verkfærayfirliti. Tiltæk "
 "spjöld: %1"
 
-#: lib/quickopen/katequickopenlineedit.cpp:47
+#: lib/quickopen/katequickopenlineedit.cpp:50
 #, kde-format
 msgctxt ""
 "The text is shown as a placeholder in an input line edit, keep it short"
 msgid "Search files in all projects (right click to configure)"
 msgstr "Leita að skrám í öllum verkefnum (hægrismelltu til að grunnstilla)"
 
-#: lib/quickopen/katequickopenlineedit.cpp:50
+#: lib/quickopen/katequickopenlineedit.cpp:53
 #, kde-format
 msgctxt ""
 "The text is shown as a placeholder in an input line edit, keep it short"
@@ -2734,25 +2745,30 @@ msgid "Search files in current project (right click to configure)"
 msgstr ""
 "Leita að skrám í fyrirliggjandi verkefni (hægrismelltu til að grunnstilla)"
 
-#: lib/quickopen/katequickopenlineedit.cpp:72
+#: lib/quickopen/katequickopenlineedit.cpp:75
 #, kde-format
 msgid "All Projects"
 msgstr "Öll verkefni"
 
-#: lib/quickopen/katequickopenlineedit.cpp:85
+#: lib/quickopen/katequickopenlineedit.cpp:88
 #, kde-format
 msgid "Current Project"
 msgstr "Núverandi verkefni"
 
-#: lib/quickopen/katequickopenlineedit.cpp:101
+#: lib/quickopen/katequickopenlineedit.cpp:104
 #, kde-format
 msgid "Fuzzy Filtering"
 msgstr "Loðin síun"
 
-#: lib/quickopen/katequickopenlineedit.cpp:112
+#: lib/quickopen/katequickopenlineedit.cpp:115
 #, kde-format
 msgid "Wildcard Filtering"
 msgstr "Síun með algildistákni"
+
+#: lib/quickopen/katequickopenlineedit.cpp:128
+#, fuzzy, kde-format
+msgid "Match Folder Names"
+msgstr "&Ný"
 
 #: lib/quickopen/katequickopenmodel.cpp:174
 #, kde-format
@@ -3314,10 +3330,6 @@ msgstr "Sýna upphafssíðu í nýjum gluggum"
 #~| msgid "Open Session"
 #~ msgid "Quick Open Search"
 #~ msgstr "Opna setu"
-
-#, fuzzy
-#~ msgid "&Match Mode:"
-#~ msgstr "&Ný"
 
 #, fuzzy
 #~| msgid "Filename"

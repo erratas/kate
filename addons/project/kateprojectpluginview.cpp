@@ -36,12 +36,17 @@
 #include <KXmlGuiWindow>
 
 #include <QAction>
+#include <QApplication>
+#include <QClipboard>
 #include <QComboBox>
+#include <QDesktopServices>
 #include <QFileDialog>
+#include <QFutureWatcher>
 #include <QHBoxLayout>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QStackedWidget>
+#include <QtConcurrentRun>
 
 #define PROJECTCLOSEICON "window-close"
 
@@ -236,7 +241,17 @@ KateProjectPluginView::KateProjectPluginView(KateProjectPlugin *plugin, KTextEdi
     m_lookupAction = popup->menu()->addAction(i18n("Lookup: %1", QString()), this, &KateProjectPluginView::slotProjectIndex);
     m_gotoSymbolAction = popup->menu()->addAction(i18n("Goto: %1", QString()), this, &KateProjectPluginView::slotGotoSymbol);
 
+    auto gitHosting = new KActionMenu(i18n("Git Hosting"), this);
+    gitHosting->setIcon(QIcon::fromTheme(QStringLiteral("vcs-branch")));
+    actionCollection()->addAction(QStringLiteral("popup_git_hosting"), gitHosting);
+    m_gitHostingMenu = gitHosting->menu();
+    m_openGitHostingAction = m_gitHostingMenu->addAction(QIcon::fromTheme(QStringLiteral("internet-web-browser")), i18n("Open on Git Hosting Service"));
+    m_copyGitHostingAction = m_gitHostingMenu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Git Hosting Link"));
+
     connect(popup->menu(), &QMenu::aboutToShow, this, &KateProjectPluginView::slotContextMenuAboutToShow);
+    connect(m_gitHostingMenu, &QMenu::aboutToShow, this, &KateProjectPluginView::updateGitHostingActions);
+    connect(m_openGitHostingAction, &QAction::triggered, this, &KateProjectPluginView::openGitHostingLink);
+    connect(m_copyGitHostingAction, &QAction::triggered, this, &KateProjectPluginView::copyGitHostingLink);
 
     connect(m_mainWindow, &KTextEditor::MainWindow::unhandledShortcutOverride, this, &KateProjectPluginView::handleEsc);
 
@@ -384,6 +399,12 @@ void KateProjectPluginView::viewForProject(KateProject *project)
             }
         }
     });
+    connect(project, &KateProject::modelChanged, this, [this, project] {
+        auto *widget = static_cast<KateProjectView *>(m_stackedProjectViews->currentWidget());
+        if (widget && widget->project() == project) {
+            Q_EMIT projectFilesChanged();
+        }
+    });
 
     /*
      * inform onward
@@ -404,6 +425,16 @@ QString KateProjectPluginView::projectFileName() const
     }
 
     return static_cast<KateProjectView *>(active)->project()->fileName();
+}
+
+QString KateProjectPluginView::projectLocalConfigFileName() const
+{
+    QWidget *active = m_stackedProjectViews->currentWidget();
+    if (!active) {
+        return {};
+    }
+
+    return static_cast<KateProjectView *>(active)->project()->projectLocalConfigFileName();
 }
 
 QString KateProjectPluginView::projectName() const
@@ -589,6 +620,7 @@ void KateProjectPluginView::slotCurrentChanged(int index)
     // project file name might have changed
     Q_EMIT projectFileNameChanged();
     Q_EMIT projectMapChanged();
+    Q_EMIT projectFilesChanged();
 
     if (auto widget = gitWidget()) {
         widget->updateGitProjectFolder();
@@ -846,6 +878,69 @@ void KateProjectPluginView::slotContextMenuAboutToShow()
     m_gotoSymbolAction->setText(i18n("Goto: %1", squeezed));
 }
 
+void KateProjectPluginView::updateGitHostingActions()
+{
+    const quint64 generation = ++m_gitHostingRequestGeneration;
+    m_activeGitHostingLink.reset();
+    m_openGitHostingAction->setEnabled(false);
+    m_copyGitHostingAction->setEnabled(false);
+    m_openGitHostingAction->setText(i18n("Detecting Git hosting service…"));
+    m_copyGitHostingAction->setText(i18n("Copy Git Hosting Link"));
+
+    KTextEditor::View *view = m_mainWindow->activeView();
+    if (!view || !view->document()->url().isLocalFile()) {
+        m_openGitHostingAction->setText(i18n("Open on Git Hosting Service"));
+        return;
+    }
+
+    std::optional<GitForge::LineRange> lines;
+    if (!view->selection()) {
+        const int line = view->cursorPosition().line() + 1;
+        lines = GitForge::LineRange{line, line};
+    } else {
+        const KTextEditor::Range selection = view->selectionRange();
+        lines = GitForge::selectedLineRange(selection.start().line(), selection.end().line(), selection.end().column());
+    }
+
+    const QString path = view->document()->url().toLocalFile();
+    const auto mappings = GitForge::effectiveHostMappings(m_plugin->gitHostMappings(), m_plugin->projectMapForDocument(view->document()));
+    auto *watcher = new QFutureWatcher<std::optional<GitForge::Link>>(this);
+    connect(watcher, &QFutureWatcher<std::optional<GitForge::Link>>::finished, this, [this, watcher, generation]() {
+        const auto link = watcher->result();
+        watcher->deleteLater();
+        if (generation != m_gitHostingRequestGeneration) {
+            return;
+        }
+        m_activeGitHostingLink = link;
+        m_openGitHostingAction->setEnabled(link.has_value());
+        m_copyGitHostingAction->setEnabled(link.has_value());
+        if (link) {
+            const QString provider = GitForge::providerName(link->provider);
+            m_openGitHostingAction->setText(i18n("Open on %1", provider));
+            m_copyGitHostingAction->setText(i18n("Copy %1 Link", provider));
+        } else {
+            m_openGitHostingAction->setText(i18n("Open on Git Hosting Service"));
+        }
+    });
+    watcher->setFuture(QtConcurrent::run([path, mappings, lines]() {
+        return GitForge::linkForFile(path, mappings, lines);
+    }));
+}
+
+void KateProjectPluginView::openGitHostingLink()
+{
+    if (m_activeGitHostingLink) {
+        QDesktopServices::openUrl(m_activeGitHostingLink->url);
+    }
+}
+
+void KateProjectPluginView::copyGitHostingLink()
+{
+    if (m_activeGitHostingLink) {
+        QApplication::clipboard()->setText(m_activeGitHostingLink->url.toString(QUrl::FullyEncoded));
+    }
+}
+
 void KateProjectPluginView::handleEsc(QEvent *e)
 {
     if (!m_mainWindow) {
@@ -967,6 +1062,7 @@ void KateProjectPluginView::updateActions()
     m_projectGotoIndexAction->setVisible(hasIndex);
     m_gotoSymbolActionAppMenu->setVisible(hasIndex);
     actionCollection()->action(QStringLiteral("popup_project"))->setVisible(hasIndex);
+    actionCollection()->action(QStringLiteral("popup_git_hosting"))->setVisible(projectActive);
 }
 
 void KateProjectPluginView::slotActivateProject(KateProject *project)

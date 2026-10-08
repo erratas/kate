@@ -65,7 +65,7 @@ public:
          * this will make test:50 to test with line 50
          */
         static const QRegularExpression re(QStringLiteral(":(\\d+)(?::(\\d+))?:?$"));
-        if (const auto match = re.match(path); match.isValid()) {
+        if (const auto match = re.match(path); match.hasMatch()) {
             /**
              * cut away the line/column specification from the path
              */
@@ -132,7 +132,7 @@ public:
 
     /**
      * Parse +xyz line number to cursor
-     * @param args argumests to check for +xyz as first argument, will be removed from args
+     * @param args arguments to check for +xyz as first argument, will be removed from args
      */
     static KTextEditor::Cursor parseLineNumberArgumentAndRemoveIt(QStringList &args)
     {

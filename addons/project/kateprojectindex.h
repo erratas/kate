@@ -13,6 +13,9 @@
 #include <QStandardItemModel>
 #include <QStringList>
 #include <QTemporaryFile>
+#include <QThreadPool>
+
+#include "asyncjob.h"
 
 /**
  * ctags reading
@@ -67,6 +70,14 @@ public:
      */
     void findMatches(QStandardItemModel &model, const QString &searchWord, MatchType type, int options = -1);
 
+    Utils::stop_source findMatchesAsync(QThreadPool &tp,
+                                        const QObject *context,
+                                        std::function<void(QStandardItemModel &&)> cb,
+                                        const QString &searchWord,
+                                        MatchType type,
+                                        bool automatic,
+                                        int options = -1);
+
     /**
      * Check if running ctags was successful. This can be used
      * as indicator whether ctags is installed or not.
@@ -74,7 +85,7 @@ public:
      */
     bool isValid() const
     {
-        return m_ctagsIndexHandle;
+        return m_size > 0;
     }
 
 private:
@@ -96,8 +107,8 @@ private:
      */
     std::unique_ptr<QFile> m_ctagsIndexFile;
 
-    /**
-     * handle to ctags file for querying, if possible
-     */
-    tagFile *m_ctagsIndexHandle;
+    qint64 m_size = 0;
+
+    class KateProjectIndexPrivate;
+    std::shared_ptr<KateProjectIndexPrivate> d;
 };

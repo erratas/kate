@@ -33,12 +33,6 @@ KateProjectCompletion::KateProjectCompletion(KateProjectPlugin *plugin)
 
 KateProjectCompletion::~KateProjectCompletion() = default;
 
-void KateProjectCompletion::saveMatches(KTextEditor::View *view, const KTextEditor::Range &range)
-{
-    m_matches.clear();
-    allMatches(m_matches, view, range);
-}
-
 QVariant KateProjectCompletion::data(const QModelIndex &index, int role) const
 {
     if (role == InheritanceDepth) {
@@ -153,27 +147,23 @@ void KateProjectCompletion::completionInvoked(KTextEditor::View *view, const KTe
     /**
      * auto invoke...
      */
-    m_automatic = false;
-    if (it == AutomaticInvocation) {
-        m_automatic = true;
-
-        if (range.columnWidth() >= minimalCompletionLength(view)) {
-            saveMatches(view, range);
-        } else {
-            m_matches.clear();
-        }
-
-        // done here...
+    m_automatic = it == AutomaticInvocation;
+    // consider auto-invoke settings
+    if (m_automatic && range.columnWidth() < minimalCompletionLength(view)) {
         return;
     }
-
-    // normal case ;)
-    saveMatches(view, range);
+    // otherwise always proceed
+    m_matches.clear();
+    for (auto &h : m_handles) {
+        h.request_stop();
+    }
+    m_handles.clear();
+    allMatches(view, range);
 }
 
 // Scan throughout the entire document for possible completions,
 // ignoring any dublets
-void KateProjectCompletion::allMatches(QStandardItemModel &model, KTextEditor::View *view, const KTextEditor::Range &range) const
+void KateProjectCompletion::allMatches(KTextEditor::View *view, const KTextEditor::Range &range)
 {
     /**
      * get project scope for this document, else fail
@@ -188,14 +178,44 @@ void KateProjectCompletion::allMatches(QStandardItemModel &model, KTextEditor::V
         }
     }
 
+    auto handler = [this](QStandardItemModel &&model) {
+        if (!model.rowCount()) {
+            return;
+        }
+        beginResetModel();
+        while (model.rowCount()) {
+            m_matches.appendRow(model.takeRow(0));
+        }
+        setRowCount(m_matches.rowCount());
+        endResetModel();
+    };
+
     /**
      * let project index fill the completion for this document
      */
     for (const auto project : std::as_const(projects)) {
         if (project->projectIndex()) {
-            project->projectIndex()->findMatches(model, view->document()->text(range), KateProjectIndex::CompletionMatches);
+            auto token = project->projectIndex()->findMatchesAsync(m_plugin->threadPool(),
+                                                                   this,
+                                                                   handler,
+                                                                   view->document()->text(range),
+                                                                   KateProjectIndex::CompletionMatches,
+                                                                   m_automatic);
+            m_handles.push_back(token);
         }
     }
+}
+
+void KateProjectCompletion::aborted(KTextEditor::View *view)
+{
+    Q_UNUSED(view);
+    beginResetModel();
+    m_matches.clear();
+    for (auto &h : m_handles) {
+        h.request_stop();
+    }
+    m_handles.clear();
+    endResetModel();
 }
 
 KTextEditor::CodeCompletionModelControllerInterface::MatchReaction KateProjectCompletion::matchingItem(const QModelIndex & /*matched*/)

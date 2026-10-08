@@ -4,6 +4,7 @@
 */
 
 #include "kateprojectconfigpage.h"
+#include "git/gitforgeconfigwidget.h"
 #include "kateprojectplugin.h"
 
 #include <KLocalizedString>
@@ -12,13 +13,26 @@
 #include <QComboBox>
 #include <QGroupBox>
 #include <QLabel>
+#include <QTabBar>
+#include <QTabWidget>
 #include <QVBoxLayout>
 
 KateProjectConfigPage::KateProjectConfigPage(QWidget *parent, KateProjectPlugin *plugin)
     : KTextEditor::ConfigPage(parent)
     , m_plugin(plugin)
 {
-    auto *layout = new QVBoxLayout(this);
+    auto *rootLayout = new QVBoxLayout(this);
+    rootLayout->setContentsMargins(0, 0, 0, 0);
+    auto *tabs = new QTabWidget(this);
+    tabs->setDocumentMode(true);
+    tabs->tabBar()->setExpanding(true);
+    auto *generalTab = new QWidget(tabs);
+    auto *gitTab = new QWidget(tabs);
+    tabs->addTab(generalTab, i18n("General"));
+    tabs->addTab(gitTab, i18n("Git"));
+    rootLayout->addWidget(tabs);
+
+    auto *layout = new QVBoxLayout(generalTab);
 
     auto *vbox = new QVBoxLayout;
     auto *group = new QGroupBox(i18nc("Groupbox title", "Autoload Repositories && Build Trees"), this);
@@ -100,7 +114,10 @@ KateProjectConfigPage::KateProjectConfigPage(QWidget *parent, KateProjectPlugin 
     group->setLayout(vbox);
     layout->addWidget(group);
 
+    layout->addStretch(1);
+
     /** Git specific **/
+    layout = new QVBoxLayout(gitTab);
     vbox = new QVBoxLayout;
     group = new QGroupBox(i18nc("Groupbox title", "Git"), this);
 
@@ -132,6 +149,13 @@ KateProjectConfigPage::KateProjectConfigPage(QWidget *parent, KateProjectPlugin 
     group->setLayout(vbox);
     layout->addWidget(group);
 
+    vbox = new QVBoxLayout;
+    group = new QGroupBox(i18nc("Groupbox title", "Git Hosting"), this);
+    m_gitForgeConfig = new GitForgeConfigWidget(group);
+    vbox->addWidget(m_gitForgeConfig);
+    group->setLayout(vbox);
+    layout->addWidget(group);
+
     layout->insertStretch(-1, 10);
 
     for (auto cb : {m_cbAutoGit,
@@ -156,6 +180,7 @@ KateProjectConfigPage::KateProjectConfigPage(QWidget *parent, KateProjectPlugin 
     connect(m_indexPath, &KUrlRequester::urlSelected, this, &KateProjectConfigPage::slotMyChanged);
     connect(m_cmbSingleClick, &QComboBox::activated, this, &KateProjectConfigPage::slotMyChanged);
     connect(m_cmbDoubleClick, &QComboBox::activated, this, &KateProjectConfigPage::slotMyChanged);
+    connect(m_gitForgeConfig, &GitForgeConfigWidget::hostMappingsChanged, this, &KateProjectConfigPage::slotMyChanged);
 
     reset();
 }
@@ -183,6 +208,12 @@ void KateProjectConfigPage::apply()
 
     m_changed = false;
 
+    const auto hostMappings = m_gitForgeConfig->hostMappings();
+    if (!hostMappings) {
+        m_changed = true;
+        return;
+    }
+
     m_plugin->setAutoRepository(m_cbAutoGit->checkState() == Qt::Checked,
                                 m_cbAutoSubversion->checkState() == Qt::Checked,
                                 m_cbAutoMercurial->checkState() == Qt::Checked,
@@ -197,6 +228,7 @@ void KateProjectConfigPage::apply()
     m_plugin->setRestoreProjectsForSession(m_cbSessionRestoreOpenProjects->isChecked());
 
     m_plugin->setDirectoryListing(m_cbDirectoryListing->isChecked(), m_cbShowHiddenFiles->isChecked());
+    m_plugin->setGitHostMappings(*hostMappings);
 }
 
 void KateProjectConfigPage::reset()
@@ -218,13 +250,15 @@ void KateProjectConfigPage::reset()
 
     m_cbDirectoryListing->setCheckState(m_plugin->directoryListing() ? Qt::Checked : Qt::Unchecked);
     m_cbShowHiddenFiles->setCheckState(m_plugin->showHiddenFiles() ? Qt::Checked : Qt::Unchecked);
+    m_gitForgeConfig->setHostMappings(m_plugin->gitHostMappings());
 
     m_changed = false;
 }
 
 void KateProjectConfigPage::defaults()
 {
-    reset();
+    m_gitForgeConfig->setHostMappings(GitForge::defaultHostMappings());
+    slotMyChanged();
 }
 
 void KateProjectConfigPage::slotMyChanged()

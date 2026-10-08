@@ -14,6 +14,10 @@
 
 #include <QStandardItemModel>
 
+#include "asyncjob.h"
+
+#include <vector>
+
 /**
  * Project wide completion support.
  */
@@ -50,8 +54,6 @@ public:
     bool shouldStartCompletion(KTextEditor::View *view, const QString &insertedText, bool userInsertion, const KTextEditor::Cursor &position) override;
     bool shouldAbortCompletion(KTextEditor::View *view, const KTextEditor::Range &range, const QString &currentCompletion) override;
 
-    void saveMatches(KTextEditor::View *view, const KTextEditor::Range &range);
-
     int rowCount(const QModelIndex &parent) const override;
 
     QVariant data(const QModelIndex &index, int role) const override;
@@ -61,7 +63,8 @@ public:
 
     KTextEditor::Range completionRange(KTextEditor::View *view, const KTextEditor::Cursor &position) override;
 
-    void allMatches(QStandardItemModel &model, KTextEditor::View *view, const KTextEditor::Range &range) const;
+    void allMatches(KTextEditor::View *view, const KTextEditor::Range &range);
+    void aborted(KTextEditor::View *view) override;
 
 private:
     /**
@@ -78,4 +81,9 @@ private:
      * automatic invocation?
      */
     bool m_automatic = false;
+
+    /*
+     * completion lookup in progress
+     */
+    std::vector<Utils::stop_source> m_handles;
 };

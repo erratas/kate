@@ -475,7 +475,7 @@ void KateMainWindow::setupActions()
             KateFileActions::copyFileNameToClipboard(view->document());
         }
     });
-    a->setWhatsThis(i18n("Copies the file path of the current file to clipboard."));
+    a->setWhatsThis(i18n("Copies the file name of the current file to clipboard."));
 
     a = ac->addAction(QStringLiteral("file_open_containing_folder"));
     a->setIcon(QIcon::fromTheme(QStringLiteral("document-open-folder")));
@@ -484,7 +484,7 @@ void KateMainWindow::setupActions()
         if (auto view = viewManager()->activeView())
             KateFileActions::openContainingFolder(view->document());
     });
-    a->setWhatsThis(i18n("Copies the file path of the current file to clipboard."));
+    a->setWhatsThis(i18n("Opens containing folder of the current file."));
 
     a = ac->addAction(QStringLiteral("file_rename"));
     a->setIcon(QIcon::fromTheme(QStringLiteral("edit-rename")));
@@ -1224,7 +1224,7 @@ void KateMainWindow::editKeys()
     const QList<KXMLGUIClient *> clients = guiFactory()->clients();
 
     for (KXMLGUIClient *client : clients) {
-        dlg.addCollection(client->actionCollection(), client->componentName());
+        dlg.addCollection(client->actionCollection());
     }
     dlg.configure();
 
@@ -1817,8 +1817,8 @@ void KateMainWindow::activate(const QString &token)
     ::SetForegroundWindow(winHandle);
 #endif
 
-    // like QtSingleApplication
-    setWindowState(windowState() & ~Qt::WindowMinimized);
+    // try to raise and activate, that might fail but most OSes will
+    // at least flash the task bar entry or similar with that
     raise();
     activateWindow();
 }

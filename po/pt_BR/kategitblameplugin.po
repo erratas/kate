@@ -3,20 +3,21 @@
 #
 # Luiz Fernando Ranghetti <elchevive@opensuse.org>, 2021, 2022.
 # SPDX-FileCopyrightText: 2024 Igor Moreira Padua <igorpadua@discente.ufg.br>
+# SPDX-FileCopyrightText: 2026 Marcus Gama <marcus.gama@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:47+0000\n"
-"PO-Revision-Date: 2024-03-16 10:24-0300\n"
-"Last-Translator: Igor Moreira Padua <igorpadua@discente.ufg.br>\n"
-"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"POT-Creation-Date: 2026-10-07 00:52+0000\n"
+"PO-Revision-Date: 2026-09-26 05:53-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
+"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #: kategitblameplugin.cpp:88
 #, kde-format
@@ -35,7 +36,7 @@ msgctxt "git-blame information \"author: date: commit title \""
 msgid " %1: %2: %3 "
 msgstr " %1: %2: %3 "
 
-#: kategitblameplugin.cpp:187
+#: kategitblameplugin.cpp:187 kategitblameplugin.cpp:340
 #, kde-format
 msgid "Git Blame"
 msgstr "Git blame"
@@ -50,12 +51,13 @@ msgstr "Mostrar detalhes do git blame"
 msgid "Toggle Git Blame Details"
 msgstr "Alternar detalhes do git blame"
 
-#: kategitblameplugin.cpp:340
+#: kategitblameplugin.cpp:352
 #, kde-format
-msgid "Git"
-msgstr "Git"
+msgctxt "@info %1 is a git error"
+msgid "Git Blame plugin error: %1"
+msgstr "Erro no plugin Git Blame: %1"
 
-#: kategitblameplugin.cpp:403
+#: kategitblameplugin.cpp:410
 #, kde-format
 msgid "Git blame, show commit failed."
 msgstr "Git blame, mostrar que o commit falhou."
@@ -65,6 +67,9 @@ msgstr "Git blame, mostrar que o commit falhou."
 #, kde-format
 msgid "&Tools"
 msgstr "Ferramen&tas"
+
+#~ msgid "Git"
+#~ msgstr "Git"
 
 #~ msgid "Close"
 #~ msgstr "Fechar"

@@ -1,0 +1,6 @@
+{
+    "KPlugin": {
+        "Description": "Displays Git change indicators in the editor margins",
+        "Name": "Git Decorations"
+    }
+}

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-11 00:47+0000\n"
+"POT-Creation-Date: 2026-10-08 00:49+0000\n"
 "PO-Revision-Date: 2013-08-28 04:47+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -47,17 +47,17 @@ msgstr "Kate - үздік мәтін редакторы"
 msgid "(c) 2000-2024 The Kate Authors"
 msgstr "(c) 2000-2005 Kate авторлары"
 
-#: kate/main.cpp:170 lib/autotests/kate_view_mgmt_test2.cpp:220
-#: lib/autotests/kate_view_mgmt_test2.cpp:522
-#: lib/autotests/kate_view_mgmt_test2.cpp:558
+#: kate/main.cpp:170 lib/autotests/kate_view_mgmt_test2.cpp:280
+#: lib/autotests/kate_view_mgmt_test2.cpp:582
+#: lib/autotests/kate_view_mgmt_test2.cpp:618
 #, fuzzy, kde-format
 #| msgid "Start Kate with a given session"
 msgid "Start Kate with a given session."
 msgstr "Көрсетілген сеанс жалғастырылсын"
 
-#: kate/main.cpp:171 lib/autotests/kate_view_mgmt_test2.cpp:221
-#: lib/autotests/kate_view_mgmt_test2.cpp:523
-#: lib/autotests/kate_view_mgmt_test2.cpp:559
+#: kate/main.cpp:171 lib/autotests/kate_view_mgmt_test2.cpp:281
+#: lib/autotests/kate_view_mgmt_test2.cpp:583
+#: lib/autotests/kate_view_mgmt_test2.cpp:619
 #, fuzzy, kde-format
 #| msgid "Sessions"
 msgid "session"
@@ -330,7 +330,7 @@ msgstr ""
 msgid "&Status Bar Items"
 msgstr "&Күй-жай жолағындағысы"
 
-#: lib/diagnostics/diagnostic_suppression.h:37
+#: lib/diagnostics/diagnostic_suppression.h:38
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -547,17 +547,17 @@ msgstr[0] "&Жаңа терезе"
 msgid "Unstage Hunk"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:51
+#: lib/diff/diffwidget.cpp:52
 #, kde-format
 msgid "Diff - %1"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:54
+#: lib/diff/diffwidget.cpp:55
 #, kde-format
 msgid "Diff - %1..%2"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:60
+#: lib/diff/diffwidget.cpp:61
 #, kde-format
 msgid ""
 "<b>git</b> not found. Git is needed to diff the documents. If git is already "
@@ -565,68 +565,68 @@ msgid ""
 "downloads"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:63 lib/diff/diffwidget.cpp:1244
+#: lib/diff/diffwidget.cpp:64 lib/diff/diffwidget.cpp:1278
 #: lib/kateconfigdialog.cpp:368
 #, kde-format
 msgid "Diff"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:122
+#: lib/diff/diffwidget.cpp:123
 #, kde-format
 msgid "Diff %1 .. %2"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:152
+#: lib/diff/diffwidget.cpp:153
 #, kde-format
 msgid "Show/Hide Commit Info"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:157
+#: lib/diff/diffwidget.cpp:158
 #, kde-format
 msgid "Jump to Next File"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:161
+#: lib/diff/diffwidget.cpp:162
 #, kde-format
 msgid "Jump to Previous File"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:165
+#: lib/diff/diffwidget.cpp:166
 #, kde-format
 msgid "Jump to Next Hunk"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:169
+#: lib/diff/diffwidget.cpp:170
 #, kde-format
 msgid "Jump to Previous Hunk"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:173
+#: lib/diff/diffwidget.cpp:174
 #, fuzzy, kde-format
 #| msgid "&Reload"
 msgctxt "Tooltip for a button, clicking the button reloads the diff"
 msgid "Reload Diff"
 msgstr "Қ&айта жүктеп алу"
 
-#: lib/diff/diffwidget.cpp:177
+#: lib/diff/diffwidget.cpp:178
 #, kde-format
 msgctxt "Tooltip for a button"
 msgid "Show diff with full context, not just the changed lines"
 msgstr ""
 
-#: lib/diff/diffwidget.cpp:852 lib/diff/diffwidget.cpp:1056
+#: lib/diff/diffwidget.cpp:886 lib/diff/diffwidget.cpp:1090
 #, fuzzy, kde-format
 #| msgid "Filename"
 msgid "New file %1"
 msgstr "Файлдың атауы"
 
-#: lib/diff/diffwidget.cpp:854 lib/diff/diffwidget.cpp:1058
+#: lib/diff/diffwidget.cpp:888 lib/diff/diffwidget.cpp:1092
 #, fuzzy, kde-format
 #| msgid "Delete File?"
 msgid "Deleted file %1"
 msgstr "Өшіру"
 
-#: lib/diff/diffwidget.cpp:1227 lib/diff/diffwidget.cpp:1228
+#: lib/diff/diffwidget.cpp:1261 lib/diff/diffwidget.cpp:1262
 #, kde-format
 msgid "No differences found"
 msgstr ""
@@ -736,330 +736,330 @@ msgid ""
 "for elevated privileges when saving documents if needed."
 msgstr ""
 
-#: lib/kateapp.cpp:381
+#: lib/kateapp.cpp:385
 #, kde-format
 msgid "Christoph Cullmann"
 msgstr "Christoph Cullmann"
 
-#: lib/kateapp.cpp:381
+#: lib/kateapp.cpp:385
 #, kde-format
 msgid "Maintainer"
 msgstr "Жетілдірушісі"
 
-#: lib/kateapp.cpp:382
+#: lib/kateapp.cpp:386
 #, kde-format
 msgid "Dominik Haumann"
 msgstr "Dominik Haumann"
 
-#: lib/kateapp.cpp:382 lib/kateapp.cpp:385 lib/kateapp.cpp:386
-#: lib/kateapp.cpp:387 lib/kateapp.cpp:388 lib/kateapp.cpp:394
+#: lib/kateapp.cpp:386 lib/kateapp.cpp:389 lib/kateapp.cpp:390
+#: lib/kateapp.cpp:391 lib/kateapp.cpp:392 lib/kateapp.cpp:398
 #, kde-format
 msgid "Core Developer"
 msgstr "Негізін қалаушысы"
 
-#: lib/kateapp.cpp:383
+#: lib/kateapp.cpp:387
 #, kde-format
 msgid "Sven Brauch"
 msgstr ""
 
-#: lib/kateapp.cpp:383 lib/kateapp.cpp:384 lib/kateapp.cpp:389
+#: lib/kateapp.cpp:387 lib/kateapp.cpp:388 lib/kateapp.cpp:393
 #, fuzzy, kde-format
 #| msgid "Core Developer"
 msgid "Developer"
 msgstr "Негізін қалаушысы"
 
-#: lib/kateapp.cpp:384
+#: lib/kateapp.cpp:388
 #, kde-format
 msgid "Kåre Särs"
 msgstr ""
 
-#: lib/kateapp.cpp:385
+#: lib/kateapp.cpp:389
 #, kde-format
 msgid "Waqar Ahmed"
 msgstr ""
 
-#: lib/kateapp.cpp:386
+#: lib/kateapp.cpp:390
 #, kde-format
 msgid "Anders Lund"
 msgstr "Anders Lund"
 
-#: lib/kateapp.cpp:387
+#: lib/kateapp.cpp:391
 #, kde-format
 msgid "Joseph Wenninger"
 msgstr "Joseph Wenninger"
 
-#: lib/kateapp.cpp:388
+#: lib/kateapp.cpp:392
 #, kde-format
 msgid "Hamish Rodda"
 msgstr "Hamish Rodda"
 
-#: lib/kateapp.cpp:389
+#: lib/kateapp.cpp:393
 #, fuzzy, kde-format
 #| msgid "Anders Lund"
 msgid "Alexander Neundorf"
 msgstr "Anders Lund"
 
-#: lib/kateapp.cpp:390
+#: lib/kateapp.cpp:394
 #, kde-format
 msgid "Waldo Bastian"
 msgstr "Waldo Bastian"
 
-#: lib/kateapp.cpp:390
+#: lib/kateapp.cpp:394
 #, kde-format
 msgid "The cool buffersystem"
 msgstr "Күшті буфер жүйесін"
 
-#: lib/kateapp.cpp:391
+#: lib/kateapp.cpp:395
 #, kde-format
 msgid "Charles Samuels"
 msgstr "Charles Samuels"
 
-#: lib/kateapp.cpp:391
+#: lib/kateapp.cpp:395
 #, kde-format
 msgid "The Editing Commands"
 msgstr "Өңдеу командаларын"
 
-#: lib/kateapp.cpp:392
+#: lib/kateapp.cpp:396
 #, kde-format
 msgid "Matt Newell"
 msgstr "Matt Newell"
 
-#: lib/kateapp.cpp:392
+#: lib/kateapp.cpp:396
 #, kde-format
 msgid "Testing, ..."
 msgstr "Сынау және т.б."
 
-#: lib/kateapp.cpp:393
+#: lib/kateapp.cpp:397
 #, kde-format
 msgid "Michael Bartl"
 msgstr "Michael Bartl"
 
-#: lib/kateapp.cpp:393
+#: lib/kateapp.cpp:397
 #, kde-format
 msgid "Former Core Developer"
 msgstr "Бұрынғы негіз қалаушысы"
 
-#: lib/kateapp.cpp:394
+#: lib/kateapp.cpp:398
 #, kde-format
 msgid "Michael McCallum"
 msgstr "Michael McCallum"
 
-#: lib/kateapp.cpp:395
+#: lib/kateapp.cpp:399
 #, kde-format
 msgid "Jochen Wilhemly"
 msgstr "Jochen Wilhemly"
 
-#: lib/kateapp.cpp:395
+#: lib/kateapp.cpp:399
 #, kde-format
 msgid "KWrite Author"
 msgstr "KWrite авторы"
 
-#: lib/kateapp.cpp:396
+#: lib/kateapp.cpp:400
 #, kde-format
 msgid "Michael Koch"
 msgstr "Michael Koch"
 
-#: lib/kateapp.cpp:396
+#: lib/kateapp.cpp:400
 #, kde-format
 msgid "KWrite port to KParts"
 msgstr "KWrite бағдарламасын KParts-қа қосу"
 
-#: lib/kateapp.cpp:397
+#: lib/kateapp.cpp:401
 #, kde-format
 msgid "Christian Gebauer"
 msgstr "Christian Gebauer"
 
-#: lib/kateapp.cpp:398
+#: lib/kateapp.cpp:402
 #, kde-format
 msgid "Simon Hausmann"
 msgstr "Simon Hausmann"
 
-#: lib/kateapp.cpp:399
+#: lib/kateapp.cpp:403
 #, kde-format
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
-#: lib/kateapp.cpp:399
+#: lib/kateapp.cpp:403
 #, kde-format
 msgid "KWrite Undo History, Kspell integration"
 msgstr "KWrite амалдар журналы, Kspell-ді бірлестіру"
 
-#: lib/kateapp.cpp:400
+#: lib/kateapp.cpp:404
 #, kde-format
 msgid "Scott Manson"
 msgstr "Scott Manson"
 
-#: lib/kateapp.cpp:400
+#: lib/kateapp.cpp:404
 #, kde-format
 msgid "KWrite XML Syntax highlighting support"
 msgstr "KWrite бағдарламасында XML синтаксисын талдап бояулауды"
 
-#: lib/kateapp.cpp:401
+#: lib/kateapp.cpp:405
 #, kde-format
 msgid "John Firebaugh"
 msgstr "John Firebaugh"
 
-#: lib/kateapp.cpp:401
+#: lib/kateapp.cpp:405
 #, kde-format
 msgid "Patches and more"
 msgstr "Жамаулары мен т.б."
 
-#: lib/kateapp.cpp:402
+#: lib/kateapp.cpp:406
 #, kde-format
 msgid "Pablo Martín"
 msgstr "Pablo Martín"
 
-#: lib/kateapp.cpp:403
+#: lib/kateapp.cpp:407
 #, kde-format
 msgid "Python Plugin Developer"
 msgstr "Python плагиннің құрастырушысы"
 
-#: lib/kateapp.cpp:406
+#: lib/kateapp.cpp:410
 #, kde-format
 msgid "Gerald Senarclens de Grancy"
 msgstr "Gerald Senarclens de Grancy"
 
-#: lib/kateapp.cpp:406
+#: lib/kateapp.cpp:410
 #, kde-format
 msgid "QA and Scripting"
 msgstr "QA және Скриптинг"
 
-#: lib/kateapp.cpp:409
+#: lib/kateapp.cpp:413
 #, kde-format
 msgid "Tyson Tan"
 msgstr ""
 
-#: lib/kateapp.cpp:410
+#: lib/kateapp.cpp:414
 #, kde-format
 msgid "Designer of Kate's mascot 'Kate the Cyber Woodpecker'"
 msgstr ""
 
-#: lib/kateapp.cpp:413
+#: lib/kateapp.cpp:417
 #, kde-format
 msgid "Matteo Merli"
 msgstr "Matteo Merli"
 
-#: lib/kateapp.cpp:413
+#: lib/kateapp.cpp:417
 #, kde-format
 msgid "Highlighting for RPM Spec-Files, Perl, Diff and more"
 msgstr "RPM Spec-файлдары, Perl, Diff талдап бояулауды"
 
-#: lib/kateapp.cpp:414
+#: lib/kateapp.cpp:418
 #, kde-format
 msgid "Rocky Scaletta"
 msgstr "Rocky Scaletta"
 
-#: lib/kateapp.cpp:414
+#: lib/kateapp.cpp:418
 #, kde-format
 msgid "Highlighting for VHDL"
 msgstr "VHDL талдап бояулауды"
 
-#: lib/kateapp.cpp:415
+#: lib/kateapp.cpp:419
 #, kde-format
 msgid "Yury Lebedev"
 msgstr "Yury Lebedev"
 
-#: lib/kateapp.cpp:415
+#: lib/kateapp.cpp:419
 #, kde-format
 msgid "Highlighting for SQL"
 msgstr "SQL талдап бояулауды"
 
-#: lib/kateapp.cpp:416
+#: lib/kateapp.cpp:420
 #, kde-format
 msgid "Chris Ross"
 msgstr "Chris Ross"
 
-#: lib/kateapp.cpp:416
+#: lib/kateapp.cpp:420
 #, kde-format
 msgid "Highlighting for Ferite"
 msgstr "Ferite талдап бояулауды"
 
-#: lib/kateapp.cpp:417
+#: lib/kateapp.cpp:421
 #, kde-format
 msgid "Nick Roux"
 msgstr "Nick Roux"
 
-#: lib/kateapp.cpp:417
+#: lib/kateapp.cpp:421
 #, kde-format
 msgid "Highlighting for ILERPG"
 msgstr "ILERPG талдап бояулауды"
 
-#: lib/kateapp.cpp:418
+#: lib/kateapp.cpp:422
 #, kde-format
 msgid "Carsten Niehaus"
 msgstr "Carsten Niehaus"
 
-#: lib/kateapp.cpp:418
+#: lib/kateapp.cpp:422
 #, kde-format
 msgid "Highlighting for LaTeX"
 msgstr "LaTeX талдап бояулады"
 
-#: lib/kateapp.cpp:419
+#: lib/kateapp.cpp:423
 #, kde-format
 msgid "Per Wigren"
 msgstr "Per Wigren"
 
-#: lib/kateapp.cpp:419
+#: lib/kateapp.cpp:423
 #, kde-format
 msgid "Highlighting for Makefiles, Python"
 msgstr "Makefile, Python файлдарын талдап бояулады"
 
-#: lib/kateapp.cpp:420
+#: lib/kateapp.cpp:424
 #, kde-format
 msgid "Jan Fritz"
 msgstr "Jan Fritz"
 
-#: lib/kateapp.cpp:420
+#: lib/kateapp.cpp:424
 #, kde-format
 msgid "Highlighting for Python"
 msgstr "Python талдап бояулады"
 
-#: lib/kateapp.cpp:421
+#: lib/kateapp.cpp:425
 #, kde-format
 msgid "Daniel Naber"
 msgstr "Daniel Naber"
 
-#: lib/kateapp.cpp:422
+#: lib/kateapp.cpp:426
 #, kde-format
 msgid "Roland Pabel"
 msgstr "Roland Pabel"
 
-#: lib/kateapp.cpp:422
+#: lib/kateapp.cpp:426
 #, kde-format
 msgid "Highlighting for Scheme"
 msgstr "Scheme талдап бояулады"
 
-#: lib/kateapp.cpp:423
+#: lib/kateapp.cpp:427
 #, kde-format
 msgid "Cristi Dumitrescu"
 msgstr "Cristi Dumitrescu"
 
-#: lib/kateapp.cpp:423
+#: lib/kateapp.cpp:427
 #, kde-format
 msgid "PHP Keyword/Datatype list"
 msgstr "PHP түйінді сөздер мен дерек түрілерінің тізімін"
 
-#: lib/kateapp.cpp:424
+#: lib/kateapp.cpp:428
 #, kde-format
 msgid "Carsten Pfeiffer"
 msgstr "Carsten Pfeiffer"
 
-#: lib/kateapp.cpp:424
+#: lib/kateapp.cpp:428
 #, kde-format
 msgid "Very nice help"
 msgstr "Өте жақсы анықтамасы"
 
-#: lib/kateapp.cpp:425
+#: lib/kateapp.cpp:429
 #, kde-format
 msgid "All people who have contributed and I have forgotten to mention"
 msgstr "Бүкіл үлесін қосқан бірақ осында аталмаған адамдар"
 
-#: lib/kateapp.cpp:593
+#: lib/kateapp.cpp:597
 #, kde-format
 msgid "Folders can only be opened when the projects plugin is enabled"
 msgstr ""
 
-#: lib/kateapp.cpp:686
+#: lib/kateapp.cpp:690
 #, kde-format
 msgid ""
 "The file '%1' could not be opened: it is not a normal file, it is a folder."
@@ -1491,62 +1491,62 @@ msgstr "Атауы"
 msgid "Description"
 msgstr "Сипаттамасы:"
 
-#: lib/katedocmanager.cpp:352
+#: lib/katedocmanager.cpp:362
 #, kde-format
 msgid "Starting Up"
 msgstr "Бастау"
 
-#: lib/katedocmanager.cpp:353
+#: lib/katedocmanager.cpp:363
 #, kde-format
 msgid "Reopening files from the last session..."
 msgstr "Соңғы сеанстың файлдарын ашу..."
 
-#: lib/katedocmanager.cpp:528
+#: lib/katedocmanager.cpp:538
 #, fuzzy, kde-format
 #| msgid "Cannot go to the document"
 msgid "Cannot pin untitled documents."
 msgstr "Бұл құжатқа ауысу болмайды"
 
-#: lib/katedocmanager.cpp:533
+#: lib/katedocmanager.cpp:543
 #, fuzzy, kde-format
 #| msgid "Cannot go to the document"
 msgid "Cannot pin non local documents."
 msgstr "Бұл құжатқа ауысу болмайды"
 
-#: lib/katefileactions.cpp:80
+#: lib/katefileactions.cpp:81
 #, fuzzy, kde-format
 #| msgid "Open File"
 msgid "Rename file"
 msgstr "Файлды ашу"
 
-#: lib/katefileactions.cpp:80
+#: lib/katefileactions.cpp:81
 #, fuzzy, kde-format
 #| msgid "Filename"
 msgid "New file name"
 msgstr "Файлдың атауы"
 
-#: lib/katefileactions.cpp:116
+#: lib/katefileactions.cpp:121
 #, kde-format
 msgid "File \"%1\" could not be moved to \"%2\""
 msgstr ""
 
-#: lib/katefileactions.cpp:137
+#: lib/katefileactions.cpp:142
 #, kde-format
 msgid "Do you really want to delete file \"%1\"?"
 msgstr ""
 
-#: lib/katefileactions.cpp:138
+#: lib/katefileactions.cpp:143
 #, fuzzy, kde-format
 #| msgid "Delete File?"
 msgid "Delete file"
 msgstr "Өшіру"
 
-#: lib/katefileactions.cpp:161
+#: lib/katefileactions.cpp:166
 #, kde-format
 msgid "File \"%1\" could not be deleted."
 msgstr ""
 
-#: lib/katefileactions.cpp:220
+#: lib/katefileactions.cpp:225
 #, fuzzy, kde-format
 #| msgid "Application"
 msgid "&Other Application..."
@@ -1672,8 +1672,7 @@ msgstr "Б&үкілін қайта жүктеп алу"
 msgid "Reload all open documents."
 msgstr "Барлық ашық құжаттарды қайта жүктеп алу."
 
-#: lib/katemainwindow.cpp:468 lib/katemainwindow.cpp:478
-#: lib/katemainwindow.cpp:487
+#: lib/katemainwindow.cpp:468
 #, fuzzy, kde-format
 #| msgid "Move the splitter of the current view up"
 msgid "Copies the file path of the current file to clipboard."
@@ -1685,11 +1684,23 @@ msgstr "Назарды көріністегі бөлгішін жоғарлат�
 msgid "Copy Filename"
 msgstr "Файлдың атауы"
 
+#: lib/katemainwindow.cpp:478
+#, fuzzy, kde-format
+#| msgid "Move the splitter of the current view up"
+msgid "Copies the file name of the current file to clipboard."
+msgstr "Назарды көріністегі бөлгішін жоғарлату"
+
 #: lib/katemainwindow.cpp:482 lib/welcomeview/welcomeview.cpp:268
 #, fuzzy, kde-format
 #| msgid "Opening Order"
 msgid "&Open Containing Folder"
 msgstr "Ашу ретімен"
+
+#: lib/katemainwindow.cpp:487
+#, fuzzy, kde-format
+#| msgid "Move the splitter of the current view up"
+msgid "Opens containing folder of the current file."
+msgstr "Назарды көріністегі бөлгішін жоғарлату"
 
 #: lib/katemainwindow.cpp:491
 #, fuzzy, kde-format
@@ -2307,22 +2318,22 @@ msgctxt "@info"
 msgid "Log"
 msgstr ""
 
-#: lib/katesavemodifieddialog.cpp:81
+#: lib/katesavemodifieddialog.cpp:80
 #, kde-format
 msgid "Save As (%1)"
 msgstr "Былай сақтау (%1)"
 
-#: lib/katesavemodifieddialog.cpp:133
+#: lib/katesavemodifieddialog.cpp:132
 #, kde-format
 msgid "Save Documents"
 msgstr "Құжаттарды сақтау"
 
-#: lib/katesavemodifieddialog.cpp:133
+#: lib/katesavemodifieddialog.cpp:132
 #, kde-format
 msgid "Close Document"
 msgstr "Құжатты жабу"
 
-#: lib/katesavemodifieddialog.cpp:157
+#: lib/katesavemodifieddialog.cpp:156
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>The document '%1' has been modified, but not saved.</p><p>Do you want "
@@ -2334,29 +2345,29 @@ msgstr ""
 "<p>'%1' деген құжат өзертіліп, әлі сақталмаған.</p><p>Өзгерістер сақталсын "
 "немесе ысырып тасталсын ба?</p>"
 
-#: lib/katesavemodifieddialog.cpp:161
+#: lib/katesavemodifieddialog.cpp:160
 #, kde-format
 msgid ""
 "<qt>The following documents have been modified. Do you want to save them "
 "before closing?</qt>"
 msgstr "<qt>Келесі құжатар өзгертілген. Жабудан бұрын сақталсын ба?</qt>"
 
-#: lib/katesavemodifieddialog.cpp:170
+#: lib/katesavemodifieddialog.cpp:169
 #, kde-format
 msgid "Documents"
 msgstr "Құжаттар"
 
-#: lib/katesavemodifieddialog.cpp:170
+#: lib/katesavemodifieddialog.cpp:169
 #, kde-format
 msgid "Location"
 msgstr "Орналасуы"
 
-#: lib/katesavemodifieddialog.cpp:180
+#: lib/katesavemodifieddialog.cpp:179
 #, kde-format
 msgid "Se&lect All"
 msgstr "Бүкілін таң&дау"
 
-#: lib/katesavemodifieddialog.cpp:258
+#: lib/katesavemodifieddialog.cpp:257
 #, kde-format
 msgid ""
 "Data you requested to be saved could not be written. Please choose how you "
@@ -2716,55 +2727,55 @@ msgid_plural ""
 "switch to the Quick Open view by clicking here."
 msgstr[0] ""
 
-#: lib/kateviewspace.cpp:1135
+#: lib/kateviewspace.cpp:1158
 #, fuzzy, kde-format
 #| msgid "Close"
 msgid "&Close Tab"
 msgstr "Жабу"
 
-#: lib/kateviewspace.cpp:1142
+#: lib/kateviewspace.cpp:1165
 #, fuzzy, kde-format
 #| msgid "Close Other"
 msgid "Close &Other Tabs"
 msgstr "Қалғандарын жабу"
 
-#: lib/kateviewspace.cpp:1156
+#: lib/kateviewspace.cpp:1179
 #, fuzzy, kde-format
 #| msgid "Clos&e All"
 msgid "Close All &Tabs"
 msgstr "Бүкілін жа&бу"
 
-#: lib/kateviewspace.cpp:1189
+#: lib/kateviewspace.cpp:1212
 #, fuzzy, kde-format
 #| msgid "Next Document"
 msgid "D&etach Document"
 msgstr "Келесі құжат"
 
-#: lib/kateviewspace.cpp:1194
+#: lib/kateviewspace.cpp:1217
 #, kde-format
 msgid "Opens the document in a new window and closes it in the current window"
 msgstr ""
 
-#: lib/kateviewspace.cpp:1235
+#: lib/kateviewspace.cpp:1258
 #, fuzzy, kde-format
 #| msgid "Close the current document."
 msgid "Compare with Active Document"
 msgstr "Назардағы құжатты жабу."
 
-#: lib/kateviewspace.cpp:1241
+#: lib/kateviewspace.cpp:1264
 #, fuzzy, kde-format
 #| msgid "Close the current document."
 msgid "Compare with Active Document Using"
 msgstr "Назардағы құжатты жабу."
 
-#: lib/kateviewspace.cpp:1249
+#: lib/kateviewspace.cpp:1272
 #, fuzzy, kde-format
 #| msgctxt "The number of open documents"
 #| msgid "Open Documents"
 msgid "Unpin Document"
 msgstr "Құжаттарды ашу"
 
-#: lib/kateviewspace.cpp:1251
+#: lib/kateviewspace.cpp:1274
 #, fuzzy, kde-format
 #| msgid "Documents"
 msgid "Pin Document"
@@ -2805,40 +2816,46 @@ msgid ""
 "'showtoolview $toolview_name'. Hide a toolview panel. Available panels: %1"
 msgstr ""
 
-#: lib/quickopen/katequickopenlineedit.cpp:47
+#: lib/quickopen/katequickopenlineedit.cpp:50
 #, kde-format
 msgctxt ""
 "The text is shown as a placeholder in an input line edit, keep it short"
 msgid "Search files in all projects (right click to configure)"
 msgstr ""
 
-#: lib/quickopen/katequickopenlineedit.cpp:50
+#: lib/quickopen/katequickopenlineedit.cpp:53
 #, kde-format
 msgctxt ""
 "The text is shown as a placeholder in an input line edit, keep it short"
 msgid "Search files in current project (right click to configure)"
 msgstr ""
 
-#: lib/quickopen/katequickopenlineedit.cpp:72
+#: lib/quickopen/katequickopenlineedit.cpp:75
 #, fuzzy, kde-format
 #| msgid "Projects"
 msgid "All Projects"
 msgstr "Жобалар"
 
-#: lib/quickopen/katequickopenlineedit.cpp:85
+#: lib/quickopen/katequickopenlineedit.cpp:88
 #, kde-format
 msgid "Current Project"
 msgstr ""
 
-#: lib/quickopen/katequickopenlineedit.cpp:101
+#: lib/quickopen/katequickopenlineedit.cpp:104
 #, kde-format
 msgid "Fuzzy Filtering"
 msgstr ""
 
-#: lib/quickopen/katequickopenlineedit.cpp:112
+#: lib/quickopen/katequickopenlineedit.cpp:115
 #, kde-format
 msgid "Wildcard Filtering"
 msgstr ""
+
+#: lib/quickopen/katequickopenlineedit.cpp:128
+#, fuzzy, kde-format
+#| msgid "&View Mode:"
+msgid "Match Folder Names"
+msgstr "&Көрініс күйі:"
 
 #: lib/quickopen/katequickopenmodel.cpp:174
 #, fuzzy, kde-format
@@ -3435,11 +3452,6 @@ msgstr "Жаңа құжатты бастау"
 
 #~ msgid "Quick Open Search"
 #~ msgstr "Шұғыл іздеуді ашу"
-
-#, fuzzy
-#~| msgid "&View Mode:"
-#~ msgid "&Match Mode:"
-#~ msgstr "&Көрініс күйі:"
 
 #, fuzzy
 #~| msgid "Filename"

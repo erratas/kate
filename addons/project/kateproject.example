@@ -87,6 +87,41 @@ struct
 
    };
 
+   /// The "deployment" structure is optional. It maps local project files to an
+   /// SFTP destination. Authentication is handled by KIO and is not stored here.
+   struct deployment
+   {
+      /// Required server hostname or IP address, without a URL scheme.
+      string host;
+
+      /// Optional SSH port. Defaults to 22.
+      int port = 22;
+
+      /// Optional SSH user. If omitted, KIO uses its normal default.
+      string user;
+
+      /// Optional local directory. Relative paths are resolved from the project
+      /// base directory. Defaults to the project base directory and must remain
+      /// inside it.
+      string localRoot;
+
+      /// Required absolute destination directory on the server.
+      string remoteRoot;
+
+      /// Optional project-relative wildcard patterns. Patterns without a slash
+      /// match any path component, for example "build" or "*.tmp".
+      vector< string > exclude;
+   };
+
+   /// The "git" structure is optional. Project host mappings override global mappings
+   /// with the same host and port; other global mappings remain available as fallbacks.
+   struct git
+   {
+      /// Maps a Git remote host, optionally followed by its SSH port, to its website.
+      /// "provider" must be "Forgejo", "GitHub", or "GitLab".
+      vector< {string host, string provider, string webBaseUrl} > hostMappings;
+   };
+
    /// The "ctags" structure is optional.
    /// If set, it may contain extra options for ctags command used to populate the auto completion popup in Kate.
    struct ctags
@@ -135,6 +170,21 @@ A project for a custom language named Swine whose source files have a suffix .sw
          "--langmap=swine:.swn",
          "--regex-swine=/^def[ \t]*([a-zA-Z0-9_]+)/\\1/d,definition/"
       ]
+   }
+}
+
+
+A project with a project-specific Git hosting mapping:
+
+{
+   "name": "MyProject",
+   "files": [ { "git": 1 } ],
+   "git": {
+      "hostMappings": [ {
+         "host": "git.example.com:2222",
+         "provider": "Forgejo",
+         "webBaseUrl": "https://code.example.com"
+      } ]
    }
 }
 

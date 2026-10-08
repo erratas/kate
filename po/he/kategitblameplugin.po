@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kate package.
 #
-# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:47+0000\n"
-"PO-Revision-Date: 2024-06-21 15:31+0300\n"
+"POT-Creation-Date: 2026-10-07 00:52+0000\n"
+"PO-Revision-Date: 2026-09-27 09:55+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #: kategitblameplugin.cpp:88
 #, kde-format
@@ -35,7 +35,7 @@ msgctxt "git-blame information \"author: date: commit title \""
 msgid " %1: %2: %3 "
 msgstr " %1: %2: %3 "
 
-#: kategitblameplugin.cpp:187
+#: kategitblameplugin.cpp:187 kategitblameplugin.cpp:340
 #, kde-format
 msgid "Git Blame"
 msgstr "האשמה ב־Git"
@@ -50,12 +50,13 @@ msgstr "הצגת פרטי האשמה ב־Git"
 msgid "Toggle Git Blame Details"
 msgstr "הצגת/הסתרת פרטי האשמה ב־Git"
 
-#: kategitblameplugin.cpp:340
+#: kategitblameplugin.cpp:352
 #, kde-format
-msgid "Git"
-msgstr "Git"
+msgctxt "@info %1 is a git error"
+msgid "Git Blame plugin error: %1"
+msgstr "שגיאת תוסף האשמה ב־Git‏: %1"
 
-#: kategitblameplugin.cpp:403
+#: kategitblameplugin.cpp:410
 #, kde-format
 msgid "Git blame, show commit failed."
 msgstr "האשמה ב־Git, הצגת ההגשה נכשלה."
@@ -65,3 +66,6 @@ msgstr "האשמה ב־Git, הצגת ההגשה נכשלה."
 #, kde-format
 msgid "&Tools"
 msgstr "&כלים"
+
+#~ msgid "Git"
+#~ msgstr "Git"

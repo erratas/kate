@@ -60,7 +60,7 @@ static constexpr char MEMBER_PREVIOUS_RESULT_ID[] = "previousResultId";
 static constexpr char MEMBER_QUERY[] = "query";
 static constexpr char MEMBER_SELECTION_RANGE[] = "selection";
 static constexpr char MEMBER_TARGET_URI[] = "targetUri";
-static constexpr char MEMBER_TARGET_SELECTION_RANGE[] = "";
+static constexpr char MEMBER_TARGET_SELECTION_RANGE[] = "targetSelectionRange";
 static constexpr char MEMBER_TARGET_RANGE[] = "targetRange";
 static constexpr char MEMBER_DOCUMENTATION[] = "documentation";
 static constexpr char MEMBER_TITLE[] = "title";
@@ -539,6 +539,7 @@ static void from_json(LSPServerCapabilities &caps, const rapidjson::Value &json)
     from_json(caps.workspaceFolders, GetJsonObjectForKey(workspace, "workspaceFolders"));
     caps.selectionRangeProvider = json.HasMember("selectionRangeProvider");
     caps.inlayHintProvider = json.HasMember("inlayHintProvider");
+    caps.diagnosticProvider = json.HasMember("diagnosticProvider");
 }
 
 static QUrl urlFromRemote(const QString &s, bool normalize = true)
@@ -733,14 +734,17 @@ static LSPHover parseHover(const rapidjson::Value &hover)
     ret.range = parseRange(GetJsonObjectForKey(hover, MEMBER_RANGE));
 
     auto it = hover.FindMember("contents");
+    if (it == hover.MemberEnd()) {
+        return ret;
+    }
 
     // support the deprecated MarkedString[] variant, used by e.g. Rust rls
-    if (it != hover.MemberEnd() && it->value.IsArray()) {
+    if (it->value.IsArray()) {
         const auto elements = it->value.GetArray();
         for (const auto &c : elements) {
             ret.contents.push_back(parseHoverContentElement(c));
         }
-    } else if (it != hover.MemberEnd()) { // String | Object
+    } else { // String | Object
         ret.contents.push_back(parseHoverContentElement(it->value));
     }
     return ret;
@@ -929,10 +933,6 @@ static QList<LSPCompletionItem> parseDocumentCompletion(const rapidjson::Value &
 
 static LSPCompletionItem parseDocumentCompletionResolve(const rapidjson::Value &result)
 {
-    LSPCompletionItem ret;
-    if (!result.IsObject()) {
-        return ret;
-    }
     return parseCompletionItem(result);
 }
 
@@ -947,7 +947,15 @@ static LSPSignatureInformation parseSignatureInformation(const rapidjson::Value 
     }
     const auto &params = GetJsonArrayForKey(json, "parameters");
     for (const auto &par : params.GetArray()) {
+        if (!par.IsObject()) {
+            continue;
+        }
+
         auto label = par.FindMember(MEMBER_LABEL);
+        if (label == par.MemberEnd()) {
+            continue;
+        }
+
         int begin = -1, end = -1;
         if (label->value.IsArray()) {
             auto range = label->value.GetArray();
@@ -988,7 +996,7 @@ static LSPSignatureHelp parseSignatureHelp(const rapidjson::Value &result)
     }
     ret.activeSignature = GetIntValue(result, "activeSignature", 0);
     ret.activeParameter = GetIntValue(result, "activeParameter", 0);
-    ret.activeSignature = std::min(std::max(ret.activeSignature, 0), static_cast<int>(ret.signatures.size()));
+    ret.activeSignature = std::min(std::max(ret.activeSignature, 0), static_cast<int>(ret.signatures.size() - 1));
     ret.activeParameter = std::max(ret.activeParameter, 0);
     if (!ret.signatures.isEmpty()) {
         ret.activeParameter = std::min(ret.activeParameter, static_cast<int>(ret.signatures.at(ret.activeSignature).parameters.size()));
@@ -1004,10 +1012,10 @@ static QUrl parseClangdSwitchSourceHeader(const rapidjson::Value &result)
 
 static LSPExpandedMacro parseExpandedMacro(const rapidjson::Value &result)
 {
-    LSPExpandedMacro ret;
-    ret.name = GetStringValue(result, "name");
-    ret.expansion = GetStringValue(result, "expansion");
-    return ret;
+    return {
+        .name = GetStringValue(result, "name"),
+        .expansion = GetStringValue(result, "expansion"),
+    };
 }
 
 static LSPTextDocumentEdit parseTextDocumentEdit(const rapidjson::Value &result)
@@ -1043,10 +1051,11 @@ static LSPWorkspaceEdit parseWorkSpaceEdit(const rapidjson::Value &result)
 
 static LSPCommand parseCommand(const rapidjson::Value &result)
 {
-    auto title = GetStringValue(result, MEMBER_TITLE);
-    auto command = GetStringValue(result, MEMBER_COMMAND);
-    auto args = rapidJsonStringify(GetJsonArrayForKey(result, MEMBER_ARGUMENTS));
-    return {.title = title, .command = command, .arguments = args};
+    return {
+        .title = GetStringValue(result, MEMBER_TITLE),
+        .command = GetStringValue(result, MEMBER_COMMAND),
+        .arguments = rapidJsonStringify(GetJsonArrayForKey(result, MEMBER_ARGUMENTS)),
+    };
 }
 
 static QList<LSPDiagnostic> parseDiagnosticsArray(const rapidjson::Value &result)
@@ -1191,6 +1200,10 @@ static std::vector<LSPInlayHint> parseInlayHints(const rapidjson::Value &result)
     for (const auto &hint : hints) {
         LSPInlayHint h;
         auto labelIt = hint.FindMember("label");
+        if (labelIt == hint.MemberEnd()) {
+            continue;
+        }
+
         if (labelIt->value.IsArray()) {
             for (const auto &part : labelIt->value.GetArray()) {
                 h.label += GetStringValue(part, "value");
@@ -1228,35 +1241,35 @@ static std::vector<LSPInlayHint> parseInlayHints(const rapidjson::Value &result)
 
 static LSPPublishDiagnosticsParams parseDiagnostics(const rapidjson::Value &result)
 {
-    LSPPublishDiagnosticsParams ret;
+    return {
+        .uri = urlFromRemote(GetStringValue(result, MEMBER_URI), false),
+        .diagnostics = parseDiagnosticsArray(GetJsonArrayForKey(result, MEMBER_DIAGNOSTICS)),
+    };
+}
 
-    auto it = result.FindMember(MEMBER_URI);
-    if (it != result.MemberEnd()) {
-        ret.uri = urlFromRemote(QString::fromUtf8(it->value.GetString(), it->value.GetStringLength()), false);
-    }
-
-    it = result.FindMember(MEMBER_DIAGNOSTICS);
-    if (it != result.MemberEnd()) {
-        ret.diagnostics = parseDiagnosticsArray(it->value);
-    }
-
-    return ret;
+static LSPPullDiagnosticParams parsePullDiagnostics(const rapidjson::Value &result)
+{
+    return {
+        .kind = GetStringValue(result, "kind") == QStringLiteral("full") ? LSPPullDiagnosticKind::Full : LSPPullDiagnosticKind::Unchanged,
+        .resultId = GetStringValue(result, "resultId"),
+        .items = parseDiagnosticsArray(GetJsonArrayForKey(result, MEMBER_ITEMS)),
+    };
 }
 
 static LSPApplyWorkspaceEditParams parseApplyWorkspaceEditParams(const rapidjson::Value &result)
 {
-    LSPApplyWorkspaceEditParams ret;
-    ret.label = GetStringValue(result, MEMBER_LABEL);
-    ret.edit = parseWorkSpaceEdit(GetJsonObjectForKey(result, MEMBER_EDIT));
-    return ret;
+    return {
+        .label = GetStringValue(result, MEMBER_LABEL),
+        .edit = parseWorkSpaceEdit(GetJsonObjectForKey(result, MEMBER_EDIT)),
+    };
 }
 
 static LSPShowMessageParams parseMessage(const rapidjson::Value &result)
 {
-    LSPShowMessageParams ret;
-    ret.type = static_cast<LSPMessageType>(GetIntValue(result, "type", static_cast<int>(LSPMessageType::Log)));
-    ret.message = GetStringValue(result, MEMBER_MESSAGE);
-    return ret;
+    return {
+        .type = static_cast<LSPMessageType>(GetIntValue(result, "type", static_cast<int>(LSPMessageType::Log))),
+        .message = GetStringValue(result, MEMBER_MESSAGE),
+    };
 }
 
 static LSPConfigurationItem parseConfigurationItem(const rapidjson::Value &result)
@@ -1274,14 +1287,9 @@ static LSPConfigurationItem parseConfigurationItem(const rapidjson::Value &resul
 static LSPConfigurationParams parseConfigurationParams(const rapidjson::Value &result)
 {
     LSPConfigurationParams ret;
-    if (!result.IsObject()) {
-        return ret;
-    }
     const auto &items = GetJsonArrayForKey(result, MEMBER_ITEMS);
-    if (items.IsArray()) {
-        for (const auto &item : items.GetArray()) {
-            ret.items.append(parseConfigurationItem(item));
-        }
+    for (const auto &item : items.GetArray()) {
+        ret.items.append(parseConfigurationItem(item));
     }
     return ret;
 }
@@ -1838,6 +1846,10 @@ private:
                                             }},
                                             {QLatin1String("inlayHint"), QJsonObject{
                                                 {QLatin1String("dynamicRegistration"), false}
+                                            }},
+                                            {QLatin1String("diagnostic"), QJsonObject{
+                                                {QLatin1String("dynamicRegistration"), false},
+                                                {QLatin1String("relatedInformation"), true}
                                             }}
                                         },
                                   },
@@ -2119,6 +2131,13 @@ public:
         auto params = textDocumentParams(document);
         params[QLatin1String(MEMBER_RANGE)] = to_json(range);
         return send(init_request(QStringLiteral("textDocument/inlayHint"), params), h);
+    }
+
+    RequestHandle documentDiagnostic(const QUrl &document, const GenericReplyHandler &h)
+    {
+        PushCurrentServer g(q);
+        auto params = textDocumentParams(document);
+        return send(init_request(QStringLiteral("textDocument/diagnostic"), params), h);
     }
 
     void executeCommand(const LSPCommand &command)
@@ -2571,6 +2590,11 @@ LSPClientServer::RequestHandle
 LSPClientServer::documentInlayHint(const QUrl &document, const LSPRange &range, const QObject *context, const InlayHintsReplyHandler &h)
 {
     return d->documentInlayHint(document, range, make_handler(h, context, parseInlayHints));
+}
+
+LSPClientServer::RequestHandle LSPClientServer::documentDiagnostic(const QUrl &document, const QObject *context, const DiagnosticReplayHandler &h)
+{
+    return d->documentDiagnostic(document, make_handler(h, context, parsePullDiagnostics));
 }
 
 void LSPClientServer::executeCommand(const LSPCommand &command)

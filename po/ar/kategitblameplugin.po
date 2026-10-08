@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the kate package.
-# SPDX-FileCopyrightText: 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-17 00:47+0000\n"
-"PO-Revision-Date: 2025-02-20 11:09+0400\n"
+"POT-Creation-Date: 2026-10-07 00:52+0000\n"
+"PO-Revision-Date: 2026-09-26 16:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: kategitblameplugin.cpp:88
 #, kde-format
@@ -35,7 +35,7 @@ msgctxt "git-blame information \"author: date: commit title \""
 msgid " %1: %2: %3 "
 msgstr " %1: %2: %3 "
 
-#: kategitblameplugin.cpp:187
+#: kategitblameplugin.cpp:187 kategitblameplugin.cpp:340
 #, kde-format
 msgid "Git Blame"
 msgstr "غت بلام"
@@ -50,12 +50,13 @@ msgstr "أظهر تفاصيل غت بلام"
 msgid "Toggle Git Blame Details"
 msgstr "بدّل حالة تفاصيل غيت بلام"
 
-#: kategitblameplugin.cpp:340
+#: kategitblameplugin.cpp:352
 #, kde-format
-msgid "Git"
-msgstr "غت"
+msgctxt "@info %1 is a git error"
+msgid "Git Blame plugin error: %1"
+msgstr "خطأ ملحق Git Blame: %1"
 
-#: kategitblameplugin.cpp:403
+#: kategitblameplugin.cpp:410
 #, kde-format
 msgid "Git blame, show commit failed."
 msgstr "غت بلام، فشل إظهار الإيداع."
@@ -65,3 +66,6 @@ msgstr "غت بلام، فشل إظهار الإيداع."
 #, kde-format
 msgid "&Tools"
 msgstr "أ&دوات"
+
+#~ msgid "Git"
+#~ msgstr "غت"

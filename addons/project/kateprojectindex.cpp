@@ -12,6 +12,7 @@
 #include <QProcess>
 #include <QStandardPaths>
 
+#include "asyncjob.h"
 #include "hostprocess.h"
 
 /**
@@ -19,8 +20,50 @@
  */
 #include "ctags/readtags.c"
 
+using tagFilePtr = std::shared_ptr<tagFile>;
+
+class KateProjectIndex::KateProjectIndexPrivate
+{
+public:
+    KateProjectIndex *q;
+    std::vector<tagFilePtr> m_tagsIndexHandles;
+
+    KateProjectIndexPrivate(KateProjectIndex *self)
+        : q(self)
+    {
+    }
+
+    tagFilePtr takeHandle()
+    {
+        if (m_tagsIndexHandles.empty()) {
+            auto deleter = [](tagFile *h) {
+                tagsClose(h);
+            };
+            tagFileInfo info;
+            memset(&info, 0, sizeof(tagFileInfo));
+            auto h = tagsOpen(q->m_ctagsIndexFile->fileName().toLocal8Bit().constData(), &info);
+            m_tagsIndexHandles.push_back(std::shared_ptr<tagFile>(h, deleter));
+        }
+
+        auto ptr = m_tagsIndexHandles.back();
+        m_tagsIndexHandles.pop_back();
+        return ptr;
+    }
+
+    void putHandle(tagFilePtr t)
+    {
+        m_tagsIndexHandles.push_back(t);
+    }
+
+    void clearHandles()
+    {
+        // also arranges for proper close (see above)
+        m_tagsIndexHandles.clear();
+    }
+};
+
 KateProjectIndex::KateProjectIndex(const QString &baseDir, const QString &indexDir, const QStringList &files, const QVariantMap &ctagsMap, bool force)
-    : m_ctagsIndexHandle(nullptr)
+    : d(new KateProjectIndexPrivate(this))
 {
     // allow project to override and specify a (re-usable) indexfile
     // otherwise fall-back to a temporary file if nothing specified
@@ -47,16 +90,7 @@ KateProjectIndex::KateProjectIndex(const QString &baseDir, const QString &indexD
     loadCtags(files, ctagsMap, force);
 }
 
-KateProjectIndex::~KateProjectIndex()
-{
-    /**
-     * delete ctags handle if any
-     */
-    if (m_ctagsIndexHandle) {
-        tagsClose(m_ctagsIndexHandle);
-        m_ctagsIndexHandle = nullptr;
-    }
-}
+KateProjectIndex::~KateProjectIndex() = default;
 
 void KateProjectIndex::loadCtags(const QStringList &files, const QVariantMap &ctagsMap, bool force)
 {
@@ -133,7 +167,7 @@ void KateProjectIndex::openCtags()
     /**
      * get size
      */
-    qint64 size = m_ctagsIndexFile->size();
+    qint64 size = m_size = m_ctagsIndexFile->size();
 
     /**
      * close again
@@ -150,25 +184,25 @@ void KateProjectIndex::openCtags()
     /**
      * close current
      */
-    if (m_ctagsIndexHandle) {
-        tagsClose(m_ctagsIndexHandle);
-        m_ctagsIndexHandle = nullptr;
-    }
+    d->clearHandles();
 
     /**
      * try to open ctags file
      */
-    tagFileInfo info;
-    memset(&info, 0, sizeof(tagFileInfo));
-    m_ctagsIndexHandle = tagsOpen(m_ctagsIndexFile->fileName().toLocal8Bit().constData(), &info);
+    d->putHandle(d->takeHandle());
 }
 
-void KateProjectIndex::findMatches(QStandardItemModel &model, const QString &searchWord, MatchType type, int options)
+static void
+findMatches(tagFile *tags, QStandardItemModel &model, const QString &searchWord, KateProjectIndex::MatchType type, int options, Utils::stop_token stop)
 {
     /**
      * abort if no ctags index
      */
-    if (!m_ctagsIndexHandle) {
+    if (!tags) {
+        return;
+    }
+
+    if (stop.stop_requested()) {
         return;
     }
 
@@ -189,7 +223,7 @@ void KateProjectIndex::findMatches(QStandardItemModel &model, const QString &sea
     if (options == -1) {
         options = TAG_PARTIALMATCH | TAG_OBSERVECASE;
     }
-    if (tagsFind(m_ctagsIndexHandle, &entry, word.constData(), options) != TagSuccess) {
+    if (tagsFind(tags, &entry, word.constData(), options) != TagSuccess) {
         return;
     }
 
@@ -219,7 +253,7 @@ void KateProjectIndex::findMatches(QStandardItemModel &model, const QString &sea
          * construct right items
          */
         switch (type) {
-        case CompletionMatches:
+        case KateProjectIndex::CompletionMatches:
             /**
              * add new completion item, if new name
              */
@@ -229,7 +263,7 @@ void KateProjectIndex::findMatches(QStandardItemModel &model, const QString &sea
             }
             break;
 
-        case FindMatches:
+        case KateProjectIndex::FindMatches:
             /**
              * add new find item, contains of multiple columns
              */
@@ -241,5 +275,46 @@ void KateProjectIndex::findMatches(QStandardItemModel &model, const QString &sea
             model.appendRow(items);
             break;
         }
-    } while (tagsFindNext(m_ctagsIndexHandle, &entry) == TagSuccess);
+    } while (!stop.stop_requested() && tagsFindNext(tags, &entry) == TagSuccess);
 }
+
+void KateProjectIndex::findMatches(QStandardItemModel &model, const QString &searchWord, MatchType type, int options)
+{
+    /* avoid tying down mainloop in expensive lookup */
+    if (m_size > 50 * 1024 * 1024 && type == CompletionMatches) {
+        return;
+    }
+
+    auto th = d->takeHandle();
+    ::findMatches(th.get(), model, searchWord, type, options, {});
+    d->putHandle(th);
+}
+
+Utils::stop_source KateProjectIndex::findMatchesAsync(QThreadPool &tp,
+                                                      const QObject *context,
+                                                      std::function<void(QStandardItemModel &&)> cb,
+                                                      const QString &searchWord,
+                                                      MatchType type,
+                                                      bool automatic,
+                                                      int options)
+{
+    // this will probably take a long time, so let's forego this if not explicitly requested
+    bool skipFind = m_size > 50 * 1024 * 1024 && type == CompletionMatches && automatic;
+
+    auto model = std::make_shared<QStandardItemModel>();
+    auto th = d->takeHandle();
+    auto match = [tags = th, model, searchWord, type, options, skipFind](const Utils::stop_token &token) {
+        if (!skipFind)
+            ::findMatches(tags.get(), *model, searchWord, type, options, token);
+    };
+    auto done = [d = d, th, model, cb = std::move(cb)](bool cancel) {
+        // try to return handle to cache
+        d->putHandle(th);
+        if (!cancel)
+            cb(std::move(*model));
+    };
+
+    return Utils::runAsyncJob(tp, match, context, done);
+}
+
+// #include "kateprojectindex.moc"

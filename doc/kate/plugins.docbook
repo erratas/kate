@@ -75,11 +75,14 @@ Quick document switching with <keycombo action="simul">&Alt;&Tab;</keycombo> beh
 <para><link linkend="kate-application-plugin-documents">Document Tree View</link> - Displays the open files in a file tree</para>
 </listitem>
 <listitem>
-<para><link linkend="kate-application-plugin-gdb">&gdb;</link> - Provides a
+<para><link linkend="kate-application-plugin-debugger">&kate; Debugger Plugin</link> - Provides a
 simple &gdb; frontend</para>
 </listitem>
 <listitem>
 <para><link linkend="kate-application-plugin-projects">Project Plugin</link> - Integration with &git; and other source control systems</para>
+</listitem>
+<listitem>
+<para><link linkend="kate-application-plugin-deployment">Deployment Plugin</link> - Upload project files and browse a remote SFTP host</para>
 </listitem>
 <listitem>
 <para>Replicode - Constructivist AI language and runtime</para>
@@ -1582,7 +1585,7 @@ for opened documents on hover.</para></listitem>
 
 </sect1>
 
-<sect1 id="kate-application-plugin-gdb">
+<sect1 id="kate-application-plugin-debugger">
 <!--https://kate-editor.org/2011/06/23/kate-plugin-updates-part-2/-->
 <sect1info>
 <authorgroup>
@@ -1590,12 +1593,12 @@ for opened documents on hover.</para></listitem>
 <author>&TC.Hollingsworth; &TC.Hollingsworth.mail;</author>
 </authorgroup>
 </sect1info>
-<title>&gdb; Plugin</title>
+<title>&kate; Debugger Plugin</title>
 
 <sect2 id="gdb-intro">
 <title>Introduction</title>
 
-<para>&kate;'s &gdb; plugin provides a simple frontend to any debugger that supports the
+<para>The &kate; Debugger plugin provides a simple frontend to any debugger that supports the
 <ulink url="https://microsoft.github.io/debug-adapter-protocol/">Debugger Adapter Protocol</ulink>.
 In particular, that includes the GNU Project Debugger, aka GDB, as
 <ulink url="https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html">outlined
@@ -1608,7 +1611,7 @@ information on using &gdb;, visit <ulink url="https://www.gnu.org/software/gdb/"
 &gdb; website</ulink>.</para>
 </important>
 
-<para>You can enable the &gdb; plugin in
+<para>You can enable the &kate; Debugger plugin in
 <link linkend="config-dialog-plugins">the Plugins section of &kate;'s
 configuration</link>.</para>
 
@@ -1754,7 +1757,7 @@ pointing to.</para></listitem>
 
 <varlistentry id="gdb-menus-toolbar">
 <term><menuchoice>
-<guimenu>Settings</guimenu><guisubmenu>Toolbars Shown</guisubmenu><guimenuitem>&gdb; Plugin</guimenuitem>
+<guimenu>Settings</guimenu><guisubmenu>Toolbars Shown</guisubmenu><guimenuitem>Debug Plugin</guimenuitem>
 </menuchoice></term>
 <listitem><para>Display the debugging toolbar.</para></listitem>
 </varlistentry>
@@ -1871,7 +1874,7 @@ backtrace returned from &gdb;.</para>
 <mediaobject>
 <imageobject><imagedata fileref="gdb-call-stack.png" format="PNG"/></imageobject>
 <textobject><phrase>The Call Stack tool view.</phrase></textobject>
-<caption><para>The &gdb; Plugin's <guilabel>Call Stack</guilabel> tool view.
+<caption><para>The &kate; Debugger plugin's <guilabel>Call Stack</guilabel> tool view.
 </para></caption>
 </mediaobject>
 </screenshot>
@@ -1884,7 +1887,7 @@ loaded variables from the program and their corresponding values.</para>
 <mediaobject>
 <imageobject><imagedata fileref="gdb-locals.png" format="PNG"/></imageobject>
 <textobject><phrase>The Locals tool view.</phrase></textobject>
-<caption><para>The &gdb; Plugin's <guilabel>Locals</guilabel> tool view.
+<caption><para>The &kate; Debugger plugin's <guilabel>Locals</guilabel> tool view.
 </para></caption>
 </mediaobject>
 </screenshot>
@@ -2286,6 +2289,37 @@ to exclude folders and files from the project tree. In this example, All files
 and folders in a directory <filename>build</filename> from the root will be excluded.
 </para>
 
+<para>
+Git hosting mappings can also be configured for a project. A project mapping overrides a global
+mapping with the same host and port, while mappings for other hosts remain available as fallbacks:
+</para>
+
+<screen>
+{
+  "name": "Kate",
+  "files": [
+    {
+      "git": 1
+    }
+  ],
+  "git": {
+    "hostMappings": [
+      {
+        "host": "git.example.com:2222",
+        "provider": "Forgejo",
+        "webBaseUrl": "https://code.example.com"
+      }
+    ]
+  }
+}
+</screen>
+
+<para>
+The <code>"provider"</code> value must be <code>"Forgejo"</code>, <code>"GitHub"</code>, or
+<code>"GitLab"</code>. The <code>"host"</code> may include the SSH port used by the Git remote,
+and <code>"webBaseUrl"</code> is the HTTP or HTTPS address used to open repository links.
+</para>
+
 <para id="projects-build-support">If you want to add support for the building, you can write a
 <filename>.kateproject</filename> like this:</para>
 
@@ -2452,6 +2486,118 @@ currently open projects.  It is displayed by the Project plugin.</para>
 <!--
 context menu Project->Lookup:xxx
 -->
+
+</sect1>
+
+<sect1 id="kate-application-plugin-deployment">
+<title>Deployment Plugin</title>
+
+<para>The Deployment plugin uploads files from the active project to an SFTP
+server. It also provides a <guilabel>Remote Host</guilabel> tool view for
+browsing the configured destination and opening remote files directly in
+&kate;. The <link linkend="kate-application-plugin-projects">Project
+plugin</link> must be enabled.</para>
+
+<sect2 id="deployment-configuration">
+<title>Project Configuration</title>
+
+<para>Add a <literal>deployment</literal> object to the project's
+<filename>.kateproject</filename> file:</para>
+
+<screen>
+{
+  "name": "Example",
+  "files": [ { "git": 1 } ],
+  "deployment": {
+    "host": "example.org",
+    "port": 22,
+    "user": "deploy",
+    "localRoot": ".",
+    "remoteRoot": "/var/www/example",
+    "exclude": [
+      ".git",
+      ".kateproject*",
+      "build",
+      "*.tmp"
+    ]
+  }
+}
+</screen>
+
+<variablelist>
+<varlistentry>
+<term><literal>host</literal></term>
+<listitem><para>The required server hostname or IP address. Do not include an
+<literal>sftp://</literal> scheme or user name.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><literal>port</literal></term>
+<listitem><para>The SSH port, from 1 through 65535. If omitted, it defaults to
+22.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><literal>user</literal></term>
+<listitem><para>The SSH user name. If omitted, KIO uses its normal default for
+the host.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><literal>localRoot</literal></term>
+<listitem><para>The local directory whose contents are mapped to
+<literal>remoteRoot</literal>. A relative path is resolved from the project
+base directory. The default is the project base directory. The directory must
+exist and must be inside the project.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><literal>remoteRoot</literal></term>
+<listitem><para>The required absolute destination directory on the server.
+Parent-directory traversal components are not allowed.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><literal>exclude</literal></term>
+<listitem><para>An optional array of project-relative wildcard patterns. A
+pattern without a slash matches any path component, so
+<literal>build</literal> excludes directories or files with that name at any
+depth. Patterns containing a slash match paths relative to
+<literal>localRoot</literal>.</para></listitem>
+</varlistentry>
+</variablelist>
+
+<para>Passwords and private keys are not stored in the project configuration.
+Authentication, host-key verification, and wallet integration are handled by
+KIO.</para>
+
+<para>Shared settings can be committed in
+<filename>.kateproject</filename>. To keep machine-specific server paths or
+accounts out of version control, put a complete <literal>deployment</literal>
+object in <filename>.kateproject.local</filename>. The local object takes
+precedence over the one in <filename>.kateproject</filename>. The
+<guimenuitem>Configure Deployment...</guimenuitem> action writes this local
+override while preserving unrelated project settings.</para>
+</sect2>
+
+<sect2 id="deployment-usage">
+<title>Uploading and Browsing</title>
+
+<para><guimenuitem>Upload Current File</guimenuitem> uploads the active local
+file and has the default shortcut
+<keycombo action="simul">&Ctrl;&Alt;<keycap>S</keycap></keycombo>.
+<guimenuitem>Upload Project</guimenuitem> uploads all non-excluded files known
+to the active project. A project file's context menu provides
+<guimenuitem>Upload to Remote Host</guimenuitem>, while a folder's context menu
+provides <guimenuitem>Upload Folder to Remote Host</guimenuitem> to upload its
+contents recursively. Missing remote directories are created automatically.</para>
+
+<para>The <guilabel>Remote Host</guilabel> tool view browses the configured
+remote root. Opening a remote file edits its <literal>sftp://</literal> URL
+directly. Its context menu can open or upload the corresponding local file when
+one exists. Transfer progress and errors are shown in the
+<guilabel>File Transfer</guilabel> tool view.</para>
+</sect2>
 
 </sect1>
 
@@ -4961,7 +5107,7 @@ The current list of supported languages and formatters are as follows:
 <listitem><para>Go - <command>gofmt</command></para></listitem>
 <listitem><para>XML - <command>xmllint</command></para></listitem>
 <listitem><para>Zig - <command>zigfmt</command></para></listitem>
-<listitem><para>CMake - <command>cmake-format</command></para></listitem>
+<listitem><para>CMake - <command>gersemi</command></para></listitem>
 <listitem><para>D - <command>dfmt</command></para></listitem>
 <listitem><para>Fish Shell - <command>fish_indent</command></para></listitem>
 <listitem><para>Bash - <command>shfmt</command></para></listitem>
@@ -4971,6 +5117,7 @@ The current list of supported languages and formatters are as follows:
 <listitem><para>Swift - <command>swiftformat</command></para></listitem>
 <listitem><para>Erlang - <command>erlfmt</command></para></listitem>
 <listitem><para>Godot Script - <command>gdformat</command></para></listitem>
+<listitem><para>Perl - <command>perltidy</command></para></listitem>
 
 <listitem><para>Python
 <itemizedlist>
@@ -5009,7 +5156,7 @@ Example:
 {
     "formatOnSave": true,
     "formatterForJson": "jq",
-    "cmake-format": {
+    "gersemi": {
         "formatOnSave": false
     },
     "autopep8": {
@@ -5022,7 +5169,7 @@ Example:
 <itemizedlist>
 <listitem><para>enables "format on save" globally</para></listitem>
 <listitem><para>specifies "jq" as the formatter for JSON</para></listitem>
-<listitem><para>disables "format on save" for cmake-format and autopep8</para></listitem>
+<listitem><para>disables "format on save" for gersemi and autopep8</para></listitem>
 </itemizedlist>
 </para>
 

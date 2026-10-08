@@ -668,7 +668,7 @@ KTextEditor::View *KateViewManager::openViewForDoc(KTextEditor::Document *doc)
 void KateViewManager::addPositionToHistory(const QUrl &url, KTextEditor::Cursor pos)
 {
     if (KateViewSpace *avs = activeViewSpace()) {
-        avs->addPositionToHistory(url, pos, /* calledExternally: */ true);
+        avs->addPositionToHistory(nullptr, url, pos, /* calledExternally: */ true);
     }
 }
 
@@ -1695,7 +1695,7 @@ void KateViewManager::restoreViewConfiguration(const KConfigGroup &config)
 
     // finally, make the correct view from the last session active
     size_t lastViewSpace = config.readEntry("Active ViewSpace", 0);
-    if (lastViewSpace > m_viewSpaceList.size()) {
+    if (lastViewSpace >= m_viewSpaceList.size()) {
         lastViewSpace = 0;
     }
     if (lastViewSpace < m_viewSpaceList.size()) {
@@ -1914,7 +1914,8 @@ void KateViewManager::moveSplitter(Qt::Key key, int repeats)
 
 void KateViewManager::hideWelcomeView(KateViewSpace *vs)
 {
-    if (auto welcomeView = qobject_cast<WelcomeView *>(vs ? vs : activeViewSpace()->currentWidget())) {
+    auto *targetWidget = vs ? vs->currentWidget() : (activeViewSpace() ? activeViewSpace()->currentWidget() : nullptr);
+    if (auto welcomeView = qobject_cast<WelcomeView *>(targetWidget)) {
         QTimer::singleShot(0, welcomeView, [this, welcomeView]() {
             mainWindow()->removeWidget(welcomeView);
         });

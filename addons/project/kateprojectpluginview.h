@@ -13,10 +13,13 @@
 #include <KTextEditor/View>
 #include <KXMLGUIClient>
 
+#include "git/gitforgelink.h"
+
 #include <memory>
 
 class QAction;
 class QDir;
+class QMenu;
 class KateProject;
 class KateProjectPlugin;
 class KateProjectInfoView;
@@ -30,10 +33,11 @@ class KateProjectPluginView : public QObject, public KXMLGUIClient
     Q_OBJECT
 
     Q_PROPERTY(QString projectFileName READ projectFileName NOTIFY projectFileNameChanged)
+    Q_PROPERTY(QString projectLocalConfigFileName READ projectLocalConfigFileName NOTIFY projectFileNameChanged)
     Q_PROPERTY(QString projectName READ projectName)
     Q_PROPERTY(QString projectBaseDir READ projectBaseDir)
     Q_PROPERTY(QVariantMap projectMap READ projectMap NOTIFY projectMapChanged)
-    Q_PROPERTY(QStringList projectFiles READ projectFiles)
+    Q_PROPERTY(QStringList projectFiles READ projectFiles NOTIFY projectFilesChanged)
 
     Q_PROPERTY(QString allProjectsCommonBaseDir READ allProjectsCommonBaseDir)
     Q_PROPERTY(QStringList allProjectsFiles READ allProjectsFiles)
@@ -54,6 +58,9 @@ public:
      * @return empty string if none, else project file name
      */
     QString projectFileName() const;
+
+    /** Returns the per-user project configuration path. */
+    QString projectLocalConfigFileName() const;
 
     /**
      * Returns the name of the project
@@ -252,6 +259,12 @@ Q_SIGNALS:
      */
     void projectMapChanged();
 
+    /** Emitted when the current project's file list changed. */
+    void projectFilesChanged();
+
+    /** Emitted synchronously before a project tree context menu is shown. */
+    void projectTreeContextMenuAboutToShow(QMenu *menu, const QString &path, const QString &projectBaseDir, int itemType);
+
     /**
      * Emitted when a ctags lookup in requested
      * @param word lookup word
@@ -321,6 +334,9 @@ private Q_SLOTS:
      * Enable/disable project actions
      */
     void updateActions();
+    void updateGitHostingActions();
+    void openGitHostingLink();
+    void copyGitHostingLink();
 
 private:
     /**
@@ -424,6 +440,11 @@ private:
     QAction *m_lookupAction;
     QAction *m_gotoSymbolAction;
     QAction *m_gotoSymbolActionAppMenu;
+    QMenu *m_gitHostingMenu = nullptr;
+    QAction *m_openGitHostingAction = nullptr;
+    QAction *m_copyGitHostingAction = nullptr;
+    std::optional<GitForge::Link> m_activeGitHostingLink;
+    quint64 m_gitHostingRequestGeneration = 0;
     QAction *m_projectTodosAction;
     QAction *m_projectPrevAction;
     QAction *m_projectNextAction;

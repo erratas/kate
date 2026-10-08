@@ -4,13 +4,13 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # SPDX-FileCopyrightText: 2014, 2018, 2021 Antoni Bella Pérez <antonibella5@yahoo.com>
-# SPDX-FileCopyrightText: 2012, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2012-2013, 2015-2016, 2018-2026 Josep M. Ferrer <txemaq@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-30 00:48+0000\n"
-"PO-Revision-Date: 2026-05-15 09:30+0200\n"
+"POT-Creation-Date: 2026-10-04 00:51+0000\n"
+"PO-Revision-Date: 2026-09-25 21:33+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -71,7 +71,7 @@ msgstr "Darrera activitat"
 msgid "Last Commit"
 msgstr "Darrera comissió"
 
-#: branchdeletedialog.cpp:137 kateprojecttreeviewcontextmenu.cpp:133
+#: branchdeletedialog.cpp:137 kateprojecttreeviewcontextmenu.cpp:139
 #, kde-format
 msgid "Delete"
 msgstr "Suprimeix"
@@ -88,7 +88,8 @@ msgstr[1] "Esteu segur que voleu suprimir les branques seleccionades?"
 msgid "Select Branch..."
 msgstr "Selecciona la branca..."
 
-#: branchesdialog.cpp:108 gitwidget.cpp:551 kateprojectpluginview.cpp:72
+#: branchesdialog.cpp:108 gitwidget.cpp:551 kateprojectconfigpage.cpp:32
+#: kateprojectpluginview.cpp:77
 #, kde-format
 msgid "Git"
 msgstr "Git"
@@ -125,6 +126,170 @@ msgstr "HEAD és en aquesta etiqueta %1"
 msgctxt "Tooltip text, describing that '%1' branch is checked out"
 msgid "Active branch: %1"
 msgstr "Branca activa: %1"
+
+#: git/gitforgeconfigwidget.cpp:32
+#, kde-format
+msgid "Detect Service"
+msgstr "Detecta el servei"
+
+#: git/gitforgeconfigwidget.cpp:37
+#, kde-format
+msgid ""
+"Map Git remote hosts to their Forgejo, GitHub, or GitLab website. The remote "
+"host is taken from the clone URL; the website URL is used to open repository "
+"links in a browser."
+msgstr ""
+"Mapa el servidor remot de Git al lloc web de Forgejo, GitHub o GitLab. El "
+"servidor remot es pren de l'URL clonat; l'URL del lloc web s'utilitza per "
+"obrir enllaços de repositori en un navegador."
+
+#: git/gitforgeconfigwidget.cpp:45
+#, kde-format
+msgid "Git Remote Host"
+msgstr "Servidor remot de Git"
+
+#: git/gitforgeconfigwidget.cpp:45
+#, kde-format
+msgid "Hosting Service"
+msgstr "Servei d'allotjament"
+
+#: git/gitforgeconfigwidget.cpp:45
+#, kde-format
+msgid "Website URL"
+msgstr "URL del lloc web"
+
+#: git/gitforgeconfigwidget.cpp:46
+#, kde-format
+msgid "Host from the Git clone URL, optionally followed by its SSH port"
+msgstr ""
+"Servidor a partir de l'URL de clonatge de Git, seguit opcionalment pel seu "
+"port SSH"
+
+#: git/gitforgeconfigwidget.cpp:47
+#, kde-format
+msgid "Forgejo, GitHub, or GitLab software running on the server"
+msgstr "Programari Forgejo, GitHub o GitLab executant-se al servidor"
+
+#: git/gitforgeconfigwidget.cpp:48
+#, kde-format
+msgid "HTTP or HTTPS address used to open repository links in a web browser"
+msgstr ""
+"Adreça HTTP o HTTPS utilitzada per obrir enllaços de repositori en un "
+"navegador web"
+
+#: git/gitforgeconfigwidget.cpp:56
+#, kde-format
+msgid "Add Mapping"
+msgstr "Afegeix un mapatge"
+
+#: git/gitforgeconfigwidget.cpp:57
+#, kde-format
+msgid "Remove Selected Mapping"
+msgstr "Elimina el mapatge seleccionat"
+
+#: git/gitforgeconfigwidget.cpp:60
+#, kde-format
+msgid ""
+"Try to identify Forgejo, GitHub, or GitLab from the selected mapping's "
+"website URL"
+msgstr ""
+"Intenta identificar un Forgejo, GitHub o GitLab a partir de l'URL del lloc "
+"web seleccionat"
+
+#: git/gitforgeconfigwidget.cpp:106
+#, kde-format
+msgctxt "Git hosting service, such as Forgejo, GitHub, or GitLab"
+msgid "The hosting service in row %1 is invalid."
+msgstr "El servei d'allotjament a la fila %1 no és vàlid."
+
+#: git/gitforgeconfigwidget.cpp:111
+#, kde-format
+msgid "The Git remote host or website URL in row %1 is invalid."
+msgstr ""
+"L'URL del servidor remot o del lloc web del Git a la fila %1 no és vàlid."
+
+#: git/gitforgeconfigwidget.cpp:138
+#, kde-format
+msgid "git.example.com or git.example.com:2222"
+msgstr "git.exemple.com o git.exemple.com:2222"
+
+#: git/gitforgeconfigwidget.cpp:156
+#, kde-format
+msgid "https://git.example.com"
+msgstr "https://git.example.com"
+
+#: git/gitforgeconfigwidget.cpp:173
+#, kde-format
+msgid "Select a mapping to detect its hosting service."
+msgstr "Seleccioneu un mapatge per detectar el seu servei d'allotjament."
+
+#: git/gitforgeconfigwidget.cpp:180
+#, kde-format
+msgid ""
+"Enter a valid HTTP or HTTPS website URL before detecting the hosting service."
+msgstr ""
+"Introduïu un URL vàlid de lloc web HTTP o HTTPS abans de detectar el servei "
+"d'allotjament."
+
+#: git/gitforgeconfigwidget.cpp:191
+#, kde-format
+msgid "Detecting…"
+msgstr "S'està detectant…"
+
+#: git/gitforgeconfigwidget.cpp:237
+#, kde-format
+msgid "Detected %1."
+msgstr "S'ha detectat %1."
+
+#: git/gitforgeconfigwidget.cpp:239
+#, kde-format
+msgid "The mapping changed; the detection result was ignored."
+msgstr "El mapatge ha canviat; el resultat de la detecció s'ha ignorat."
+
+#: git/gitforgeconfigwidget.cpp:241
+#, kde-format
+msgid "Service could not be detected; select it manually."
+msgstr "No s'ha pogut detectar el servei; seleccioneu-lo manualment."
+
+#: git/gitstatus.cpp:159
+#, kde-format
+msgid " ‣ Modified"
+msgstr " ‣ Modificat"
+
+#: git/gitstatus.cpp:161
+#, kde-format
+msgid " ‣ Untracked"
+msgstr " ‣ Sense seguiment"
+
+#: git/gitstatus.cpp:163
+#, kde-format
+msgid " ‣ Renamed"
+msgstr " ‣ Canviat de nom"
+
+#: git/gitstatus.cpp:166
+#, kde-format
+msgid " ‣ Deleted"
+msgstr " ‣ Suprimit"
+
+#: git/gitstatus.cpp:169
+#, kde-format
+msgid " ‣ Added"
+msgstr " ‣ Afegit"
+
+#: git/gitstatus.cpp:171
+#, kde-format
+msgid " ‣ Copied"
+msgstr " ‣ Copiat"
+
+#: git/gitstatus.cpp:173
+#, kde-format
+msgid " ‣ Ignored"
+msgstr " ‣ Ignorat"
+
+#: git/gitstatus.cpp:181
+#, kde-format
+msgid " ‣ Conflicted"
+msgstr " ‣ Amb conflicte"
 
 #: gitcommitdialog.cpp:70 gitcommitdialog.cpp:121
 #, kde-format
@@ -433,7 +598,7 @@ msgid "Open .gitignore"
 msgstr "Obre el .gitignore"
 
 #: gitwidget.cpp:1246 gitwidget.cpp:1295 gitwidget.cpp:1346
-#: kateprojectconfigpage.cpp:111 kateprojectconfigpage.cpp:123
+#: kateprojectconfigpage.cpp:128 kateprojectconfigpage.cpp:140
 #, kde-format
 msgid "Show Diff"
 msgstr "Mostra el «diff»"
@@ -543,36 +708,41 @@ msgstr "(Modificat)"
 msgid "(Staged)"
 msgstr "(Marcat)"
 
-#: kateproject.cpp:357
+#: kateproject.cpp:355
 #, kde-format
 msgid "Malformed JSON file '%1': %2"
 msgstr "Fitxer JSON «%1» amb format incorrecte: %2"
 
-#: kateproject.cpp:424 kateprojectplugin.cpp:826 kateprojectpluginview.cpp:77
-#: kateprojectpluginview.cpp:233 kateprojectviewtree.cpp:368
+#: kateproject.cpp:423 kateprojectplugin.cpp:881 kateprojectpluginview.cpp:82
+#: kateprojectpluginview.cpp:238 kateprojectviewtree.cpp:368
 #: kateprojectviewtree.cpp:379 kateprojectviewtree.cpp:409
 #: kateprojectviewtree.cpp:416
 #, kde-format
 msgid "Project"
 msgstr "Projecte"
 
-#: kateproject.cpp:725
+#: kateproject.cpp:732
 #, kde-format
 msgid "<untracked>"
 msgstr "<sense seguiment>"
 
-#: kateprojectcompletion.cpp:52
+#: kateprojectcompletion.cpp:46
 #, kde-format
 msgid "Project Completion"
 msgstr "Compleció del projecte"
 
-#: kateprojectconfigpage.cpp:24
+#: kateprojectconfigpage.cpp:31
+#, kde-format
+msgid "General"
+msgstr "General"
+
+#: kateprojectconfigpage.cpp:38
 #, kde-format
 msgctxt "Groupbox title"
 msgid "Autoload Repositories && Build Trees"
 msgstr "Carrega automàticament els repositoris i construeix els arbres"
 
-#: kateprojectconfigpage.cpp:26
+#: kateprojectconfigpage.cpp:40
 #, kde-format
 msgid ""
 "Project plugin is able to autoload repository working copies and build trees "
@@ -582,38 +752,38 @@ msgstr ""
 "treball i construir els arbres quan encara no hi ha cap fitxer «."
 "kateproject» definit."
 
-#: kateprojectconfigpage.cpp:29
+#: kateprojectconfigpage.cpp:43
 #, kde-format
 msgid "&Git"
 msgstr "&Git"
 
-#: kateprojectconfigpage.cpp:32
+#: kateprojectconfigpage.cpp:46
 #, kde-format
 msgid "&Subversion"
 msgstr "&Subversion"
 
-#: kateprojectconfigpage.cpp:34
+#: kateprojectconfigpage.cpp:48
 #, kde-format
 msgid "&Mercurial"
 msgstr "&Mercurial"
 
-#: kateprojectconfigpage.cpp:36
+#: kateprojectconfigpage.cpp:50
 #, kde-format
 msgid "&Fossil"
 msgstr "&Fossil"
 
-#: kateprojectconfigpage.cpp:38
+#: kateprojectconfigpage.cpp:52
 #, kde-format
 msgid "&CMake"
 msgstr "&CMake"
 
-#: kateprojectconfigpage.cpp:47
+#: kateprojectconfigpage.cpp:61
 #, kde-format
 msgctxt "Groupbox title"
 msgid "Directory Listing"
 msgstr "Llistat de directors"
 
-#: kateprojectconfigpage.cpp:49
+#: kateprojectconfigpage.cpp:63
 #, kde-format
 msgid ""
 "When directory listing is enabled, autoloaded repository projects show all "
@@ -623,12 +793,12 @@ msgstr ""
 "carregats automàticament mostren tots els fitxers en lloc de només els "
 "fitxers seguits per VCS."
 
-#: kateprojectconfigpage.cpp:52
+#: kateprojectconfigpage.cpp:66
 #, kde-format
 msgid "Include files untracked by repository"
 msgstr "Inclou els fitxers no seguits pel repositori"
 
-#: kateprojectconfigpage.cpp:54
+#: kateprojectconfigpage.cpp:68
 #, kde-format
 msgid ""
 "Show all files in the project directory including files not tracked by the "
@@ -638,12 +808,12 @@ msgstr ""
 "seguits pel sistema de control de versions, com els exclosos a través de «."
 "gitignore»."
 
-#: kateprojectconfigpage.cpp:58
+#: kateprojectconfigpage.cpp:72
 #, kde-format
 msgid "Show hidden files in non-VCS projects"
 msgstr "Mostra els fitxers ocults en projectes no VCS"
 
-#: kateprojectconfigpage.cpp:59
+#: kateprojectconfigpage.cpp:73
 #, kde-format
 msgid ""
 "Show hidden files (dotfiles) in the project file tree for projects not "
@@ -653,44 +823,44 @@ msgstr ""
 "projecte per a projectes que no es carreguin utilitzant un control de "
 "versions."
 
-#: kateprojectconfigpage.cpp:68
+#: kateprojectconfigpage.cpp:82
 #, kde-format
 msgctxt "Groupbox title"
 msgid "Session Behavior"
 msgstr "Comportament de la sessió"
 
-#: kateprojectconfigpage.cpp:69
+#: kateprojectconfigpage.cpp:83
 #, kde-format
 msgid "Session settings for projects"
 msgstr "Configuració de la sessió per als projectes"
 
-#: kateprojectconfigpage.cpp:70
+#: kateprojectconfigpage.cpp:84
 #, kde-format
 msgid "Restore Open Projects"
 msgstr "Restaura els projectes oberts"
 
-#: kateprojectconfigpage.cpp:77
+#: kateprojectconfigpage.cpp:91
 #, kde-format
 msgctxt "Groupbox title"
 msgid "Project Index"
 msgstr "Índex del projecte"
 
-#: kateprojectconfigpage.cpp:78
+#: kateprojectconfigpage.cpp:92
 #, kde-format
 msgid "Project ctags index settings"
 msgstr "Paràmetres de l'índex de les «ctags» del projecte"
 
-#: kateprojectconfigpage.cpp:79 kateprojectinfoviewindex.cpp:208
+#: kateprojectconfigpage.cpp:93 kateprojectinfoviewindex.cpp:208
 #, kde-format
 msgid "Enable indexing"
 msgstr "Activa la indexació"
 
-#: kateprojectconfigpage.cpp:82
+#: kateprojectconfigpage.cpp:96
 #, kde-format
 msgid "Directory for index files"
 msgstr "Directori per als fitxers d'índex"
 
-#: kateprojectconfigpage.cpp:86
+#: kateprojectconfigpage.cpp:100
 #, kde-format
 msgid ""
 "The system temporary directory is used if not specified, which may overflow "
@@ -699,13 +869,13 @@ msgstr ""
 "S'usa el directori temporal del sistema si no s'especifica, que pot "
 "desbordar amb repositoris molt grans"
 
-#: kateprojectconfigpage.cpp:93
+#: kateprojectconfigpage.cpp:107
 #, kde-format
 msgctxt "Groupbox title"
 msgid "Cross-Project Functionality"
 msgstr "Funcionalitat interprojectes"
 
-#: kateprojectconfigpage.cpp:94
+#: kateprojectconfigpage.cpp:108
 #, kde-format
 msgid ""
 "Project plugin is able to perform some operations across multiple projects"
@@ -713,53 +883,59 @@ msgstr ""
 "Connector de projecte que pot portar a terme diverses operacions a múltiples "
 "projectes"
 
-#: kateprojectconfigpage.cpp:95
+#: kateprojectconfigpage.cpp:109
 #, kde-format
 msgid "Cross-Project Completion"
 msgstr "Compleció interprojectes"
 
-#: kateprojectconfigpage.cpp:97
+#: kateprojectconfigpage.cpp:111
 #, kde-format
 msgid "Cross-Project Goto Symbol"
 msgstr "Ves a símbols interprojectes"
 
-#: kateprojectconfigpage.cpp:105
+#: kateprojectconfigpage.cpp:122
 #, kde-format
 msgctxt "Groupbox title"
 msgid "Git"
 msgstr "Git"
 
-#: kateprojectconfigpage.cpp:108
+#: kateprojectconfigpage.cpp:125
 #, kde-format
 msgid "Single click action in the git status view"
 msgstr "Acció d'un sol clic a la vista de «git status»"
 
-#: kateprojectconfigpage.cpp:110 kateprojectconfigpage.cpp:122
+#: kateprojectconfigpage.cpp:127 kateprojectconfigpage.cpp:139
 #, kde-format
 msgid "No Action"
 msgstr "Cap acció"
 
-#: kateprojectconfigpage.cpp:112 kateprojectconfigpage.cpp:124
+#: kateprojectconfigpage.cpp:129 kateprojectconfigpage.cpp:141
 #, kde-format
 msgid "Open file"
 msgstr "Obre un fitxer"
 
-#: kateprojectconfigpage.cpp:113 kateprojectconfigpage.cpp:125
+#: kateprojectconfigpage.cpp:130 kateprojectconfigpage.cpp:142
 #, kde-format
 msgid "Stage / Unstage"
 msgstr "Marca / Desmarca"
 
-#: kateprojectconfigpage.cpp:120
+#: kateprojectconfigpage.cpp:137
 #, kde-format
 msgid "Double click action in the git status view"
 msgstr "Acció de doble clic a la vista de «git status»"
 
-#: kateprojectconfigpage.cpp:165 kateprojectpluginview.cpp:71
+#: kateprojectconfigpage.cpp:153
+#, kde-format
+msgctxt "Groupbox title"
+msgid "Git Hosting"
+msgstr "Allotjament de Git"
+
+#: kateprojectconfigpage.cpp:190 kateprojectpluginview.cpp:76
 #, kde-format
 msgid "Projects"
 msgstr "Projectes"
 
-#: kateprojectconfigpage.cpp:170
+#: kateprojectconfigpage.cpp:195
 #, kde-format
 msgctxt "Groupbox title"
 msgid "Projects Properties"
@@ -815,7 +991,7 @@ msgctxt "'%1' refers to project name, e.g,. Code Analysis - MyProject"
 msgid "Code Analysis - %1"
 msgstr "Anàlisi del codi - %1"
 
-#: kateprojectinfoviewcodeanalysis.cpp:99
+#: kateprojectinfoviewcodeanalysis.cpp:96
 #, kde-format
 msgid ""
 "'%1' is not installed on your system, %2.<br/><br/>%3. The tool will be run "
@@ -825,7 +1001,7 @@ msgstr ""
 "s'executarà a tots els fitxers de projectes que coincideixin amb aquesta "
 "llista d'extensions de fitxer:<br/><b>%4</b>"
 
-#: kateprojectinfoviewcodeanalysis.cpp:109
+#: kateprojectinfoviewcodeanalysis.cpp:106
 #, kde-format
 msgid ""
 "Using %1 installed at: %2.<br/><br/>%3. The tool will be run on all project "
@@ -835,14 +1011,14 @@ msgstr ""
 "fitxers de projectes que coincideixin amb aquesta llista d'extensions de "
 "fitxer:<br/><b>%4</b>"
 
-#: kateprojectinfoviewcodeanalysis.cpp:151
-#: kateprojectinfoviewcodeanalysis.cpp:211
-#: kateprojectinfoviewcodeanalysis.cpp:215
+#: kateprojectinfoviewcodeanalysis.cpp:148
+#: kateprojectinfoviewcodeanalysis.cpp:208
+#: kateprojectinfoviewcodeanalysis.cpp:212
 #, kde-format
 msgid "CodeAnalysis"
 msgstr "Anàlisi del codi"
 
-#: kateprojectinfoviewcodeanalysis.cpp:206
+#: kateprojectinfoviewcodeanalysis.cpp:203
 #, kde-format
 msgctxt ""
 "Message to the user that analysis finished. %1 is the name of the program "
@@ -853,7 +1029,7 @@ msgid_plural "[%1]Analysis on %2 files finished."
 msgstr[0] "[%1]Ha finalitzat l'anàlisi de %2 fitxer."
 msgstr[1] "[%1]Ha finalitzat l'anàlisi de %2 fitxers."
 
-#: kateprojectinfoviewcodeanalysis.cpp:214
+#: kateprojectinfoviewcodeanalysis.cpp:211
 #, kde-format
 msgid "Analysis failed with exit code %1, Error: %2"
 msgstr "L'anàlisi ha fallat el codi de sortida %1. Error: %2"
@@ -893,32 +1069,32 @@ msgstr "No s'ha pogut crear l'índex. Si us plau, instal·leu «ctags»."
 msgid "Indexing is not enabled"
 msgstr "La indexació no està activa"
 
-#: kateprojectitem.cpp:181
+#: kateprojectitem.cpp:171
 #, kde-format
 msgid "Error"
 msgstr "Error"
 
-#: kateprojectitem.cpp:181
+#: kateprojectitem.cpp:171
 #, kde-format
 msgid "File name already exists"
 msgstr "El nom de fitxer ja existeix"
 
-#: kateprojectplugin.cpp:270
+#: kateprojectplugin.cpp:312
 #, kde-format
 msgid "Confirm project closing: %1"
 msgstr "Confirma el tancament del projecte: %1"
 
-#: kateprojectplugin.cpp:271
+#: kateprojectplugin.cpp:313
 #, kde-format
 msgid "Do you want to close the project %1 and the related %2 open documents?"
 msgstr "Voleu tancar el projecte %1 i els %2 documents oberts relacionats?"
 
-#: kateprojectplugin.cpp:691
+#: kateprojectplugin.cpp:746
 #, kde-format
 msgid "Full path to current project excluding the file name."
 msgstr "Camí complet del projecte actual excloent el nom del fitxer."
 
-#: kateprojectplugin.cpp:708
+#: kateprojectplugin.cpp:763
 #, kde-format
 msgid ""
 "Full path to current project excluding the file name, with native path "
@@ -927,168 +1103,199 @@ msgstr ""
 "Camí complet del projecte actual excloent el nom del fitxer, amb el "
 "separador de camí natiu (barra inversa al Windows)."
 
-#: kateprojectpluginview.cpp:61
+#: kateprojectpluginview.cpp:66
 #, kde-format
 msgid "Project Manager"
 msgstr "Gestor de projectes"
 
-#: kateprojectpluginview.cpp:82
+#: kateprojectpluginview.cpp:87
 #, kde-format
 msgid "Current Project"
 msgstr "Projecte actual"
 
-#: kateprojectpluginview.cpp:84
+#: kateprojectpluginview.cpp:89
 #, kde-format
 msgid "Open projects list"
 msgstr "Obre la llista de projectes"
 
-#: kateprojectpluginview.cpp:92
+#: kateprojectpluginview.cpp:97
 #, kde-format
 msgid "Reload project"
 msgstr "Torna a carregar el projecte"
 
-#: kateprojectpluginview.cpp:95
+#: kateprojectpluginview.cpp:100
 #, kde-format
 msgid "Close project"
 msgstr "Tanca el projecte"
 
-#: kateprojectpluginview.cpp:171
+#: kateprojectpluginview.cpp:176
 #, kde-format
 msgid "Open &Folder..."
 msgstr "Obre una &carpeta..."
 
 # skip-rule: kct-todo
-#: kateprojectpluginview.cpp:177
+#: kateprojectpluginview.cpp:182
 #, kde-format
 msgid "Project TODOs"
 msgstr "TODO del projecte"
 
-#: kateprojectpluginview.cpp:182
+#: kateprojectpluginview.cpp:187
 #, kde-format
 msgid "Activate Previous Project"
 msgstr "Activa el projecte anterior"
 
-#: kateprojectpluginview.cpp:188
+#: kateprojectpluginview.cpp:193
 #, kde-format
 msgid "Activate Next Project"
 msgstr "Activa el projecte següent"
 
-#: kateprojectpluginview.cpp:194
+#: kateprojectpluginview.cpp:199
 #, kde-format
 msgid "Lookup"
 msgstr "Cerca"
 
-#: kateprojectpluginview.cpp:199
+#: kateprojectpluginview.cpp:204
 #, kde-format
 msgid "Close Project"
 msgstr "Tanca el projecte"
 
-#: kateprojectpluginview.cpp:204
+#: kateprojectpluginview.cpp:209
 #, kde-format
 msgid "Close All Projects"
 msgstr "Tanca tots els projectes"
 
-#: kateprojectpluginview.cpp:209
+#: kateprojectpluginview.cpp:214
 #, kde-format
 msgid "Close Orphaned Projects"
 msgstr "Tanca els projectes orfes"
 
-#: kateprojectpluginview.cpp:214
+#: kateprojectpluginview.cpp:219
 #, kde-format
 msgid "Reload Project"
 msgstr "Torna a carregar el projecte"
 
-#: kateprojectpluginview.cpp:219
+#: kateprojectpluginview.cpp:224
 #, kde-format
 msgid "Reload All Projects"
 msgstr "Torna a carregar tots els projectes"
 
-#: kateprojectpluginview.cpp:230
+#: kateprojectpluginview.cpp:235
 #, kde-format
 msgid "Checkout Git Branch"
 msgstr "Extreu la branca del Git"
 
-#: kateprojectpluginview.cpp:236 kateprojectpluginview.cpp:845
+#: kateprojectpluginview.cpp:241 kateprojectpluginview.cpp:877
 #, kde-format
 msgid "Lookup: %1"
 msgstr "Cerca: %1"
 
-#: kateprojectpluginview.cpp:237 kateprojectpluginview.cpp:846
+#: kateprojectpluginview.cpp:242 kateprojectpluginview.cpp:878
 #, kde-format
 msgid "Goto: %1"
 msgstr "Ves a: %1"
 
-#: kateprojectpluginview.cpp:316
+#: kateprojectpluginview.cpp:244 kateprojecttreeviewcontextmenu.cpp:189
+#, kde-format
+msgid "Git Hosting"
+msgstr "Allotjament de Git"
+
+#: kateprojectpluginview.cpp:248 kateprojectpluginview.cpp:892
+#: kateprojectpluginview.cpp:922
+#, kde-format
+msgid "Open on Git Hosting Service"
+msgstr "Obre en el servei d'allotjament de Git"
+
+#: kateprojectpluginview.cpp:249 kateprojectpluginview.cpp:888
+#, kde-format
+msgid "Copy Git Hosting Link"
+msgstr "Copia l'enllaç de allotjament de Git"
+
+#: kateprojectpluginview.cpp:331
 #, kde-format
 msgid "Projects Index"
 msgstr "Índex dels projectes"
 
-#: kateprojectpluginview.cpp:890
+#: kateprojectpluginview.cpp:887 kateprojecttreeviewcontextmenu.cpp:190
+#, kde-format
+msgid "Detecting Git hosting service…"
+msgstr "S'està detectant el servei d'allotjament de Git…"
+
+#: kateprojectpluginview.cpp:919 kateprojecttreeviewcontextmenu.cpp:203
+#, kde-format
+msgid "Open on %1"
+msgstr "Obre a %1"
+
+#: kateprojectpluginview.cpp:920 kateprojecttreeviewcontextmenu.cpp:206
+#, kde-format
+msgid "Copy %1 Link"
+msgstr "Copia l'enllaç a %1"
+
+#: kateprojectpluginview.cpp:985
 #, kde-format
 msgid "Choose a directory"
 msgstr "Seleccioneu un directori"
 
-#: kateprojecttreeviewcontextmenu.cpp:48
+#: kateprojecttreeviewcontextmenu.cpp:54
 #, kde-format
 msgid "Enter name:"
 msgstr "Introduïu un nom:"
 
-#: kateprojecttreeviewcontextmenu.cpp:113
+#: kateprojecttreeviewcontextmenu.cpp:119
 #, kde-format
 msgid "Copy Location"
 msgstr "Copia la ubicació"
 
-#: kateprojecttreeviewcontextmenu.cpp:120
+#: kateprojecttreeviewcontextmenu.cpp:126
 #, kde-format
 msgid "New File…"
 msgstr "Fitxer nou…"
 
-#: kateprojecttreeviewcontextmenu.cpp:121
+#: kateprojecttreeviewcontextmenu.cpp:127
 #, kde-format
 msgid "New Folder…"
 msgstr "Carpeta nova…"
 
-#: kateprojecttreeviewcontextmenu.cpp:128
+#: kateprojecttreeviewcontextmenu.cpp:134
 #, kde-format
 msgid "&Rename"
 msgstr "&Reanomena"
 
-#: kateprojecttreeviewcontextmenu.cpp:139
+#: kateprojecttreeviewcontextmenu.cpp:145
 #, kde-format
 msgid "Properties"
 msgstr "Propietats"
 
-#: kateprojecttreeviewcontextmenu.cpp:143
+#: kateprojecttreeviewcontextmenu.cpp:149
 #, kde-format
 msgid "Open With"
 msgstr "Obre amb"
 
-#: kateprojecttreeviewcontextmenu.cpp:151
+#: kateprojecttreeviewcontextmenu.cpp:157
 #, kde-format
 msgid "Open Internal Terminal Here"
 msgstr "Obre aquí un terminal intern"
 
-#: kateprojecttreeviewcontextmenu.cpp:163
+#: kateprojecttreeviewcontextmenu.cpp:169
 #, kde-format
 msgid "Open External Terminal Here"
 msgstr "Obre aquí un terminal extern"
 
-#: kateprojecttreeviewcontextmenu.cpp:169
+#: kateprojecttreeviewcontextmenu.cpp:175
 #, kde-format
 msgid "&Open Containing Folder"
 msgstr "&Obre la carpeta contenidora"
 
-#: kateprojecttreeviewcontextmenu.cpp:178
+#: kateprojecttreeviewcontextmenu.cpp:184
 #, kde-format
 msgid "Show Git History"
 msgstr "Mostra l'historial del Git"
 
-#: kateprojecttreeviewcontextmenu.cpp:242
+#: kateprojecttreeviewcontextmenu.cpp:280
 #, kde-format
 msgid "New File"
 msgstr "Fitxer nou"
 
-#: kateprojecttreeviewcontextmenu.cpp:247
+#: kateprojecttreeviewcontextmenu.cpp:285
 #, kde-format
 msgid "New Folder"
 msgstr "Carpeta nova"
@@ -1210,6 +1417,149 @@ msgstr "Les modificacions temporals s'han aplicat correctament."
 msgid "Show stash failed. Error: "
 msgstr "Ha fallat en mostrar la modificació temporal. Error: "
 
+#: tools/clazy.h:25
+#, kde-format
+msgid "Clazy (Qt/C++)"
+msgstr "Clazy (Qt/C++)"
+
+#: tools/clazy.h:30
+#, kde-format
+msgid "Clazy is a static analysis tool for Qt/C++ code"
+msgstr "Clazy és una eina d'anàlisi estàtic per a codi en Qt/C++"
+
+#: tools/clazy.h:71
+#, kde-format
+msgid "Please install 'clazy'"
+msgstr "Instal·leu el «clazy»"
+
+#: tools/clazycurrent.h:24
+#, kde-format
+msgid "Clazy - Current File"
+msgstr "Clazy - Fitxer actual"
+
+#: tools/clazycurrent.h:29
+#, kde-format
+msgid "clang-tidy is a clang-based C++ “linter” tool"
+msgstr "«clang-tidy» és una eina «linter» de C++ basada en «clang»"
+
+#: tools/clippy.h:27
+#, kde-format
+msgid "Clippy (Rust)"
+msgstr "Clippy (Rust)"
+
+#: tools/clippy.h:32
+#, kde-format
+msgid "Clippy is a static analysis tool for Rust code"
+msgstr "Clippy és una eina d'anàlisi estàtic per a codi en Rust"
+
+#: tools/clippy.h:95
+#, kde-format
+msgid "Please install 'cargo'"
+msgstr "Instal·leu el «cargo»"
+
+#: tools/cppcheck.h:26
+#, kde-format
+msgid "Cppcheck (C++)"
+msgstr "Cppcheck (C++)"
+
+#: tools/cppcheck.h:31
+#, kde-format
+msgid "Cppcheck is a static analysis tool for C/C++ code"
+msgstr "Cppcheck és una eina d'anàlisi estàtic per a codi en C/C++"
+
+#: tools/cppcheck.h:64
+#, kde-format
+msgid "Please install 'cppcheck'"
+msgstr "Instal·leu el «cppcheck»"
+
+#: tools/eslint.h:23
+#, kde-format
+msgid "ESLint"
+msgstr "ESLint"
+
+#: tools/eslint.h:28
+#, kde-format
+msgid ""
+"ESLint is a static analysis tool & style guide enforcer for JavaScript/"
+"Typescript code"
+msgstr ""
+"ESLint és una eina d'anàlisi estàtic i aplicador de guia d'estil de codi en "
+"JavaScript/Typescript"
+
+#: tools/eslint.h:67
+#, kde-format
+msgid "Please install 'eslint'"
+msgstr "Instal·leu el «eslint»"
+
+#: tools/flake8.h:26
+#, kde-format
+msgid "Flake8 (Python)"
+msgstr "Flake8 (Python)"
+
+#: tools/flake8.h:31
+#, kde-format
+msgid "Flake8: Your Tool For Style Guide Enforcement for Python"
+msgstr "Flake8: l'eina d'aplicació de guia d'estil per al Python"
+
+#: tools/flake8.h:77
+#, kde-format
+msgid "Please install 'flake8'"
+msgstr "Instal·leu el «flake8»"
+
+#: tools/ruff.h:28
+#, kde-format
+msgid "Ruff (Python)"
+msgstr "Ruff (Python)"
+
+#: tools/ruff.h:33
+#, kde-format
+msgid "An extremely fast Python linter"
+msgstr "Un «linter» extremadament ràpid del Python"
+
+#: tools/ruff.h:64
+#, kde-format
+msgid ""
+"Ruff is not installed. Please use your package manager to install it. See "
+"https://docs.astral.sh/ruff/installation/"
+msgstr ""
+"Ruff no està instal·lat. Feu servir el gestor de paquets per instal·lar-lo. "
+"Vegeu https://docs.astral.sh/ruff/installation/"
+
+#: tools/shellcheck.h:24
+#, kde-format
+msgid "ShellCheck (sh/bash)"
+msgstr "ShellCheck (sh/bash)"
+
+#: tools/shellcheck.h:29
+#, kde-format
+msgid "ShellCheck is a static analysis and linting tool for sh/bash scripts"
+msgstr ""
+"ShellCheck és una eina d'anàlisi estàtic i «linting» per a scripts en sh/bash"
+
+#: tools/shellcheck.h:73
+#, kde-format
+msgid "Please install ShellCheck (see https://www.shellcheck.net)"
+msgstr "Instal·leu el ShellCheck (vegeu https://www.shellcheck.net)"
+
+#: tools/tidy.h:24
+#, kde-format
+msgid "Html Tidy"
+msgstr "Html Tidy"
+
+#: tools/tidy.h:29
+#, kde-format
+msgid "Runs html tidy on current file"
+msgstr "Executa l'«html tidy» en el fitxer actual"
+
+#: tools/tidy.h:64
+#, kde-format
+msgid ""
+"Html tidy is not installed. Please use your package manager to install it. "
+"See https://www.html-tidy.org/"
+msgstr ""
+"L'Html tidy no està instal·lat. Feu servir el gestor de paquets per "
+"instal·lar-lo. Vegeu https://www.html-tidy.org/"
+
 #. i18n: ectx: Menu (projects)
 #: ui.rc:9
 #, kde-format
@@ -1217,7 +1567,7 @@ msgid "&Projects"
 msgstr "&Projectes"
 
 #. i18n: ectx: ToolBar (projectplugin)
-#: ui.rc:29
+#: ui.rc:30
 #, kde-format
 msgid "Project Plugin"
 msgstr "Connector de projecte"
