@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE gui SYSTEM "kpartgui.dtd">
-<gui name="asciifun" library="asciifunplugin" version="1" translationDomain="asciifunplugin">
+<gui name="asciifun" library="asciifunplugin" version="2" translationDomain="asciifunplugin">
   <MenuBar>
     <Menu name="tools">
       <text>&amp;Tools</text>
@@ -10,6 +10,7 @@
         <Action name="asciifun_banner"/>
         <Action name="asciifun_table"/>
         <Action name="asciifun_image"/>
+        <Action name="asciifun_braille"/>
       </Menu>
     </Menu>
   </MenuBar>

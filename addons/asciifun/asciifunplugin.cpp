@@ -20,6 +20,7 @@
 #include <QFileDialog>
 #include <QImage>
 #include <QImageReader>
+#include <QInputDialog>
 
 K_PLUGIN_FACTORY_WITH_JSON(AsciiFunPluginFactory, "asciifunplugin.json", registerPlugin<AsciiFunPlugin>();)
 
@@ -27,6 +28,15 @@ namespace
 {
 constexpr int ChartHeight = 10;
 constexpr int ImageColumns = 80;
+
+/// Replace the selection with a multi-line @p block, starting it on a fresh line when the
+/// selection begins mid-line so that every row of the block stays aligned.
+void replaceSelectionWithBlock(KTextEditor::View *view, const QString &block)
+{
+    const KTextEditor::Range range = view->selectionRange();
+    const QString prefix = range.start().column() > 0 ? QStringLiteral("\n") : QString();
+    view->document()->replaceText(range, prefix + block);
+}
 
 void showMessage(KTextEditor::View *view, const QString &text, KTextEditor::Message::MessageType type)
 {
@@ -62,6 +72,7 @@ AsciiFunPluginView::AsciiFunPluginView(KTextEditor::MainWindow *mainWindow)
     addAction("asciifun_banner", i18n("Selection to Banner Letters"), &AsciiFunPluginView::bannerSelection);
     addAction("asciifun_table", i18n("CSV Selection to Table"), &AsciiFunPluginView::tableSelection);
     addAction("asciifun_image", i18n("Insert Image as ASCII…"), &AsciiFunPluginView::insertImage);
+    addAction("asciifun_braille", i18n("Insert Image as Braille…"), &AsciiFunPluginView::insertBrailleImage);
 
     // The easter egg stays out of the menus and the shortcut editor on purpose
     auto *rain = new QAction(this);
@@ -98,14 +109,14 @@ void AsciiFunPluginView::chartSelection()
     if (!view) {
         return;
     }
-    const QList<double> numbers = AsciiArt::parseNumbers(view->selectionText());
-    if (numbers.isEmpty()) {
+    const QList<QList<double>> series = AsciiArt::parseSeries(view->selectionText());
+    if (series.isEmpty()) {
         showMessage(view, i18n("No numbers found in the selection."), KTextEditor::Message::Warning);
         return;
     }
     // Keep the data: the chart goes on new lines after the selection
     const KTextEditor::Cursor end = view->selectionRange().end();
-    view->document()->insertText(end, QLatin1Char('\n') + AsciiArt::plot(numbers, ChartHeight) + QLatin1Char('\n'));
+    view->document()->insertText(end, QLatin1Char('\n') + AsciiArt::plot(series, ChartHeight) + QLatin1Char('\n'));
 }
 
 void AsciiFunPluginView::bannerSelection()
@@ -114,8 +125,15 @@ void AsciiFunPluginView::bannerSelection()
     if (!view) {
         return;
     }
-    const KTextEditor::Range range = view->selectionRange();
-    view->document()->replaceText(range, AsciiArt::banner(view->selectionText()));
+    const QStringList fonts = AsciiArt::bannerFonts();
+    bool ok = false;
+    const QString font =
+        QInputDialog::getItem(m_mainWindow->window(), i18n("Banner Letters"), i18n("Font:"), fonts, std::max(0, int(fonts.indexOf(m_bannerFont))), false, &ok);
+    if (!ok) {
+        return;
+    }
+    m_bannerFont = font;
+    replaceSelectionWithBlock(view, AsciiArt::banner(view->selectionText(), font));
 }
 
 void AsciiFunPluginView::tableSelection()
@@ -124,11 +142,24 @@ void AsciiFunPluginView::tableSelection()
     if (!view) {
         return;
     }
-    const KTextEditor::Range range = view->selectionRange();
-    view->document()->replaceText(range, AsciiArt::table(view->selectionText()));
+    replaceSelectionWithBlock(view, AsciiArt::table(view->selectionText()));
 }
 
 void AsciiFunPluginView::insertImage()
+{
+    insertImageAs([](const QImage &image) {
+        return AsciiArt::imageToAscii(image, ImageColumns);
+    });
+}
+
+void AsciiFunPluginView::insertBrailleImage()
+{
+    insertImageAs([](const QImage &image) {
+        return AsciiArt::imageToBraille(image, ImageColumns);
+    });
+}
+
+void AsciiFunPluginView::insertImageAs(const std::function<QString(const QImage &)> &convert)
 {
     KTextEditor::View *view = m_mainWindow->activeView();
     if (!view) {
@@ -140,10 +171,8 @@ void AsciiFunPluginView::insertImage()
     for (const QByteArray &format : formats) {
         patterns.append(QStringLiteral("*.") + QString::fromLatin1(format));
     }
-    const QString path = QFileDialog::getOpenFileName(m_mainWindow->window(),
-                                                      i18n("Insert Image as ASCII"),
-                                                      QString(),
-                                                      i18n("Images (%1)", patterns.join(QLatin1Char(' '))));
+    const QString path =
+        QFileDialog::getOpenFileName(m_mainWindow->window(), i18n("Insert Image"), QString(), i18n("Images (%1)", patterns.join(QLatin1Char(' '))));
     if (path.isEmpty()) {
         return;
     }
@@ -154,7 +183,7 @@ void AsciiFunPluginView::insertImage()
         showMessage(view, i18n("Could not read image %1: %2", path, reader.errorString()), KTextEditor::Message::Error);
         return;
     }
-    view->document()->insertText(view->cursorPosition(), AsciiArt::imageToAscii(image, ImageColumns) + QLatin1Char('\n'));
+    view->document()->insertText(view->cursorPosition(), convert(image) + QLatin1Char('\n'));
 }
 
 void AsciiFunPluginView::startMatrixRain()

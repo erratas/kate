@@ -9,12 +9,15 @@
 
 #include <QPointer>
 
+#include <functional>
+
 namespace KTextEditor
 {
 class MainWindow;
 class View;
 }
 class MatrixRain;
+class QImage;
 
 class AsciiFunPlugin final : public KTextEditor::Plugin
 {
@@ -34,6 +37,8 @@ private:
     void bannerSelection();
     void tableSelection();
     void insertImage();
+    void insertBrailleImage();
+    void insertImageAs(const std::function<QString(const QImage &)> &convert);
     void startMatrixRain();
 
     /// Active view with a non-empty selection, or nullptr after telling the user what to select.
@@ -41,4 +46,5 @@ private:
 
     KTextEditor::MainWindow *const m_mainWindow;
     QPointer<MatrixRain> m_rain;
+    QString m_bannerFont;
 };

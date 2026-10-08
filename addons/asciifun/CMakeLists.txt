@@ -1,4 +1,4 @@
-add_library(asciiart STATIC asciiart.cpp)
+add_library(asciiart STATIC asciiart.cpp asciifonts.qrc)
 target_link_libraries(asciiart PUBLIC Qt::Gui)
 set_target_properties(asciiart PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
