@@ -77,6 +77,25 @@ Just for fun:
 - `I20` **Daily art drop**: one new piece in the art library every day, made by an agent.
 - `I21` **Hidden easter egg**: Konami code in the editor starts matrix rain.
 
+Round 2 (same session, later):
+- `I22` **Photo booth**: webcam to live ASCII video in a canvas panel; snap a frame into the doc.
+- `I23` **ASCII Pong / Snake** in a split view, played with the arrow keys; agents can play too.
+- `I24` **Mood lighting**: the editor theme gradient shifts with the time of day.
+- `I25` **Commit art**: a tiny ASCII badge in commit messages showing lines added and removed.
+- `I26` **Music visualiser**: when audio plays, a bar chart dances in the status bar.
+- `I27` **Sticker book**: drag ready-made ASCII stickers (cats, rockets, frames) into any doc.
+- `I28` **Font forge**: draw a new banner font letter by letter in a grid and save it to the
+  engine's font library.
+- `I29` **Glitch effect**: one keypress makes selected text glitch and settle, for demos.
+- `I30` **Fireworks** in the canvas when a long build or agent task finishes.
+- `I31` **Story mode**: agents write a choose-your-own-adventure in the canvas, the user picks
+  the path with number keys.
+- `I32` **ASCII map**: city or world map from the astroterm data, with a "you are here" marker.
+- `I33` **Clock wall**: big banner-font clocks for several time zones in a side panel.
+- `I34` **Rubber duck**: an ASCII duck that asks "what did you expect to happen?" when you stare
+  at the same line for too long.
+- `I35` **Postcard export**: render any canvas page as a PNG postcard with a frame and caption.
+
 ## Done
 
 - `D0` Earlier session: ASCII Fun plugin (charts, 10 banner fonts, tables, image to ASCII and
