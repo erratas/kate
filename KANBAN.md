@@ -35,6 +35,48 @@ Last updated: 2026-10-09 by Claude Code (cloud session "determined-newton").
 - `K6` ASCII paint mode, art library, idle screen (matrix rain, star sky).
 - `K7` Misty canvas link: open and save canvas documents, see agents' writes live.
 
+## Ideas (brainstorm, not scheduled)
+
+Fun ideas from the 2026-10-09 session. Not promised work: the owner picks which become cards.
+Ideas that touch other repos also belong on the master board in erratas/misty-ascii.
+
+Editor (Misty):
+- `I1` **Typewriter mode**: typing in the editor plays the canvas typewriter sounds and the
+  carriage-return "ding" at the line end; mute and volume in settings.
+- `I2` **Banner on save**: optional ASCII banner header for new files (project name in a chosen
+  font, comment style matched to the language).
+- `I3` **Minimap art**: the minimap can show a big banner or logo as a landmark you can click.
+- `I4` **ASCII diff view**: show a diff as a box-drawn side-by-side table.
+- `I5` **Live chart of a selection**: select a column of numbers and see a sparkline in the
+  status bar; click to insert the full chart.
+- `I6` **Colour picker that speaks ANSI**: pick a colour, insert it as hex, ANSI 256 or true-colour
+  escape for the current language.
+- `I7` **Box-drawing autocomplete**: type `+--` and get a clean box; arrow keys extend lines and
+  fix the joins.
+- `I8` **Fortune on startup**: a random tip or art piece from the art library on the start page.
+- `I9` **Night sky screensaver** when idle, with real star positions for your city (card T2).
+
+Agents and canvas:
+- `I10` **Agent signatures**: each agent (Hermes E15, Venus, Claude Code) gets its own colour,
+  font banner and typing speed when it writes to the canvas.
+- `I11` **Replay**: play back a canvas document's history as a typewriter film; export it as an
+  animated GIF or an `.ans` file.
+- `I12` **Two agents, one canvas**: side-by-side cursors with names, like a shared editor.
+- `I13` **Agent status in ASCII**: a small live table of running agents with progress bars.
+
+Terminals and CLIs:
+- `I14` **`misty` one-liners**: `misty banner`, `misty table`, `misty chart`, `misty sky`,
+  `misty rain` in every CLI and AI-SUITE terminal, from one portable binary.
+- `I15` **Themed prompts**: shell prompt themes built from the engine's colours and gradients.
+- `I16` **Login splash** for E15 Misty and Venus Misty: a gradient banner plus system stats.
+- `I17` **Pipe anything to a chart**: `some-command | misty chart` with auto-detected columns.
+- `I18` **Weather and calendar widgets** drawn in ASCII for the terminal header.
+
+Just for fun:
+- `I19` **ASCII pet** that lives in the status bar and reacts to build failures.
+- `I20` **Daily art drop**: one new piece in the art library every day, made by an agent.
+- `I21` **Hidden easter egg**: Konami code in the editor starts matrix rain.
+
 ## Done
 
 - `D0` Earlier session: ASCII Fun plugin (charts, 10 banner fonts, tables, image to ASCII and
