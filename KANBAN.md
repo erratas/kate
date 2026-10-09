@@ -37,7 +37,7 @@ Last updated: 2026-10-09 by Claude Code (cloud session "determined-newton").
 
 ## Ideas (brainstorm, not scheduled)
 
-Fun ideas from the 2026-10-09 session. Not promised work: the owner picks which become cards.
+Fun ideas from the 2026-10-09 session. Technical notes for several of them: [`docs/misty/TECH-NOTES.md`](docs/misty/TECH-NOTES.md). Not promised work: the owner picks which become cards.
 Ideas that touch other repos also belong on the master board in erratas/misty-ascii.
 
 Editor (Misty):
