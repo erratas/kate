@@ -12,8 +12,10 @@ Last updated: 2026-10-09 by Claude Code (cloud session "determined-newton").
 
 ## In progress
 
-- `B1` **Dev build in the cloud container**: Qt 6.11.3 + KDE Frameworks 6.31 (28 of 32 built on
-  2026-10-09), then build and run the editor headless.
+- `B1` **Dev build in the cloud container**: Qt 6.11.3 + KDE Frameworks 6.31 + ktexteditor built,
+  and the editor compiles and starts (`--version` works). Left: a main-window screenshot and the
+  ASCII Fun plugin build. The cloud container is temporary: redo the build on a new machine with
+  the steps in `AGENTS.md` section 4 (ktexteditor also needs Qt `qtmultimedia` and `qtspeech`).
 - `M0` Agent files for this repo (this PR).
 
 ## Next
@@ -43,3 +45,6 @@ Last updated: 2026-10-09 by Claude Code (cloud session "determined-newton").
 - 2026-10-09 | Claude Code cloud (determined-newton) | this board; dev build started (Qt 6.11 +
   KF 6.31) | KF 6.24 does not build on Qt 6.8; container restart paused the build | finish B1,
   then K0/K1.
+- 2026-10-09 | Claude Code cloud (determined-newton) | KF 6.31, ktexteditor and the editor built;
+  editor starts headless | cloud credits nearly gone, session stopped | screenshot, plugin build,
+  then K0/K1 (the engine in misty-ascii is not written yet: card E1 there comes first).

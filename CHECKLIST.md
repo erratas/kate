@@ -11,9 +11,10 @@ lists what the editor itself must do.
 ## B1 Dev build
 
 - [x] Qt 6.11.3 prebuilt installed
-- [ ] KDE Frameworks 6.31 (32 frameworks) built
-- [ ] Editor builds against them
-- [ ] Editor runs headless (`-platform offscreen`) and a screenshot shows the main window
+- [x] KDE Frameworks 6.31 built (plus Qt Multimedia and Qt Speech, which ktexteditor needs)
+- [x] Editor builds against them (2026-10-09, `.kdebuild/kate-build/bin/kate`)
+- [x] Editor starts headless: `kate --version -platform offscreen` prints `kate 26.11.70`
+- [ ] A screenshot shows the main window (not done yet)
 - [ ] ASCII Fun plugin from PR #1 builds and loads
 
 ## K0 Plugin on the shared engine
